@@ -1,0 +1,8 @@
+{
+  "name": "chensenpei-about",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "rm -rf dist && mkdir -p dist && cp index.html about.html 404.html dist/ && cp -R public dist/public"
+  }
+}

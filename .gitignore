@@ -2,6 +2,8 @@
 .claude/
 .hermes/
 .vercel/
+dist/
+node_modules/
 codex-skills-package-20260609/
 codex-skills-package-20260609.tar.gz
 outputs/
