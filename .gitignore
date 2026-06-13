@@ -1,0 +1,12 @@
+.DS_Store
+.claude/
+.hermes/
+codex-skills-package-20260609/
+codex-skills-package-20260609.tar.gz
+outputs/
+docs/
+*.pdf
+*.docx
+*.md
+personal-*.html
+pig*.html
