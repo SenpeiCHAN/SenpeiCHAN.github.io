@@ -13,3 +13,4 @@ docs/
 *.md
 personal-*.html
 pig*.html
+.vercel
