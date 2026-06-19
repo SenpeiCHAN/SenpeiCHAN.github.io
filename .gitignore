@@ -4,6 +4,9 @@
 .vercel/
 dist/
 node_modules/
+__pycache__/
+*.pyc
+translation_cache.json
 codex-skills-package-20260609/
 codex-skills-package-20260609.tar.gz
 outputs/
@@ -11,6 +14,7 @@ docs/
 *.pdf
 *.docx
 *.md
+!README.md
 personal-*.html
 pig*.html
 .vercel
