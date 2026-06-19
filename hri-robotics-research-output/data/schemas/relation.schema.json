@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HRI Knowledge Graph Relation",
+  "type": "object",
+  "required": [
+    "source",
+    "target",
+    "relation_type",
+    "description",
+    "evidence",
+    "directionality",
+    "confidence_level",
+    "design_implication"
+  ],
+  "properties": {
+    "source": {
+      "type": "string"
+    },
+    "target": {
+      "type": "string"
+    },
+    "relation_type": {
+      "enum": [
+        "is_part_of",
+        "related_to",
+        "enables",
+        "constrains",
+        "improves",
+        "evaluated_by",
+        "used_in",
+        "depends_on",
+        "conflicts_with",
+        "derived_from",
+        "applied_to",
+        "measured_by",
+        "designed_for",
+        "supports",
+        "challenges",
+        "requires",
+        "influences",
+        "mediates",
+        "extends"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "directionality": {
+      "enum": [
+        "directed",
+        "bidirectional"
+      ]
+    },
+    "confidence_level": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "design_implication": {
+      "type": "string"
+    }
+  }
+}

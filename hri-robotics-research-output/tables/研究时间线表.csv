@@ -1,0 +1,13 @@
+周次,阶段,主要任务,具体产出,建议方法,关联知识节点
+第 1 周,收敛问题,从 20 个设计机会中选择 2-3 个方向,研究方向 shortlist,机会评估矩阵,Design Opportunity; Research Question
+第 2 周,文献补强,针对 shortlist 每个方向补 5-8 篇文献,literature note 初稿,Literature Review,Paper / Source; Concept
+第 3 周,场景建模,做用户、场景、任务、利益相关者、失败点分析,场景地图与任务流,Contextual Inquiry; Service Blueprinting,Scenario; Task; User Group
+第 4 周,图谱细化,为选定方向新增节点、关系、三元组,子图谱 v1,Knowledge Graph Modeling,Node; Relation; Triple
+第 5 周,研究问题定义,将方向转成 1 个主研究问题和 2-3 个子问题,research question sheet,Research Question Framing,Research Question; Evaluation Metric
+第 6 周,方法设计,选择 Wizard-of-Oz、访谈、对比实验或 RtD,研究方案和评估指标,Method Selection,Method; Evaluation Metric
+第 7 周,低保真原型,绘制流程、线框、行为剧本或 AR mockup,low-fi prototype,Prototype Testing; Wizard-of-Oz,Interface; Interaction Modality
+第 8 周,预测试,进行 3-5 人快速测试或专家走查,pilot notes,Usability Testing,Usability; Trust; Workload
+第 9 周,迭代原型,根据预测试修正信息架构、反馈和任务流,prototype v2,Iterative Design,Feedback; Failure Recovery
+第 10 周,正式评估,采集可用性、信任、工作负荷或情境感知数据,evaluation data,Controlled Experiment; Questionnaire,Trust; NASA-TLX; Situation Awareness
+第 11 周,结果分析,汇总发现、设计原则和局限,research findings,Thematic Analysis; Comparative Analysis,Design Principle; Evidence
+第 12 周,输出整合,生成作品集页面、poster 或论文初稿,portfolio / poster / paper draft,Research through Design; Report Writing,Portfolio; Poster; Paper

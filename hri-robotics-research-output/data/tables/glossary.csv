@@ -1,0 +1,52 @@
+﻿English Term,Chinese Term,Definition,Related Concepts,Design Relevance,Example Scenario
+Human-Robot Interaction,人机机器人交互,研究人与机器人之间的物理、认知、社会和组织互动。,HCI; Robotics; Human Factors,为机器人设计提供跨学科框架。,医院导诊机器人
+Human-Computer Interaction,人机交互,研究人与计算系统之间的交互体验和影响。,UX; Usability; Interaction Design,提供用户研究与界面评估方法。,机器人控制界面
+Intelligent Interaction Design,智能交互设计,面向具备感知、推理或自主能力系统的交互设计。,AI; HCI; HRI,关注不确定性、解释和人机协作。,LLM 机器人任务协商
+Robotics,机器人学,研究能感知、决策并行动的物理系统。,Control; Perception; Planning,帮助设计师理解系统边界。,移动操作机器人
+Embodied AI,具身智能,通过身体、环境和行动实现智能的 AI/机器人研究方向。,VLA; Affordance; Grounding,把语言任务转成可执行行动。,家庭机器人执行自然语言任务
+Embodied Interaction,具身交互,强调身体、行动和情境参与交互意义生成。,Tangible UI; Situated Action,提示关注空间、动作、材料。,协作机械臂路径表达
+Social Robotics,社交机器人,关注机器人作为社会互动对象的表达与关系。,Anthropomorphism; Social Presence,帮助设计人格和情感边界。,陪护机器人
+Service Robot,服务机器人,在非制造场景为人或组织提供服务的机器人。,Delivery; Guidance; Cleaning,需要融入服务流程。,酒店配送机器人
+Collaborative Robot,协作机器人,与人共享工作空间并协同完成任务的机器人。,Cobot; Safety; Handover,强调安全和意图理解。,协作装配
+Shared Autonomy,共享自主性,人和机器人共同控制任务的自主方式。,Human-in-the-loop; Intent Recognition,平衡辅助与控制感。,共享控制机械臂
+Teleoperation,远程操作,人远程控制或监督机器人。,Latency; Situation Awareness,需要强反馈和低负荷界面。,灾害救援机器人
+Multimodal Interaction,多模态交互,组合多种输入输出模态。,Voice; Gesture; Haptic; AR,降低单一模态局限。,语音+AR 路径提示
+Voice Interaction,语音交互,通过语音命令、对话和澄清完成任务。,NLP; Dialogue Repair,适合目标表达但需处理歧义。,家庭机器人命令
+Gesture Interaction,手势交互,通过身体动作或指向传达意图。,Computer Vision; Spatial Reference,适合空间目标。,指向桌上物体
+Gaze Interaction,视线交互,用注视方向建立注意和意图线索。,Joint Attention; Social Cue,增强社会性与导览。,博物馆机器人
+Haptic Interaction,触觉交互,用力、震动、接触提供反馈。,Force Feedback; Comfort,提升远程操作和康复体验。,远程机械臂
+Tangible Interaction,实体交互,用物理物件参与信息操作。,Affordance; Embodiment,让抽象任务可触摸。,任务编排卡片
+AR/MR Interface,增强/混合现实界面,在真实环境叠加虚拟信息。,VAM-HRI; Path Visualization,显示机器人不可见计划。,AR 安全区
+Robot Autonomy,机器人自主性,机器人独立感知、决策和行动的程度。,Levels of Automation; Agency,影响信任、责任和接管。,自主配送机器人
+Trust Calibration,信任校准,让用户信任程度匹配系统真实能力。,Trust; Transparency,避免过度信任和不用。,解释机器人局限
+Transparency,透明性,系统状态、逻辑和限制可被理解的程度。,Explainability; Visibility,支持接管和信任。,任务置信度显示
+Explainability,可解释性,系统能给出任务相关解释。,XAI; Robot Planning,帮助理解失败与决策。,机器人说明绕路原因
+Legibility,可读性,人能从部分动作推断机器人目标。,Motion Planning; Intent,提升协作流畅性。,机械臂朝目标移动
+Predictability,可预测性,机器人行为符合人的预期。,Safety; Motion,减少惊吓与风险。,移动机器人避让
+Situation Awareness,情境感知,理解环境状态、意义和未来变化。,Teleoperation; AR,远程和复杂场景关键指标。,巡检仪表盘
+Workload,工作负荷,任务对认知、身体和时间资源的要求。,NASA-TLX,评估界面是否减负。,多模态控制对比
+Usability,可用性,任务完成的效率、效果与满意度。,SUS; Task Success,基础交互质量指标。,机器人 app
+Acceptance,接受度,用户愿意采用机器人的程度。,Almere Model; UTAUT,服务机器人部署关键。,养老机器人
+Social Presence,社会临场感,机器人被感知为社会参与者的程度。,Anthropomorphism; Emotion,影响陪伴和导览体验。,儿童教育机器人
+Anthropomorphism,拟人化,将人类特质归因给机器人。,Godspeed; Social Robot,既能亲近也会误导。,表情机器人
+Wizard-of-Oz,绿野仙踪法,由人隐藏模拟系统智能的原型测试方法。,Prototype; HRI,早期验证智能交互。,语音机器人测试
+Research through Design,通过设计进行研究,通过设计产物与反思生成知识。,RtD; Annotated Portfolio,适合作品集和设计研究。,机器人未来交互原型
+Service Blueprint,服务蓝图,映射用户、前台、后台与支持流程。,Service Design; Scenario,发现非界面问题。,酒店机器人服务
+GraphRAG,图谱增强检索生成,结合知识图谱关系和文本检索的 LLM 复用方式。,Knowledge Graph; RAG,支持研究助手和机会生成。,HRI 设计问答
+Knowledge Triple,知识三元组,Subject-Predicate-Object 关系表达。,Ontology; Graph,机器可读和可扩展。,Trust -- measured_by --> Questionnaire
+Ontology,本体,定义领域中类目、关系和约束的结构。,Schema; Taxonomy,保证知识库一致性。,HRI 顶层本体
+Node,节点,知识图谱中的实体或概念。,Relation; Evidence,承载定义和证据。,Shared Autonomy 节点
+Relation,关系,节点之间的语义连接。,Triple; Predicate,表达因果、从属和应用。,AR enables Guidance
+Evidence,证据,支持节点或关系的来源。,Paper; Standard; Case,保证可回溯。,DOI 链接
+Design Opportunity,设计机会,可转化为项目、原型或研究的问题空间。,Research Question; Prototype,连接图谱与作品集。,失败恢复系统
+Research Question,研究问题,可被方法和数据回答的问题。,Method; Metric,连接研究和输出。,AR 提示是否提升意图理解
+Robotiquette,机器人礼仪,机器人在人类社会场景中的行为规范。,Social Norms; Comfort,公共空间部署关键。,避让和打招呼
+Human Agency,人类能动性,人保有选择、控制和影响系统的能力感。,Control; Autonomy,防止智能系统越权。,接管按钮
+Failure Recovery,失败恢复,系统识别、解释和补救失败的能力。,Error Recovery; Trust,决定服务体验韧性。,配送失败改派
+Role Allocation,角色分配,人与机器人之间的任务、权力和责任划分。,Autonomy; Task,影响协作效率与责任。,人确认机器人执行
+Handover,交接,人与机器人交换物体、任务或责任。,Cobot; Service,高频且高风险接触点。,药品交接
+Status Visibility,状态可见性,用户能否知道系统当前和未来状态。,Transparency; Feedback,降低不确定性。,等待进度显示
+Perception,感知,机器人获取环境、人和物体信息的能力。,Sensors; Scene Understanding,决定反馈和错误解释。,识别障碍物
+Planning,规划,机器人选择动作序列以达成目标。,Motion Planning; Decision,影响路径和意图可读性。,绕路规划
+Intention Recognition,意图识别,系统推断人的目标或意图。,Shared Autonomy; Gesture,支持主动辅助。,识别用户指向
+Human Safety,人体安全,避免身体伤害和心理不适。,ISO; Risk,设计底线。,安全速度限制
