@@ -1,0 +1,1080 @@
+[
+  {
+    "source": "discipline_hri",
+    "target": "discipline_hci",
+    "relation_type": "related_to",
+    "description": "HRI shares methods and theories with HCI.",
+    "evidence": [
+      "S01",
+      "S24"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "HCI 方法可迁移到机器人交互。"
+  },
+  {
+    "source": "discipline_hri",
+    "target": "discipline_robotics",
+    "relation_type": "related_to",
+    "description": "HRI connects interaction research with robotics systems.",
+    "evidence": [
+      "S01",
+      "S23"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "设计需要理解机器人能力边界。"
+  },
+  {
+    "source": "discipline_hri",
+    "target": "discipline_human_factors",
+    "relation_type": "related_to",
+    "description": "HRI uses human factors metrics and safety thinking.",
+    "evidence": [
+      "S05",
+      "S33"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "信任、负荷、安全需要量化。"
+  },
+  {
+    "source": "concept_intelligent_interaction_design",
+    "target": "discipline_hci",
+    "relation_type": "extends",
+    "description": "Intelligent interaction design extends HCI toward AI-enabled systems.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "设计对象从界面扩展到智能行为。"
+  },
+  {
+    "source": "concept_intelligent_interaction_design",
+    "target": "discipline_hri",
+    "relation_type": "applied_to",
+    "description": "The design lens is applied to HRI problems.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "将 HRI 技术模块转译成体验问题。"
+  },
+  {
+    "source": "concept_embodied_interaction",
+    "target": "theory_situated_action",
+    "relation_type": "derived_from",
+    "description": "Embodied interaction is aligned with situated action.",
+    "evidence": [
+      "S16",
+      "S17"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "交互分析应包含现场行为。"
+  },
+  {
+    "source": "concept_affordance",
+    "target": "concept_embodied_interaction",
+    "relation_type": "related_to",
+    "description": "Affordance explains action possibilities in embodied contexts.",
+    "evidence": [
+      "S16"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "设计机器人任务可供性。"
+  },
+  {
+    "source": "concept_robot_autonomy",
+    "target": "theory_levels_automation",
+    "relation_type": "derived_from",
+    "description": "Robot autonomy can be analyzed through levels of automation.",
+    "evidence": [
+      "S07",
+      "S09"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "不要把自主性当成单一开关。"
+  },
+  {
+    "source": "concept_shared_autonomy",
+    "target": "concept_robot_autonomy",
+    "relation_type": "is_part_of",
+    "description": "Shared autonomy is a mode within autonomy design.",
+    "evidence": [
+      "S09"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "适合可调控制权。"
+  },
+  {
+    "source": "concept_shared_autonomy",
+    "target": "tech_intention_recognition",
+    "relation_type": "depends_on",
+    "description": "Shared autonomy often needs inference of human goals.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "意图识别错误需要可恢复机制。"
+  },
+  {
+    "source": "concept_shared_autonomy",
+    "target": "concept_human_agency",
+    "relation_type": "improves",
+    "description": "When designed well, shared autonomy can preserve human agency.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "辅助强度需可调。"
+  },
+  {
+    "source": "concept_robot_autonomy",
+    "target": "metric_trust",
+    "relation_type": "influences",
+    "description": "Autonomy influences how users trust and rely on robots.",
+    "evidence": [
+      "S05",
+      "S09"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "需要信任校准而不是盲目信任。"
+  },
+  {
+    "source": "concept_robot_autonomy",
+    "target": "concept_human_agency",
+    "relation_type": "conflicts_with",
+    "description": "High autonomy may reduce perceived human control.",
+    "evidence": [
+      "S07"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "设计接管和确认。"
+  },
+  {
+    "source": "concept_trust_calibration",
+    "target": "metric_trust",
+    "relation_type": "derived_from",
+    "description": "Trust calibration refines the trust construct toward appropriate reliance.",
+    "evidence": [
+      "S06"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "信任过高和过低都是风险。"
+  },
+  {
+    "source": "concept_transparency",
+    "target": "concept_trust_calibration",
+    "relation_type": "improves",
+    "description": "Transparency can help users form calibrated trust.",
+    "evidence": [
+      "S06"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "说明系统能力和限制。"
+  },
+  {
+    "source": "concept_explainability",
+    "target": "concept_transparency",
+    "relation_type": "supports",
+    "description": "Explanations support transparency when task-relevant.",
+    "evidence": [
+      "S06"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "解释应围绕用户决策。"
+  },
+  {
+    "source": "concept_explainability",
+    "target": "metric_trust",
+    "relation_type": "influences",
+    "description": "Explanations can influence perceived trust.",
+    "evidence": [
+      "S06"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "需要避免过度解释。"
+  },
+  {
+    "source": "concept_legible_motion",
+    "target": "concept_predictability",
+    "relation_type": "related_to",
+    "description": "Legibility and predictability are related but distinct motion qualities.",
+    "evidence": [
+      "S13"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "意图清晰不等同于轨迹常规。"
+  },
+  {
+    "source": "concept_legible_motion",
+    "target": "metric_safety",
+    "relation_type": "improves",
+    "description": "Legible motion can improve perceived safety and coordination.",
+    "evidence": [
+      "S13"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "让目标更易推断。"
+  },
+  {
+    "source": "tech_motion_planning",
+    "target": "concept_legible_motion",
+    "relation_type": "enables",
+    "description": "Motion planning can optimize for legibility.",
+    "evidence": [
+      "S13"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "规划目标需包含人类推断。"
+  },
+  {
+    "source": "tech_ar_mr_interface",
+    "target": "modality_visual_ar",
+    "relation_type": "enables",
+    "description": "AR/MR interfaces provide visual augmentation.",
+    "evidence": [
+      "S12",
+      "S30"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "可视化路径和安全区。"
+  },
+  {
+    "source": "tech_ar_mr_interface",
+    "target": "concept_situation_awareness",
+    "relation_type": "improves",
+    "description": "AR can make robot state and plans visible.",
+    "evidence": [
+      "S12"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "用于远程操作和协作工位。"
+  },
+  {
+    "source": "tech_ar_mr_interface",
+    "target": "scenario_industrial_assembly",
+    "relation_type": "used_in",
+    "description": "AR/MR can support collaborative workstations.",
+    "evidence": [
+      "S11",
+      "S12"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "显示安全区和下一步动作。"
+  },
+  {
+    "source": "tech_ar_mr_interface",
+    "target": "scenario_public_cleaning",
+    "relation_type": "used_in",
+    "description": "AR concepts can support public understanding of robot paths.",
+    "evidence": [
+      "S12"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "公共演示可用移动 AR。"
+  },
+  {
+    "source": "modality_visual_ar",
+    "target": "metric_situation_awareness",
+    "relation_type": "measured_by",
+    "description": "AR feedback can be evaluated through situation awareness.",
+    "evidence": [
+      "S20"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "评估用户是否理解未来路径。"
+  },
+  {
+    "source": "tech_llm_agent_layer",
+    "target": "opportunity_llm_robot_mediator",
+    "relation_type": "enables",
+    "description": "LLM layer enables natural-language task mediation.",
+    "evidence": [
+      "S27",
+      "S28",
+      "S29"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "必须加入可执行性和安全确认。"
+  },
+  {
+    "source": "tech_llm_agent_layer",
+    "target": "concept_explainability",
+    "relation_type": "challenges",
+    "description": "LLM mediation introduces opacity and accountability issues.",
+    "evidence": [
+      "S27"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "需要显示来源、计划和置信度。"
+  },
+  {
+    "source": "tech_llm_agent_layer",
+    "target": "concept_affordance",
+    "relation_type": "depends_on",
+    "description": "LLM robot plans must be grounded in robot affordances.",
+    "evidence": [
+      "S27"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "把“能说”限制为“能做”。"
+  },
+  {
+    "source": "discipline_embodied_ai",
+    "target": "discipline_robotics",
+    "relation_type": "extends",
+    "description": "Embodied AI extends robotics with foundation model reasoning.",
+    "evidence": [
+      "S27",
+      "S28",
+      "S29"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "前沿方向但需要标注证据成熟度。"
+  },
+  {
+    "source": "robot_service",
+    "target": "scenario_hotel_delivery",
+    "relation_type": "used_in",
+    "description": "Service robots are used in hotel delivery.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "适合服务蓝图分析。"
+  },
+  {
+    "source": "robot_service",
+    "target": "scenario_hospital_guidance",
+    "relation_type": "used_in",
+    "description": "Service robots can guide patients in hospitals.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "需要低负荷和隐私保护。"
+  },
+  {
+    "source": "robot_service",
+    "target": "scenario_public_cleaning",
+    "relation_type": "used_in",
+    "description": "Service robots operate in public cleaning scenarios.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "需要社会规范和状态表达。"
+  },
+  {
+    "source": "robot_social",
+    "target": "concept_social_presence",
+    "relation_type": "related_to",
+    "description": "Social robots rely on social presence.",
+    "evidence": [
+      "S02",
+      "S03"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "设计社会线索要适度。"
+  },
+  {
+    "source": "robot_social",
+    "target": "concept_anthropomorphism",
+    "relation_type": "related_to",
+    "description": "Social robots often trigger anthropomorphism.",
+    "evidence": [
+      "S04"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "避免过度拟人。"
+  },
+  {
+    "source": "concept_anthropomorphism",
+    "target": "metric_social_presence",
+    "relation_type": "measured_by",
+    "description": "Anthropomorphism relates to social perception measures.",
+    "evidence": [
+      "S04"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "选择 Godspeed 维度时需说明原因。"
+  },
+  {
+    "source": "metric_perceived_intelligence",
+    "target": "source_bartneck_godspeed",
+    "relation_type": "derived_from",
+    "description": "Godspeed includes perceived intelligence.",
+    "evidence": [
+      "S04"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "社交机器人可用此量表。"
+  },
+  {
+    "source": "metric_social_presence",
+    "target": "source_bartneck_godspeed",
+    "relation_type": "related_to",
+    "description": "Godspeed supports social perception evaluation.",
+    "evidence": [
+      "S04"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "可作为作品集评估工具。"
+  },
+  {
+    "source": "robot_cobot",
+    "target": "metric_safety",
+    "relation_type": "requires",
+    "description": "Cobots require safety evaluation.",
+    "evidence": [
+      "S10",
+      "S22"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "必须先考虑风险。"
+  },
+  {
+    "source": "robot_cobot",
+    "target": "scenario_industrial_assembly",
+    "relation_type": "used_in",
+    "description": "Cobots are typical in industrial assembly.",
+    "evidence": [
+      "S11"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "适合意图表达项目。"
+  },
+  {
+    "source": "scenario_industrial_assembly",
+    "target": "concept_legible_motion",
+    "relation_type": "requires",
+    "description": "Collaborative assembly requires understandable robot motion.",
+    "evidence": [
+      "S13"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "降低惊吓与误判。"
+  },
+  {
+    "source": "scenario_industrial_assembly",
+    "target": "concept_role_allocation",
+    "relation_type": "requires",
+    "description": "Human and robot roles must be clear in collaborative tasks.",
+    "evidence": [
+      "S07",
+      "S09"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "用任务矩阵定义责任。"
+  },
+  {
+    "source": "scenario_hotel_delivery",
+    "target": "concept_failure_recovery",
+    "relation_type": "requires",
+    "description": "Hotel service needs recovery when robots fail.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "服务失败是设计机会。"
+  },
+  {
+    "source": "scenario_hotel_delivery",
+    "target": "metric_trust",
+    "relation_type": "evaluated_by",
+    "description": "Hotel robot experience can be evaluated by trust.",
+    "evidence": [
+      "S05"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "关注用户是否愿意再次使用。"
+  },
+  {
+    "source": "scenario_elderly_care",
+    "target": "metric_acceptance",
+    "relation_type": "evaluated_by",
+    "description": "Elderly care robots should be evaluated by acceptance.",
+    "evidence": [
+      "S18"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "纳入社交和有用性变量。"
+  },
+  {
+    "source": "scenario_elderly_care",
+    "target": "concept_transparency",
+    "relation_type": "requires",
+    "description": "Elderly care robots require transparency about data and limits.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "避免误导和隐私焦虑。"
+  },
+  {
+    "source": "scenario_remote_inspection",
+    "target": "concept_situation_awareness",
+    "relation_type": "requires",
+    "description": "Remote inspection depends on operator situation awareness.",
+    "evidence": [
+      "S20"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "界面要整合空间、风险、未来动作。"
+  },
+  {
+    "source": "scenario_remote_inspection",
+    "target": "metric_workload",
+    "relation_type": "evaluated_by",
+    "description": "Remote inspection can impose high workload.",
+    "evidence": [
+      "S19"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "用 NASA-TLX 对比界面。"
+  },
+  {
+    "source": "method_wizard_of_oz",
+    "target": "robot_social",
+    "relation_type": "used_in",
+    "description": "Wizard-of-Oz is useful for social robot behavior prototyping.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "快速测试对话与表达。"
+  },
+  {
+    "source": "method_wizard_of_oz",
+    "target": "modality_voice",
+    "relation_type": "used_in",
+    "description": "Wizard-of-Oz can simulate speech intelligence.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "避免早期开发成本。"
+  },
+  {
+    "source": "method_research_through_design",
+    "target": "theory_rtd",
+    "relation_type": "derived_from",
+    "description": "RtD method follows RtD theory.",
+    "evidence": [
+      "S14",
+      "S15"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "作品集可作为研究产物。"
+  },
+  {
+    "source": "method_research_through_design",
+    "target": "opportunity_ar_path_guidance",
+    "relation_type": "supports",
+    "description": "RtD can explore AR path guidance concepts.",
+    "evidence": [
+      "S14",
+      "S15"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "通过原型生成知识。"
+  },
+  {
+    "source": "method_contextual_inquiry",
+    "target": "scenario_hospital_guidance",
+    "relation_type": "used_in",
+    "description": "Contextual inquiry reveals hospital workflow constraints.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "先研究流程再设计机器人。"
+  },
+  {
+    "source": "method_participatory_design",
+    "target": "scenario_elderly_care",
+    "relation_type": "used_in",
+    "description": "Participatory design can involve older adults and caregivers.",
+    "evidence": [
+      "S18"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "避免替用户想象需求。"
+  },
+  {
+    "source": "method_controlled_experiment",
+    "target": "metric_workload",
+    "relation_type": "evaluated_by",
+    "description": "Controlled experiments can measure workload differences.",
+    "evidence": [
+      "S19"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "用于多模态对比。"
+  },
+  {
+    "source": "method_longitudinal_study",
+    "target": "metric_acceptance",
+    "relation_type": "evaluated_by",
+    "description": "Longitudinal studies reveal adoption over time.",
+    "evidence": [
+      "S18"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "服务机器人不是一次性体验。"
+  },
+  {
+    "source": "metric_workload",
+    "target": "source_goodrich_schultz",
+    "relation_type": "measured_by",
+    "description": "HRI surveys emphasize task and interaction workload as issues.",
+    "evidence": [
+      "S01"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "需结合 NASA-TLX 等工具。"
+  },
+  {
+    "source": "metric_workload",
+    "target": "discipline_human_factors",
+    "relation_type": "derived_from",
+    "description": "Workload is a human factors metric.",
+    "evidence": [
+      "S19"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "评估认知负担。"
+  },
+  {
+    "source": "metric_trust",
+    "target": "discipline_human_factors",
+    "relation_type": "derived_from",
+    "description": "Trust is central in human factors automation research.",
+    "evidence": [
+      "S05",
+      "S06"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "用于自主系统评估。"
+  },
+  {
+    "source": "metric_situation_awareness",
+    "target": "discipline_human_factors",
+    "relation_type": "derived_from",
+    "description": "Situation awareness is a human factors construct.",
+    "evidence": [
+      "S20"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "适合动态系统。"
+  },
+  {
+    "source": "metric_safety",
+    "target": "source_lasota_safe_hri",
+    "relation_type": "derived_from",
+    "description": "Safe HRI survey structures safety methods.",
+    "evidence": [
+      "S10"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "设计要映射风险控制。"
+  },
+  {
+    "source": "source_lasota_safe_hri",
+    "target": "metric_safety",
+    "relation_type": "related_to",
+    "description": "Lasota et al. survey safety methods.",
+    "evidence": [
+      "S10"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "作为安全模块核心参考。"
+  },
+  {
+    "source": "source_walker_vam_hri",
+    "target": "tech_ar_mr_interface",
+    "relation_type": "related_to",
+    "description": "Walker et al. propose VAM-HRI taxonomy.",
+    "evidence": [
+      "S12"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "作为 AR/MR 模块核心参考。"
+  },
+  {
+    "source": "source_goodrich_schultz",
+    "target": "discipline_hri",
+    "relation_type": "related_to",
+    "description": "Goodrich and Schultz provide HRI survey.",
+    "evidence": [
+      "S01"
+    ],
+    "directionality": "directed",
+    "confidence_level": "high",
+    "design_implication": "作为主报告背景引用。"
+  },
+  {
+    "source": "opportunity_ar_path_guidance",
+    "target": "tech_ar_mr_interface",
+    "relation_type": "derived_from",
+    "description": "AR path guidance derives from VAM-HRI interface concepts.",
+    "evidence": [
+      "S12"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "视觉化不可见计划。"
+  },
+  {
+    "source": "opportunity_ar_path_guidance",
+    "target": "metric_situation_awareness",
+    "relation_type": "evaluated_by",
+    "description": "AR path guidance should be evaluated by situation awareness.",
+    "evidence": [
+      "S20"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "测量理解而非只看美观。"
+  },
+  {
+    "source": "opportunity_ar_path_guidance",
+    "target": "metric_workload",
+    "relation_type": "evaluated_by",
+    "description": "AR may reduce or increase workload.",
+    "evidence": [
+      "S19"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "比较遮挡和负荷。"
+  },
+  {
+    "source": "opportunity_failure_recovery",
+    "target": "concept_failure_recovery",
+    "relation_type": "derived_from",
+    "description": "Service recovery opportunity derives from failure recovery.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "设计失败解释和人工转接。"
+  },
+  {
+    "source": "opportunity_failure_recovery",
+    "target": "metric_error_recovery",
+    "relation_type": "evaluated_by",
+    "description": "Failure recovery design should be evaluated by recovery metrics.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "记录恢复时间和满意度。"
+  },
+  {
+    "source": "opportunity_failure_recovery",
+    "target": "metric_trust",
+    "relation_type": "evaluated_by",
+    "description": "Failure recovery affects trust.",
+    "evidence": [
+      "S05",
+      "S06"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "失败后信任变化很关键。"
+  },
+  {
+    "source": "opportunity_llm_robot_mediator",
+    "target": "tech_llm_agent_layer",
+    "relation_type": "depends_on",
+    "description": "The mediator opportunity depends on LLM agent layer.",
+    "evidence": [
+      "S27",
+      "S28"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "任务要经过可执行性检查。"
+  },
+  {
+    "source": "opportunity_llm_robot_mediator",
+    "target": "concept_transparency",
+    "relation_type": "requires",
+    "description": "LLM robot mediator requires transparent plan and limits.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "显示为何不能执行。"
+  },
+  {
+    "source": "opportunity_cobot_intent_ui",
+    "target": "concept_legible_motion",
+    "relation_type": "derived_from",
+    "description": "Cobot intent UI derives from legibility concerns.",
+    "evidence": [
+      "S13"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "把目标和下一步动作可视化。"
+  },
+  {
+    "source": "opportunity_cobot_intent_ui",
+    "target": "metric_safety",
+    "relation_type": "requires",
+    "description": "Cobot intent UI must respect safety constraints.",
+    "evidence": [
+      "S10",
+      "S22"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "设计不能鼓励危险靠近。"
+  },
+  {
+    "source": "rq_trust_autonomy",
+    "target": "concept_robot_autonomy",
+    "relation_type": "derived_from",
+    "description": "Research question follows autonomy-trust relationship.",
+    "evidence": [
+      "S05",
+      "S09"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "适合实验研究。"
+  },
+  {
+    "source": "rq_ar_intent",
+    "target": "opportunity_ar_path_guidance",
+    "relation_type": "derived_from",
+    "description": "Research question follows AR path guidance opportunity.",
+    "evidence": [
+      "S12",
+      "S13"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "适合 poster。"
+  },
+  {
+    "source": "concept_graph_rag",
+    "target": "concept_intelligent_interaction_design",
+    "relation_type": "extends",
+    "description": "GraphRAG extends design knowledge reuse with graph structure.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "让 LLM 根据关系生成机会。"
+  },
+  {
+    "source": "concept_graph_rag",
+    "target": "opportunity_ar_path_guidance",
+    "relation_type": "supports",
+    "description": "GraphRAG can retrieve related concepts and sources for AR opportunities.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "提升机会生成可追溯性。"
+  },
+  {
+    "source": "concept_graph_rag",
+    "target": "rq_trust_autonomy",
+    "relation_type": "supports",
+    "description": "GraphRAG can generate research questions from autonomy and trust relations.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "辅助论文选题。"
+  },
+  {
+    "source": "theory_situated_action",
+    "target": "scenario_hotel_delivery",
+    "relation_type": "applied_to",
+    "description": "Situated action frames service workflows as adaptive rather than fixed scripts.",
+    "evidence": [
+      "S17"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "机器人要处理现场变化。"
+  },
+  {
+    "source": "concept_embodied_interaction",
+    "target": "robot_cobot",
+    "relation_type": "applied_to",
+    "description": "Embodied interaction applies to physical collaboration with cobots.",
+    "evidence": [
+      "S16"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "动作和空间本身是界面。"
+  },
+  {
+    "source": "concept_multimodal_feedback",
+    "target": "metric_situation_awareness",
+    "relation_type": "improves",
+    "description": "Multimodal feedback can improve awareness if well integrated.",
+    "evidence": [
+      "S08",
+      "S20"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "避免信息过载。"
+  },
+  {
+    "source": "modality_voice",
+    "target": "scenario_home_assistant",
+    "relation_type": "used_in",
+    "description": "Voice is common in home assistant scenarios.",
+    "evidence": [
+      "S27"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "必须处理澄清和隐私。"
+  },
+  {
+    "source": "modality_gesture",
+    "target": "scenario_industrial_assembly",
+    "relation_type": "used_in",
+    "description": "Gesture can support spatial instructions in assembly.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "嘈杂场景中补充语音。"
+  },
+  {
+    "source": "modality_haptic",
+    "target": "scenario_remote_inspection",
+    "relation_type": "used_in",
+    "description": "Haptic feedback can support remote inspection and teleoperation.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "提示接触和风险。"
+  },
+  {
+    "source": "modality_tangible",
+    "target": "concept_affordance",
+    "relation_type": "supports",
+    "description": "Tangible interfaces materialize affordances.",
+    "evidence": [
+      "S16"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "让任务边界可触摸。"
+  },
+  {
+    "source": "tech_perception",
+    "target": "tech_intention_recognition",
+    "relation_type": "depends_on",
+    "description": "Intention recognition depends on perception data.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "识别错误应可解释。"
+  },
+  {
+    "source": "tech_navigation",
+    "target": "metric_safety",
+    "relation_type": "influences",
+    "description": "Navigation behavior influences safety and comfort.",
+    "evidence": [
+      "S10"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "路径和速度是交互变量。"
+  },
+  {
+    "source": "tech_navigation",
+    "target": "concept_transparency",
+    "relation_type": "requires",
+    "description": "Users need to understand navigation decisions in shared spaces.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "显示绕路和等待原因。"
+  },
+  {
+    "source": "tech_perception",
+    "target": "concept_transparency",
+    "relation_type": "challenges",
+    "description": "Perception uncertainty is hard for users to see.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "需要状态和置信度表达。"
+  },
+  {
+    "source": "scenario_museum_guide",
+    "target": "modality_gaze",
+    "relation_type": "requires",
+    "description": "Museum guidance can use gaze cues for joint attention.",
+    "evidence": [
+      "S03"
+    ],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "帮助游客跟随讲解。"
+  },
+  {
+    "source": "scenario_rehab_training",
+    "target": "modality_haptic",
+    "relation_type": "requires",
+    "description": "Rehabilitation training benefits from haptic/physical feedback.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "反馈需舒适和安全。"
+  },
+  {
+    "source": "scenario_home_assistant",
+    "target": "concept_human_agency",
+    "relation_type": "requires",
+    "description": "Home assistants need user agency and privacy controls.",
+    "evidence": [],
+    "directionality": "directed",
+    "confidence_level": "medium",
+    "design_implication": "家庭场景要可拒绝和可关闭。"
+  }
+]

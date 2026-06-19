@@ -1,0 +1,21 @@
+﻿Metric,Chinese,Definition,Measurement,Scenario,Design Issue
+Usability,可用性,用户完成任务的效率、效果和满意度。,SUS、任务完成率、错误率,机器人界面与控制流程,界面复杂、状态不可见
+Trust,信任,用户对机器人能力、意图和可靠性的依赖倾向。,HRI trust questionnaire、行为依赖,自主机器人、AI agent,过度信任/不信任
+Acceptance,接受度,用户愿意采用和持续使用机器人的程度。,Almere model、UTAUT 变量,社交/服务机器人,有用性、易用性、社会影响
+Workload,工作负荷,任务带来的认知、身体和时间压力。,NASA-TLX,远程操作、协作任务,多模态复杂度
+Situation Awareness,情境感知,用户对系统、环境和未来状态的理解。,SAGAT、问卷、行为日志,远程操作、AR 提示,状态和路径不可见
+Safety,安全,物理和心理风险控制程度。,碰撞/近失事件、感知安全量表,协作机器人、公共空间,路径、速度、距离
+Transparency,透明性,系统状态、意图和限制是否可理解。,透明性感知问卷、理解测试,自主机器人,黑箱决策
+Explainability,可解释性,系统能否给出与任务相关的理由和不确定性。,解释理解、接管正确率,LLM agent、规划系统,解释过多/过少
+Perceived Intelligence,感知智能,用户认为机器人聪明、适应和有能力的程度。,Godspeed 相关维度,社交和服务机器人,能力展示与实际能力不一致
+Social Presence,社会临场感,用户感到机器人像社会参与者的程度。,social presence scales,社交、教育、陪护机器人,过度拟人化
+Anthropomorphism,拟人化,用户将人类特质归因给机器人。,Godspeed anthropomorphism,社交机器人,错误期待、伦理风险
+Comfort,舒适度,用户在空间、距离、速度和交互方式上的舒适感。,舒适度问卷、距离行为,公共空间、协作机器人,接近速度和空间侵入
+Engagement,参与度,用户持续关注和参与互动的程度。,观察编码、停留时间、互动频次,教育、导览、陪护,长期新鲜感衰减
+Learnability,易学性,用户学习使用系统所需成本。,首次任务成功率、学习曲线,新机器人服务,指令复杂
+Error Recovery,错误恢复,系统和用户从失败中恢复的能力。,恢复时间、成功率、满意度,服务机器人、LLM agent,失败解释和补救路径
+Long-Term Adoption,长期采纳,系统进入日常习惯和组织流程的程度。,日志、访谈、留存,家庭、养老、工作场所,维护、信任、社会规范
+Legibility,运动可读性,人能否从机器人部分动作推断其目标。,目标推断准确率,协作机械臂、移动机器人,意图不清
+Predictability,可预测性,机器人动作是否符合人对其行为的预期。,轨迹预测、反应时间,协作任务,突然动作
+Sense of Control,控制感,用户感到自己能影响系统行为的程度。,控制感量表、接管行为,共享自主,自主性过高
+Accountability Clarity,责任清晰度,用户是否理解谁对决策和结果负责。,情境判断题、访谈,高风险 HRI、LLM 机器人,责任模糊

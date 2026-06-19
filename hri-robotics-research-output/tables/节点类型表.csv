@@ -1,0 +1,17 @@
+﻿节点类型,英文名称,定义,字段,示例,用途
+学科,Discipline,组织领域来源与研究传统。,"id,label,definition,evidence",Human-Robot Interaction,用于建立领域边界与检索入口。
+概念,Concept,可被定义、比较和连接的核心术语。,"definition,parent,related_nodes",Trust Calibration,适合 RAG 查询与主题索引。
+理论,Theory,解释交互现象的抽象模型。,"claim,scope,limitations,evidence",Situated Action,用于支撑设计推论。
+方法,Method,研究、设计或评估的方法。,"stage,procedure,pros,limits",Wizard-of-Oz,用于推荐研究方案。
+技术,Technology,机器人或界面系统模块。,"capability,constraints,design_risk",AR Interface,用于把工程能力转成交互问题。
+交互模态,Interaction Modality,输入输出通道与反馈形式。,"input,feedback,context",Voice Interaction,用于多模态组合。
+机器人类型,Robot Type,按形态、任务或场景划分的机器人。,"embodiment,tasks,risks",Service Robot,用于场景化设计。
+应用场景,Scenario,机器人运行的真实环境和服务情境。,"users,tasks,constraints",Hospital Guidance,用于作品集 brief。
+任务,Task,目标、步骤、责任与失败点。,"goal,subtasks,handoff",Medication Delivery,用于任务流和评估设计。
+用户群体,User Group,具有特定能力、需求和风险的使用者。,"needs,abilities,risks",Older Adults,用于用户研究。
+设计问题,Design Issue,可被设计介入的痛点或张力。,"problem,cause,impact",Unclear Robot Intent,用于机会生成。
+评估指标,Evaluation Metric,衡量交互结果的变量。,"measure,tool,scenario",Trust,用于实验和可用性研究。
+文献来源,Paper / Source,支持事实或理论的论文、标准或网页。,"authors,year,venue,url",Goodrich & Schultz 2007,用于证据追踪。
+案例或产品,Case / Product,真实或研究原型案例。,"context,features,lessons",Hotel Delivery Robot,用于案例研究。
+设计机会,Design Opportunity,可发展为项目或原型的方向。,"users,scenario,prototype,metrics",AR Path Guidance,用于作品集与 poster。
+研究问题,Research Question,可被方法和数据回答的问题。,"theme,method,data,contribution",How does robot transparency affect trust?,用于论文和 poster。

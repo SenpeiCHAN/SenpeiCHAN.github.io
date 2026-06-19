@@ -1,0 +1,20 @@
+﻿关系类型,中文解释,使用场景,示例三元组
+is_part_of,属于,层级、模块、主题从属关系。,Shared Autonomy -- is_part_of --> Robot Autonomy
+related_to,相关,弱关系或横向主题连接。,HRI -- related_to --> Human Factors
+enables,使能,技术或方法让某种交互成为可能。,AR Interface -- enables --> Spatial Robot Guidance
+constrains,约束,安全、场景、能力限制设计空间。,Safety Requirement -- constrains --> Robot Motion
+improves,改善,设计策略提升体验或指标。,Robot Transparency -- improves --> Trust Calibration
+evaluated_by,被评估,主题、原型或指标之间的评估关系。,Service Robot Prototype -- evaluated_by --> Usability Testing
+used_in,用于,方法、技术或概念被应用到场景。,Wizard-of-Oz -- used_in --> Social Robot Prototyping
+depends_on,依赖,能力或体验依赖某系统模块。,Shared Autonomy -- depends_on --> Intention Recognition
+conflicts_with,冲突,目标、指标或策略之间存在张力。,High Autonomy -- conflicts_with --> User Control
+derived_from,源自,概念或机会由文献、方法、图谱路径推导。,Trust Calibration -- derived_from --> Trust in Automation
+applied_to,应用到,理论或方法应用到具体对象。,Situated Action -- applied_to --> Service Robot Workflow
+measured_by,由……测量,指标与量表、日志或行为数据连接。,Workload -- measured_by --> NASA-TLX
+designed_for,为……设计,机会、界面或机器人面向目标用户。,Hospital Guidance Robot -- designed_for --> Patients
+supports,支持,节点促进流程、目标或研究输出。,Knowledge Graph -- supports --> Design Opportunity Discovery
+challenges,挑战,技术或场景引出设计困难。,LLM Agent -- challenges --> Accountability
+requires,需要,任务或评估对条件提出要求。,Collaborative Assembly -- requires --> Human Safety
+influences,影响,变量之间存在影响但方向强度需研究确认。,Robot Autonomy -- influences --> Human Trust
+mediates,中介,一个节点作为关系中介。,Interface Transparency -- mediates --> Autonomy and Trust
+extends,扩展,新主题扩展旧理论或框架。,GraphRAG -- extends --> RAG

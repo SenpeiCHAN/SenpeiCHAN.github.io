@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HRI Knowledge Graph",
+  "type": "object",
+  "required": [
+    "metadata",
+    "node_types",
+    "relation_types",
+    "nodes",
+    "relations",
+    "sources"
+  ],
+  "properties": {
+    "metadata": {
+      "type": "object"
+    },
+    "node_types": {
+      "type": "array"
+    },
+    "relation_types": {
+      "type": "array"
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "title": "HRI Knowledge Graph Node",
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "zh_label",
+          "type",
+          "definition",
+          "parent",
+          "children",
+          "related_nodes",
+          "evidence",
+          "design_relevance",
+          "application_scenarios",
+          "research_questions",
+          "portfolio_potential",
+          "confidence_level"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "zh_label": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "Discipline",
+              "Concept",
+              "Theory",
+              "Method",
+              "Technology",
+              "Interaction Modality",
+              "Robot Type",
+              "Scenario",
+              "Task",
+              "User Group",
+              "Design Issue",
+              "Evaluation Metric",
+              "Paper / Source",
+              "Case / Product",
+              "Design Opportunity",
+              "Research Question"
+            ]
+          },
+          "definition": {
+            "type": "string"
+          },
+          "parent": {
+            "type": "string"
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "related_nodes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "design_relevance": {
+            "type": "string"
+          },
+          "application_scenarios": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "research_questions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "portfolio_potential": {
+            "type": "string"
+          },
+          "confidence_level": {
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        }
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "title": "HRI Knowledge Graph Relation",
+        "type": "object",
+        "required": [
+          "source",
+          "target",
+          "relation_type",
+          "description",
+          "evidence",
+          "directionality",
+          "confidence_level",
+          "design_implication"
+        ],
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string"
+          },
+          "relation_type": {
+            "enum": [
+              "is_part_of",
+              "related_to",
+              "enables",
+              "constrains",
+              "improves",
+              "evaluated_by",
+              "used_in",
+              "depends_on",
+              "conflicts_with",
+              "derived_from",
+              "applied_to",
+              "measured_by",
+              "designed_for",
+              "supports",
+              "challenges",
+              "requires",
+              "influences",
+              "mediates",
+              "extends"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "directionality": {
+            "enum": [
+              "directed",
+              "bidirectional"
+            ]
+          },
+          "confidence_level": {
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "design_implication": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array"
+    }
+  }
+}

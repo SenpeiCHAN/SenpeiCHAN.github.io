@@ -1,0 +1,21 @@
+﻿研究问题,所属主题,研究方法,可能数据,预期贡献,可转化方向
+机器人自主性等级如何影响用户控制感与责任归属？,Robot Autonomy,Controlled Experiment,接管次数、信任问卷、责任判断题,区分效率、自主性和控制感的关系,论文/poster
+AR 路径提示是否提升用户对移动机器人意图的理解？,AR/MR HRI,Comparative Study,目标推断准确率、NASA-TLX,验证 VAM-HRI 设计元素价值,作品集/CHI LBW
+服务机器人失败解释的粒度如何影响信任校准？,Trust and Explainability,Wizard-of-Oz + Questionnaire,信任变化、恢复时间、访谈,形成失败恢复设计原则,poster
+LLM agent 作为机器人中间层会提升还是削弱用户控制感？,Human-AI-Robot Collaboration,Prototype Testing,控制感、接管意愿、错误理解,连接 AI agent 和 HRI,论文雏形
+多模态反馈如何降低远程操作中的认知负荷？,Teleoperation,Controlled Experiment,NASA-TLX、任务完成时间,为远程操作界面提供证据,poster
+社交机器人人格强度是否影响服务失败后的用户容忍度？,Social Robotics,Wizard-of-Oz,Godspeed、满意度、访谈,拟人化边界设计,作品集
+公共空间机器人如何通过行为礼仪减少打扰感？,Ethics and Society,Field Observation + RtD,观察编码、舒适度问卷,robotiquette 设计模式,设计研究
+协作机械臂运动可读性与效率之间是否存在权衡？,Safety and Predictability,Controlled Experiment,目标推断、装配时间、安全事件,连接 motion planning 和体验,论文
+实体任务卡是否帮助家庭用户理解机器人可供性？,Tangible Interaction,Usability Testing,学习时间、任务成功率,降低智能系统黑箱感,作品集
+机器人状态可见性如何影响等待体验？,Service Robots,Field Study,等待满意度、状态理解,服务机器人微交互原则,poster
+老年用户如何理解陪护机器人的数据采集边界？,Ethics and Privacy,Interview + Participatory Design,隐私心智模型、控制偏好,脆弱群体保护框架,论文
+机器人 gaze cue 是否促进导览场景中的共同注意？,Gaze Interaction,Lab Study,视线跟随、记忆测试、参与度,社交线索设计,poster
+触觉反馈是否能改善远程机械臂的错误恢复？,Haptic Interaction,Prototype Testing,恢复成功率、工作负荷,多模态反馈机制,论文
+医院机器人交接日志能否提升责任清晰度？,Accountability,Scenario-based Evaluation,责任判断、访谈,高风险服务设计,作品集
+不同用户群体对机器人主动性的接受阈值有何差异？,Acceptance,Survey + Interview,接受度、场景偏好,场景化主动交互准则,研究报告
+协作机器人安全区可视化是否影响心理安全和效率？,Collaborative Robots,Comparative Study,感知安全、任务效率,安全设计可视化证据,poster
+机器人情绪表达在康复训练中如何影响坚持度？,Robot Emotion,Longitudinal Study,参与频次、情绪反馈,长期 HRI 设计,论文
+语音澄清策略如何影响用户对机器人智能的感知？,Voice Interaction,Wizard-of-Oz,perceived intelligence、任务成功,对话修复设计,作品集
+GraphRAG 是否能帮助设计师更系统地产生 HRI 机会点？,LLM Reuse,Design Study,机会质量评分、访谈,知识库辅助设计方法,论文
+服务蓝图能否帮助发现机器人部署中的非界面问题？,Design Research,Case Study,触点问题、利益相关者反馈,机器人服务设计方法论,作品集

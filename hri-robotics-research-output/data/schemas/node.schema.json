@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HRI Knowledge Graph Node",
+  "type": "object",
+  "required": [
+    "id",
+    "label",
+    "zh_label",
+    "type",
+    "definition",
+    "parent",
+    "children",
+    "related_nodes",
+    "evidence",
+    "design_relevance",
+    "application_scenarios",
+    "research_questions",
+    "portfolio_potential",
+    "confidence_level"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "zh_label": {
+      "type": "string"
+    },
+    "type": {
+      "enum": [
+        "Discipline",
+        "Concept",
+        "Theory",
+        "Method",
+        "Technology",
+        "Interaction Modality",
+        "Robot Type",
+        "Scenario",
+        "Task",
+        "User Group",
+        "Design Issue",
+        "Evaluation Metric",
+        "Paper / Source",
+        "Case / Product",
+        "Design Opportunity",
+        "Research Question"
+      ]
+    },
+    "definition": {
+      "type": "string"
+    },
+    "parent": {
+      "type": "string"
+    },
+    "children": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_nodes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "design_relevance": {
+      "type": "string"
+    },
+    "application_scenarios": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "research_questions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "portfolio_potential": {
+      "type": "string"
+    },
+    "confidence_level": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    }
+  }
+}

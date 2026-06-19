@@ -1,0 +1,21 @@
+﻿Opportunity Title,Target Users,Scenario,Core Problem,Related Knowledge Nodes,Prototype,Evaluation Metrics,Portfolio Value
+AR 机器人路径与意图可视化,协作工人、公共空间用户,工厂/商场/医院,用户难以预测机器人下一步,AR/MR Interface; Legible Motion; Safety,移动 AR / HoloLens 原型,Situation Awareness; Safety; Workload,视觉冲击力强，能展示系统图和实验设计
+服务机器人失败恢复体验系统,酒店住客、前台,酒店配送,机器人失败时用户不知道发生了什么,Failure Recovery; Service Robot; Trust,服务蓝图 + 对话原型,Trust; Error Recovery; Satisfaction,适合做完整服务设计 case
+协作机械臂意图表达界面,工厂操作员,协作装配,机械臂动作目标不透明,Cobot; Legibility; AR Interface,灯光/投影/AR 轨迹,Legibility; Safety; Workload,体现工业设计与 HRI 结合
+LLM 机器人任务协商中间层,家庭用户、办公人员,家庭/办公室,自然语言指令不一定可执行,LLM Agent; Affordance; Shared Autonomy,对话 + 可执行性反馈界面,Trust; Sense of Control; Error Recovery,前沿且能体现 AI agent 设计能力
+老年陪护机器人边界与同意机制,老人、护理员、家属,养老机构/家庭,陪伴与监控容易越界,Social Robot; Privacy; Acceptance,服务流程 + 隐私控制原型,Acceptance; Comfort; Accountability,有伦理深度和社会价值
+多模态低负荷机器人控制,医院工作人员,医院物流,语音或屏幕单一模态负荷高,Voice; Gesture; AR; Workload,语音+手势+视觉反馈原型,NASA-TLX; Usability,适合做对比实验
+公共空间机器人礼仪 Robotiquette,路人、空间管理者,商场/机场/博物馆,机器人在人群中容易打扰或造成紧张,Social Norms; Safety; Comfort,行为规范卡 + 状态表达原型,Comfort; Social Presence; Safety,能连接设计研究和社会规范
+医院机器人交接 Handover 体验,护士、患者、机器人调度员,医院病区,人机交接责任不清,Task; Accountability; Service Blueprint,交接界面 + 任务日志,Accountability; Trust; Error Recovery,问题真实且流程复杂
+远程巡检情境感知仪表盘,巡检操作员,危险/远程场地,远程操作者缺乏空间和风险理解,Teleoperation; Situation Awareness; Haptic Feedback,地图+视频+触觉提示界面,Situation Awareness; Workload,适合 poster 和原型演示
+机器人性格强度调节器,服务机器人运营者,酒店/零售/导览,固定人格不适配所有场景,Personality; Anthropomorphism; Acceptance,人格参数面板 + 对话原型,Godspeed; Acceptance,设计变量清晰，易测试
+家庭机器人任务可供性卡片,家庭成员,智能家居,用户不知道机器人能做什么和不能做什么,Affordance; LLM Agent; Task,卡片式任务编排工具,Learnability; Trust,信息架构和实体交互结合
+协作机器人安全区可视化,工厂操作员,共享工作站,安全约束隐藏在后台,Safety; ISO 15066; AR,投影/灯光安全区,Perceived Safety; Efficiency,有明确标准映射
+机器人不确定性表达语言,公共服务用户,公共服务,机器人不确定时常表现得过于确定,Transparency; Explainability; Trust Calibration,状态语句库 + UI patterns,Trust Calibration; Error Recovery,适合设计系统化输出
+康复机器人鼓励与反馈系统,康复患者、治疗师,康复训练,反馈不够个性化或过度机械,Haptic; Emotion; Longitudinal,动作反馈 + 情绪支持原型,Engagement; Comfort; Adoption,有人文与身体交互价值
+博物馆机器人共同注意导览,游客、儿童,博物馆,机器人讲解难以协调群体注意,Gaze; Social Presence; Guidance,视线/灯光/路径提示,Engagement; Social Presence,适合空间体验作品集
+机器人责任链可视化日志,操作者、管理者、用户,高风险服务/实验室,AI/机器人/人谁负责不清,Accountability; LLM Agent; Task Log,可解释任务时间线,Accountability Clarity; Trust,研究价值强
+服务机器人排队与等待体验,患者、旅客、顾客,医院/机场/餐饮,等待中的机器人状态不可见,Status Visibility; Service Robot; Comfort,等待状态屏 + 语音提示,Satisfaction; Comfort,小切口但落地
+儿童教育机器人可控拟人化,儿童、教师、家长,学校/家庭,过度拟人化影响认知和依赖,Anthropomorphism; Ethics; Social Robot,人格边界 + 家长控制,Anthropomorphism; Acceptance,有伦理和教育意义
+低技术门槛农业机器人控制,农户、技术员,农业场景,复杂控制界面不适合现场使用,Service Robot; Voice; Tangible UI,实体控制器 + 语音确认,Usability; Workload,体现包容性设计
+机器人长期关系维护机制,家庭/养老用户,长期陪护场景,短期好感不能代表长期采纳,Long-Term Adoption; Social Presence; Privacy,长期互动日程与边界设置,Long-Term Adoption; Trust,适合研究型作品集延伸
