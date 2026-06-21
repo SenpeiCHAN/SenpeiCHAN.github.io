@@ -1,0 +1,10 @@
+title: 13 - 中国机构 / 人形机器人 - 人形机器人产业发展研究报告（2024 年）
+source_type: excel
+category: 企业与产品资料
+original_url: https://pdf.dfcfw.com/pdf/H3_AP202501051641811533_1.pdf?1736087870000.pdf=
+downloaded_url: https://pdf.dfcfw.com/pdf/H3_AP202501051641811533_1.pdf?1736087870000.pdf=
+effective_url: https://pdf.dfcfw.com/pdf/H3_AP202501051641811533_1.pdf?1736087870000.pdf=
+http_code: 200
+content_type: application/pdf
+context: 13 | 中国机构 / 人形机器人 | 人形机器人产业发展研究报告（2024 年） | 中国信息通信研究院泰尔系统实验室 | 2024-12 | https://pdf.dfcfw.com/pdf/H3_AP202501051641811533_1.pdf?1736087870000.pdf= | 人形机器人内涵、核心技术、重点产品、应用需求与产业路径。 | 中国官方/半官方研究机构视角，适合做中国人形机器人产业基础资料。 | 用于写中国政策、技术路线、典型应用场景。 | 人形机器人 | 公开 PDF | P0
+location: Robot Briefs Index!F17

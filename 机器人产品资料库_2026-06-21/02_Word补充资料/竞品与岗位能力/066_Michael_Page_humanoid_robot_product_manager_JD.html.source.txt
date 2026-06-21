@@ -1,0 +1,10 @@
+title: Michael Page humanoid robot product manager JD
+source_type: word_supplement
+category: 竞品与岗位能力
+original_url: https://www.michaelpage.com.cn/job-detail/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%9B%BD%E5%AE%B6%E9%98%9F-%E4%BA%BA%E5%BD%A2%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/ref/jn-072025-6801496
+downloaded_url: https://www.michaelpage.com.cn/job-detail/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%9B%BD%E5%AE%B6%E9%98%9F-%E4%BA%BA%E5%BD%A2%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/ref/jn-072025-6801496
+effective_url: https://www.michaelpage.com.cn/job-detail/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%9B%BD%E5%AE%B6%E9%98%9F-%E4%BA%BA%E5%BD%A2%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/ref/jn-072025-6801496
+http_code: 200
+content_type: text/html; charset=UTF-8
+context: 补充 Word 中人形机器人产品经理能力模型、PRD、用户故事和硬件规格要求。
+location: 

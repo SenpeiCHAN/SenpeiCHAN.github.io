@@ -1,0 +1,10 @@
+title: 29 - 学术综述 / 接受度 - Consumers acceptance of service robots in hotels: A meta-analytic review
+source_type: excel
+category: 其他资料
+original_url: https://pure.uj.ac.za/en/publications/consumers-acceptance-of-service-robots-in-hotels-a-meta-analytic-/
+downloaded_url: https://pure.uj.ac.za/en/publications/consumers-acceptance-of-service-robots-in-hotels-a-meta-analytic-/
+effective_url: https://pure.uj.ac.za/en/publications/consumers-acceptance-of-service-robots-in-hotels-a-meta-analytic-/
+http_code: 200
+content_type: text/html;charset=UTF-8
+context: 29 | 学术综述 / 接受度 | Consumers acceptance of service robots in hotels: A meta-analytic review | Begum et al. | 2025 | https://pure.uj.ac.za/en/publications/consumers-acceptance-of-service-robots-in-hotels-a-meta-analytic-/ | 酒店服务机器人接受度预测因素的元分析。 | 适合提炼影响用户接受的核心变量，而不是只停留在单个案例。 | 用于构建问卷、访谈提纲和评估指标。 | 酒店服务机器人 / 用户接受 | 公开摘要；全文视权限 | P1
+location: Robot Briefs Index!F33

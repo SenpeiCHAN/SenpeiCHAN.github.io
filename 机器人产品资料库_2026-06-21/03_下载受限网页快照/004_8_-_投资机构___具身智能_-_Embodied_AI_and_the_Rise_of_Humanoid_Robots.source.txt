@@ -1,0 +1,3 @@
+title: 8 - 投资机构 / 具身智能 - Embodied AI and the Rise of Humanoid Robots
+original_url: https://www.morganstanley.com/im/publication/insights/articles/article_humanoid-robots_ltr.pdf
+snapshot_method: r.jina.ai Markdown reader

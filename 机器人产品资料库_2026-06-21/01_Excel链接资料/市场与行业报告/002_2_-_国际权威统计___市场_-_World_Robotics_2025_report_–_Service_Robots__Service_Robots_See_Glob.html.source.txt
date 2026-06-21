@@ -1,0 +1,10 @@
+title: 2 - 国际权威统计 / 市场 - World Robotics 2025 report – Service Robots: Service Robots See Global Growth Boom
+source_type: excel
+category: 市场与行业报告
+original_url: https://ifr.org/ifr-press-releases/news/service-robots-see-global-growth-boom
+downloaded_url: https://ifr.org/ifr-press-releases/news/service-robots-see-global-growth-boom
+effective_url: https://ifr.org/ifr-press-releases/news/service-robots-see-global-growth-boom
+http_code: 200
+content_type: text/html; charset=UTF-8
+context: 2 | 国际权威统计 / 市场 | World Robotics 2025 report – Service Robots: Service Robots See Global Growth Boom | International Federation of Robotics (IFR) | 2025-10-07 | https://ifr.org/ifr-press-releases/news/service-robots-see-global-growth-boom | 2024 年专业服务机器人近 20 万台、医疗机器人和消费服务机器人增长情况。 | 比 PDF 摘要更适合快速引用关键数字和趋势。 | 可作为调研简报开头的市场背景数据。 | 服务机器人 | 公开网页 | P0
+location: Robot Briefs Index!F6

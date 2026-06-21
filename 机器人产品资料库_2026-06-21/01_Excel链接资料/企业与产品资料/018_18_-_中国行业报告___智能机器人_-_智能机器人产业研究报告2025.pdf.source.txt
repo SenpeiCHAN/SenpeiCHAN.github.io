@@ -1,0 +1,10 @@
+title: 18 - 中国行业报告 / 智能机器人 - 智能机器人产业研究报告2025
+source_type: excel
+category: 企业与产品资料
+original_url: https://iappicon.jiguang.cn/pdf/%E6%9E%81%E5%85%89%E6%9C%88%E7%8B%90%E4%B8%A8%E6%99%BA%E8%83%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BA%A7%E4%B8%9A%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A2025.pdf
+downloaded_url: https://iappicon.jiguang.cn/pdf/%E6%9E%81%E5%85%89%E6%9C%88%E7%8B%90%E4%B8%A8%E6%99%BA%E8%83%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BA%A7%E4%B8%9A%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A2025.pdf
+effective_url: https://iappicon.jiguang.cn/pdf/%E6%9E%81%E5%85%89%E6%9C%88%E7%8B%90%E4%B8%A8%E6%99%BA%E8%83%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BA%A7%E4%B8%9A%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A2025.pdf
+http_code: 200
+content_type: application/pdf
+context: 18 | 中国行业报告 / 智能机器人 | 智能机器人产业研究报告2025 | 极光月狐 | 2024-12 | https://iappicon.jiguang.cn/pdf/%E6%9E%81%E5%85%89%E6%9C%88%E7%8B%90%E4%B8%A8%E6%99%BA%E8%83%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BA%A7%E4%B8%9A%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A2025.pdf | 智能机器人政策、核心技术、重点产品、示范应用和大模型影响。 | 覆盖面较广，可以作为中国智能机器人总体行业入口。 | 用于梳理“智能在哪里”：多模态感知、大模型、公共支撑、场景落地。 | 智能机器人 / 人形机器人 / 服务机器人 | 公开 PDF | P0
+location: Robot Briefs Index!F22

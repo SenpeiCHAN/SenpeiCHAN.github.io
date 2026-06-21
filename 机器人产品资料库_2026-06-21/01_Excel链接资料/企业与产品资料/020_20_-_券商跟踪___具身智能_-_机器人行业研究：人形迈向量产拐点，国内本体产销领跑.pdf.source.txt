@@ -1,0 +1,10 @@
+title: 20 - 券商跟踪 / 具身智能 - 机器人行业研究：人形迈向量产拐点，国内本体产销领跑
+source_type: excel
+category: 企业与产品资料
+original_url: https://pdf.dfcfw.com/pdf/H3_AP202604071821036918_1.pdf
+downloaded_url: https://pdf.dfcfw.com/pdf/H3_AP202604071821036918_1.pdf
+effective_url: https://pdf.dfcfw.com/pdf/H3_AP202604071821036918_1.pdf
+http_code: 200
+content_type: application/pdf
+context: 20 | 券商跟踪 / 具身智能 | 机器人行业研究：人形迈向量产拐点，国内本体产销领跑 | 国金证券 具身智能组 | 2026-04-05 | https://pdf.dfcfw.com/pdf/H3_AP202604071821036918_1.pdf | 优必选、智元等国内人形机器人量产、营收、销量与产业进展。 | 适合跟踪最新商业化事件，但需要注意券商报告带有投资视角。 | 用于补充近期公司动态和量产节点。 | 人形机器人 / 具身智能 | 公开 PDF；需交叉验证 | P1
+location: Robot Briefs Index!F24

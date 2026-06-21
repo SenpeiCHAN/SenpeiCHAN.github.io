@@ -1,0 +1,10 @@
+title: 23 - 中国调研简报 / AI 陪伴 - 简报 | 2025/09 AI陪伴
+source_type: excel
+category: 企业与产品资料
+original_url: https://pdf.dfcfw.com/pdf/H3_AP202601161817860144_1.pdf
+downloaded_url: https://pdf.dfcfw.com/pdf/H3_AP202601161817860144_1.pdf
+effective_url: https://pdf.dfcfw.com/pdf/H3_AP202601161817860144_1.pdf
+http_code: 200
+content_type: application/pdf
+context: 23 | 中国调研简报 / AI 陪伴 | 简报 | 2025/09 AI陪伴 | 头豹研究院 | 2026-01 | https://pdf.dfcfw.com/pdf/H3_AP202601161817860144_1.pdf | 已发布 AI 陪伴机器人产品，如 ElliQ、EBO、儿童陪伴机器人、桌面机器人等。 | 它更像产品清单，可直接拿来做竞品初筛。 | 用于建立 AI 陪伴机器人竞品池，比较形态、目标人群和情感功能。 | AI 陪伴 / 家庭机器人 / 儿童机器人 | 公开 PDF | P0
+location: Robot Briefs Index!F27

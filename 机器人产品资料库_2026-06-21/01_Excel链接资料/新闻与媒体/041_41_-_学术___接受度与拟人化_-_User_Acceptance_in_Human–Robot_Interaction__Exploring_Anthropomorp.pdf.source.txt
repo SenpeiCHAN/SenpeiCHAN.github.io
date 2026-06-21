@@ -1,0 +1,10 @@
+title: 41 - 学术 / 接受度与拟人化 - User Acceptance in Human–Robot Interaction: Exploring Anthropomorphic Mechanisms in Manufacturing
+source_type: excel
+category: 新闻与媒体
+original_url: https://link.springer.com/article/10.1007/s10846-025-02248-x
+downloaded_url: https://link.springer.com/content/pdf/10.1007/s10846-025-02248-x.pdf
+effective_url: https://link.springer.com/content/pdf/10.1007/s10846-025-02248-x.pdf?error=cookies_not_supported&code=08b490d8-cf2d-404b-8a58-9d35527f4832
+http_code: 200
+content_type: application/pdf
+context: 41 | 学术 / 接受度与拟人化 | User Acceptance in Human–Robot Interaction: Exploring Anthropomorphic Mechanisms in Manufacturing | Pinto et al. | 2025 | https://link.springer.com/article/10.1007/s10846-025-02248-x | 制造业 HRI 中拟人化机制与用户接受度。 | 它提醒我们拟人化不是越多越好，而要匹配任务、风险和场景。 | 用于评价人形/非人形机器人设计取舍。 | 制造业 HRI / 协作机器人 | 公开摘要；全文视权限 | P1
+location: Robot Briefs Index!F45

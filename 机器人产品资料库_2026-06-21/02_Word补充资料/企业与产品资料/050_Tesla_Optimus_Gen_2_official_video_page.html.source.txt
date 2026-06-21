@@ -1,0 +1,10 @@
+title: Tesla Optimus Gen 2 official video page
+source_type: word_supplement
+category: 企业与产品资料
+original_url: https://www.youtube.com/watch?v=cpraXaw7dyc
+downloaded_url: https://www.youtube.com/watch?v=cpraXaw7dyc
+effective_url: https://www.youtube.com/watch?v=cpraXaw7dyc
+http_code: 200
+content_type: text/html; charset=utf-8
+context: 补充 Word 中 Optimus 产品演示材料。
+location: 

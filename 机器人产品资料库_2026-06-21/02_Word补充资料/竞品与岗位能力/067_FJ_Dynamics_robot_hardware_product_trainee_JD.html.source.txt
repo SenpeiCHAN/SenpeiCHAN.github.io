@@ -1,0 +1,10 @@
+title: FJ Dynamics robot hardware product trainee JD
+source_type: word_supplement
+category: 竞品与岗位能力
+original_url: https://career.sustech.edu.cn/detail/job?id=2748176&menu_id=
+downloaded_url: https://career.sustech.edu.cn/detail/job?id=2748176&menu_id=
+effective_url: https://career.sustech.edu.cn/detail/job?id=2748176&menu_id=
+http_code: 200
+content_type: text/html; charset=UTF-8
+context: 补充 Word 中智能硬件、机器人产品管培/实习岗位职责。
+location: 

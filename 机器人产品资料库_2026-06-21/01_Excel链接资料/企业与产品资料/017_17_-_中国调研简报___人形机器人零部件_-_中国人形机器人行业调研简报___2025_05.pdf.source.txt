@@ -1,0 +1,10 @@
+title: 17 - 中国调研简报 / 人形机器人零部件 - 中国人形机器人行业调研简报 | 2025/05
+source_type: excel
+category: 企业与产品资料
+original_url: https://pdf.dfcfw.com/pdf/H3_AP202507101706472206_1.pdf?1752177236000.pdf=
+downloaded_url: https://pdf.dfcfw.com/pdf/H3_AP202507101706472206_1.pdf?1752177236000.pdf=
+effective_url: https://pdf.dfcfw.com/pdf/H3_AP202507101706472206_1.pdf?1752177236000.pdf=
+http_code: 200
+content_type: application/pdf
+context: 17 | 中国调研简报 / 人形机器人零部件 | 中国人形机器人行业调研简报 | 2025/05 | 头豹研究院 | 2025-07-10 | https://pdf.dfcfw.com/pdf/H3_AP202507101706472206_1.pdf?1752177236000.pdf= | 人形机器人连接器市场、工控连接器企业入局进展。 | 很适合补充“产品背后的零部件与工程可行性”，避免只看外观和交互。 | 用于拆 BOM、硬件可得性、成本趋势。 | 人形机器人 / 连接器 / 硬件供应链 | 公开 PDF | P1
+location: Robot Briefs Index!F21

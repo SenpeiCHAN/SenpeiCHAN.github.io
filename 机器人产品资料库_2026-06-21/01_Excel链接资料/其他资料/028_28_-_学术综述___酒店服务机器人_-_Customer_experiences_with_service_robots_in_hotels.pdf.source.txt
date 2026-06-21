@@ -1,0 +1,10 @@
+title: 28 - 学术综述 / 酒店服务机器人 - Customer experiences with service robots in hotels
+source_type: excel
+category: 其他资料
+original_url: https://pureadmin.qub.ac.uk/ws/portalfiles/portal/612833744/Customer_experiences.pdf
+downloaded_url: https://pureadmin.qub.ac.uk/ws/portalfiles/portal/612833744/Customer_experiences.pdf
+effective_url: https://pureadmin.qub.ac.uk/ws/portalfiles/portal/612833744/Customer_experiences.pdf
+http_code: 200
+content_type: application/pdf
+context: 28 | 学术综述 / 酒店服务机器人 | Customer experiences with service robots in hotels | Rana et al. | 2024/2025 | https://pureadmin.qub.ac.uk/ws/portalfiles/portal/612833744/Customer_experiences.pdf | 基于 USUS 框架整理酒店服务机器人真实顾客体验。 | 很适合 HCI/HRI，因为它关注 usability、social acceptance、UX、societal impact。 | 用于建立酒店机器人用户体验评估维度。 | 酒店服务机器人 | 开放 PDF；期刊版本另见 Taylor & Francis | P0
+location: Robot Briefs Index!F32

@@ -1,0 +1,10 @@
+title: 15 - 中国行业报告 / 厂商图谱 - 2025年中国人形机器人厂商全景报告
+source_type: excel
+category: 市场与行业报告
+original_url: https://pdf.dfcfw.com/pdf/H3_AP202505081669547229_1.pdf?1746733814000.pdf=
+downloaded_url: https://pdf.dfcfw.com/pdf/H3_AP202505081669547229_1.pdf?1746733814000.pdf=
+effective_url: https://pdf.dfcfw.com/pdf/H3_AP202505081669547229_1.pdf?1746733814000.pdf=
+http_code: 200
+content_type: application/pdf
+context: 15 | 中国行业报告 / 厂商图谱 | 2025年中国人形机器人厂商全景报告 | 行业研究机构 / 东方财富 PDF 来源 | 2025-05 | https://pdf.dfcfw.com/pdf/H3_AP202505081669547229_1.pdf?1746733814000.pdf= | 中国人形机器人企业类型、核心零部件、市场规模与厂商分层。 | 它直接回答“有哪些厂商、各自属于什么类型、供应链卡点在哪里”。 | 用于竞品池建立、公司分类、产业链拆解。 | 人形机器人 / 供应链 | 公开 PDF | P0
+location: Robot Briefs Index!F19

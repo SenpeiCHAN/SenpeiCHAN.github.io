@@ -1,0 +1,10 @@
+title: 26 - 学术 / 酒店服务机器人 - 酒店服务机器人拟人化对顾客服务满意度的影响分析
+source_type: excel
+category: 企业与产品资料
+original_url: https://pdf.hanspub.org/mm20241412_361123029.pdf
+downloaded_url: https://pdf.hanspub.org/mm20241412_361123029.pdf
+effective_url: https://pdf.hanspub.org/mm20241412_361123029.pdf
+http_code: 200
+content_type: application/pdf
+context: 26 | 学术 / 酒店服务机器人 | 酒店服务机器人拟人化对顾客服务满意度的影响分析 | 吴琪，《现代管理》 | 2024 | https://pdf.hanspub.org/mm20241412_361123029.pdf | 酒店服务机器人外观拟人化、语言拟人化、自主性、个性化对满意度影响。 | 直接连接“外观/语言/自主性/个性化”这些交互设计变量。 | 用于把酒店机器人产品分析从功能列表转成用户体验因子分析。 | 酒店机器人 / 服务机器人 | 公开 PDF；需注意期刊质量 | P1
+location: Robot Briefs Index!F30

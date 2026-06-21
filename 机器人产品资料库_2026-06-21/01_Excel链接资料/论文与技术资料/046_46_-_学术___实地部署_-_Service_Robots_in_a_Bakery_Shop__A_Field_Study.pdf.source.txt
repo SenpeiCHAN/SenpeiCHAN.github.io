@@ -1,0 +1,10 @@
+title: 46 - 学术 / 实地部署 - Service Robots in a Bakery Shop: A Field Study
+source_type: excel
+category: 论文与技术资料
+original_url: https://arxiv.org/abs/2208.09260
+downloaded_url: https://arxiv.org/pdf/2208.09260.pdf
+effective_url: https://arxiv.org/pdf/2208.09260
+http_code: 200
+content_type: application/pdf
+context: 46 | 学术 / 实地部署 | Service Robots in a Bakery Shop: A Field Study | Song et al. | 2022 | https://arxiv.org/abs/2208.09260 | 面包店服务机器人作为引流与推荐系统的实地研究。 | 展示机器人并不一定要完成复杂任务，也可以作为销售/体验触点。 | 用于研究零售机器人、导购机器人、品牌互动机器人。 | 零售机器人 / 导购机器人 | 开放 arXiv | P1
+location: Robot Briefs Index!F50

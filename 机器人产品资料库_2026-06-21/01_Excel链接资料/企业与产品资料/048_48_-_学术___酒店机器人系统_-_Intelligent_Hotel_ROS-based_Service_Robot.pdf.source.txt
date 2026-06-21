@@ -1,0 +1,10 @@
+title: 48 - 学术 / 酒店机器人系统 - Intelligent Hotel ROS-based Service Robot
+source_type: excel
+category: 企业与产品资料
+original_url: https://arxiv.org/abs/2009.00594
+downloaded_url: https://arxiv.org/pdf/2009.00594.pdf
+effective_url: https://arxiv.org/pdf/2009.00594
+http_code: 200
+content_type: application/pdf
+context: 48 | 学术 / 酒店机器人系统 | Intelligent Hotel ROS-based Service Robot | Zhang et al. | 2020 | https://arxiv.org/abs/2009.00594 | ROS 酒店服务机器人、导航、语音助手、跨楼层路径规划。 | 虽然旧，但工程结构清楚，适合理解酒店机器人产品系统组成。 | 用于拆解酒店机器人硬件、软件、导航、交互模块。 | 酒店服务机器人 | 开放 arXiv | P2
+location: Robot Briefs Index!F52

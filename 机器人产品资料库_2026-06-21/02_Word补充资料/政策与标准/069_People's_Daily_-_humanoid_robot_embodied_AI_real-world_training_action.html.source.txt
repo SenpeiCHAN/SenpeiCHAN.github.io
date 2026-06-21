@@ -1,0 +1,10 @@
+title: People's Daily - humanoid robot embodied AI real-world training action
+source_type: word_supplement
+category: 政策与标准
+original_url: https://paper.people.com.cn/rmrb/pc/content/202606/10/content_30162284.html
+downloaded_url: https://paper.people.com.cn/rmrb/pc/content/202606/10/content_30162284.html
+effective_url: https://paper.people.com.cn/rmrb/pc/content/202606/10/content_30162284.html
+http_code: 200
+content_type: text/html
+context: 补充 Word 中场景验证、真实部署、政策背景和产品机会点。
+location: 

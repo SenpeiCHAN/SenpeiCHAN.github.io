@@ -1,0 +1,10 @@
+title: 47 - 学术 / LLM + Robotics - ChatGPT for Robotics: Design Principles and Model Abilities
+source_type: excel
+category: 企业与产品资料
+original_url: https://arxiv.org/abs/2306.17582
+downloaded_url: https://arxiv.org/pdf/2306.17582.pdf
+effective_url: https://arxiv.org/pdf/2306.17582
+http_code: 200
+content_type: application/pdf
+context: 47 | 学术 / LLM + Robotics | ChatGPT for Robotics: Design Principles and Model Abilities | Microsoft Research | 2023 | https://arxiv.org/abs/2306.17582 | LLM 用于机器人任务规划、函数库、自然语言控制和 PromptCraft。 | 适合回答“AI 加在哪里”：语言理解、任务分解、代码/控制接口。 | 用于把大模型能力映射到机器人产品功能设计。 | LLM 机器人 / 具身智能 | 开放 arXiv | P1
+location: Robot Briefs Index!F51

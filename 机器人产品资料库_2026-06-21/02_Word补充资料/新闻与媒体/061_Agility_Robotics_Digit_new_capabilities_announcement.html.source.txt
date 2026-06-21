@@ -1,0 +1,10 @@
+title: Agility Robotics Digit new capabilities announcement
+source_type: word_supplement
+category: 新闻与媒体
+original_url: https://www.agilityrobotics.com/content/agility-robotics-announces-new-innovations-for-market-leading-humanoid-robot-digit
+downloaded_url: https://www.agilityrobotics.com/content/agility-robotics-announces-new-innovations-for-market-leading-humanoid-robot-digit
+effective_url: https://www.agilityrobotics.com/content/agility-robotics-announces-new-innovations-for-market-leading-humanoid-robot-digit
+http_code: 200
+content_type: text/html; charset=utf-8
+context: 补充 Word 中竞品迭代、能力边界和商业部署材料。
+location: 

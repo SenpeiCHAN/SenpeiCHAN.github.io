@@ -1,0 +1,10 @@
+title: 45 - 学术 / 实地部署 - A Service Robot in the Wild: Analysis of Users' Intentions, Robot Behaviors, and Their Impact on the Interaction
+source_type: excel
+category: 企业与产品资料
+original_url: https://arxiv.org/abs/2410.03287
+downloaded_url: https://arxiv.org/pdf/2410.03287.pdf
+effective_url: https://arxiv.org/pdf/2410.03287
+http_code: 200
+content_type: application/pdf
+context: 45 | 学术 / 实地部署 | A Service Robot in the Wild: Analysis of Users' Intentions, Robot Behaviors, and Their Impact on the Interaction | Arreghini et al. | 2024 | https://arxiv.org/abs/2410.03287 | 公共空间服务机器人主动/被动交互策略、真实场景用户行为数据。 | 非常适合 HRI 产品研究，因为它不是实验室，而是 in-the-wild 部署。 | 用于设计服务机器人迎宾、主动接近、打扰边界等交互策略。 | 公共空间服务机器人 | 开放 arXiv | P0
+location: Robot Briefs Index!F49

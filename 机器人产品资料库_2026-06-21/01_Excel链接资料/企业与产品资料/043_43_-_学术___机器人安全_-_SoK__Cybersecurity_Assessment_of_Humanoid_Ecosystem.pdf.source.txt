@@ -1,0 +1,10 @@
+title: 43 - 学术 / 机器人安全 - SoK: Cybersecurity Assessment of Humanoid Ecosystem
+source_type: excel
+category: 企业与产品资料
+original_url: https://arxiv.org/abs/2508.17481
+downloaded_url: https://arxiv.org/pdf/2508.17481.pdf
+effective_url: https://arxiv.org/pdf/2508.17481
+http_code: 200
+content_type: application/pdf
+context: 43 | 学术 / 机器人安全 | SoK: Cybersecurity Assessment of Humanoid Ecosystem | Surve et al. | 2025 | https://arxiv.org/abs/2508.17481 | 人形机器人生态的七层安全模型、攻击与防御矩阵、Pepper / G1 / Digit 案例。 | 机器人产品调研不能只看功能，摄像头、麦克风、云连接会带来隐私和安全风险。 | 用于补充隐私、数据、网络安全、合规风险维度。 | 人形机器人 / 安全 / 隐私 | 开放 arXiv | P1
+location: Robot Briefs Index!F47

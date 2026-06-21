@@ -1,0 +1,10 @@
+title: 12 - 技术路线图 / 综合 - Global Robotics Technology Roadmap 2025–2035
+source_type: excel
+category: 企业与产品资料
+original_url: https://hichristensen.com/pdf/global_robotics_roadmap_2025.pdf
+downloaded_url: https://hichristensen.com/pdf/global_robotics_roadmap_2025.pdf
+effective_url: https://hichristensen.com/pdf/global_robotics_roadmap_2025.pdf
+http_code: 200
+content_type: application/pdf
+context: 12 | 技术路线图 / 综合 | Global Robotics Technology Roadmap 2025–2035 | Henrik I. Christensen / UCSD | 2026-04 | https://hichristensen.com/pdf/global_robotics_roadmap_2025.pdf | 全球机器人技术路线、区域战略、协作机器人、人形机器人、研究会议趋势。 | 适合从技术路线而不是单一市场报告理解未来十年的机器人能力演进。 | 用于搭建机器人产品调研中的“技术成熟度—应用场景”坐标系。 | 机器人全领域 | 公开 PDF | P0
+location: Robot Briefs Index!F16

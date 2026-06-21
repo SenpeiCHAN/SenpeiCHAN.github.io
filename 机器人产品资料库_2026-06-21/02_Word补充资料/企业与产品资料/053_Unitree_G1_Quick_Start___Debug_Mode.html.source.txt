@@ -1,0 +1,10 @@
+title: Unitree G1 Quick Start / Debug Mode
+source_type: word_supplement
+category: 企业与产品资料
+original_url: https://support.unitree.com/home/en/G1_developer/quick_start
+downloaded_url: https://support.unitree.com/home/en/G1_developer/quick_start
+effective_url: https://support.unitree.com/home/en/G1_developer/quick_start
+http_code: 200
+content_type: text/html
+context: 补充 Word 中用户操作说明、异常处理与测试点材料。
+location: 

@@ -1,0 +1,10 @@
+title: UBTECH Walker S2 official product page
+source_type: word_supplement
+category: 企业与产品资料
+original_url: https://www.ubtrobot.com/en/humanoid/products/walker-s2
+downloaded_url: https://www.ubtrobot.com/en/humanoid/products/walker-s2
+effective_url: https://www.ubtrobot.com/en/humanoid/products/walker-s2
+http_code: 200
+content_type: text/html;charset=utf-8
+context: 补充 Word 中 UBTECH Walker S / Walker S2 竞品资料。
+location: 

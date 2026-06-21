@@ -1,0 +1,10 @@
+title: 19 - 中国行业报告 / 深度 - 2026 年智能机器人行业深度分析报告
+source_type: excel
+category: 市场与行业报告
+original_url: https://pdf.dfcfw.com/pdf/H3_AP202605071822028328_1.pdf?1778171901000.pdf=
+downloaded_url: https://pdf.dfcfw.com/pdf/H3_AP202605071822028328_1.pdf?1778171901000.pdf=
+effective_url: https://pdf.dfcfw.com/pdf/H3_AP202605071822028328_1.pdf?1778171901000.pdf=
+http_code: 200
+content_type: application/pdf
+context: 19 | 中国行业报告 / 深度 | 2026 年智能机器人行业深度分析报告 | 中投产业研究院 | 2026-04 / 2026-05 | https://pdf.dfcfw.com/pdf/H3_AP202605071822028328_1.pdf?1778171901000.pdf= | 智能机器人、人形机器人从技术验证到商业化、核心零部件国产化、汽车制造场景。 | 时间新，适合更新 2026 年商业化和量产判断。 | 用于把 2025 的趋势延伸到 2026 的落地与产能逻辑。 | 智能机器人 / 人形机器人 / 汽车制造 | 公开 PDF | P0
+location: Robot Briefs Index!F23

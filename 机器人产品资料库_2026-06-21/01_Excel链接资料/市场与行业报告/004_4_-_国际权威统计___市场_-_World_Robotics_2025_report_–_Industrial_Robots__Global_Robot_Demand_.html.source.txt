@@ -1,0 +1,10 @@
+title: 4 - 国际权威统计 / 市场 - World Robotics 2025 report – Industrial Robots: Global Robot Demand in Factories Doubles Over 10 Years
+source_type: excel
+category: 市场与行业报告
+original_url: https://ifr.org/ifr-press-releases/news/global-robot-demand-in-factories-doubles-over-10-years
+downloaded_url: https://ifr.org/ifr-press-releases/news/global-robot-demand-in-factories-doubles-over-10-years
+effective_url: https://ifr.org/ifr-press-releases/news/global-robot-demand-in-factories-doubles-over-10-years
+http_code: 200
+content_type: text/html; charset=UTF-8
+context: 4 | 国际权威统计 / 市场 | World Robotics 2025 report – Industrial Robots: Global Robot Demand in Factories Doubles Over 10 Years | International Federation of Robotics (IFR) | 2025-09-25 | https://ifr.org/ifr-press-releases/news/global-robot-demand-in-factories-doubles-over-10-years | 2024 年全球工业机器人安装量 54.2 万台，亚洲、中国占比等。 | 适合快速建立“机器人不是概念，而是已规模部署的生产力工具”的论据。 | 用于写行业背景、市场规模、产业成熟度判断。 | 工业机器人 | 公开网页 | P0
+location: Robot Briefs Index!F8

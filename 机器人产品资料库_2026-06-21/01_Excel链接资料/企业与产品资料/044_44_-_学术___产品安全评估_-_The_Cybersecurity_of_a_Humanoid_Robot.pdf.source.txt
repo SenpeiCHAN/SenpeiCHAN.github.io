@@ -1,0 +1,10 @@
+title: 44 - 学术 / 产品安全评估 - The Cybersecurity of a Humanoid Robot
+source_type: excel
+category: 企业与产品资料
+original_url: https://arxiv.org/abs/2509.14096
+downloaded_url: https://arxiv.org/pdf/2509.14096.pdf
+effective_url: https://arxiv.org/pdf/2509.14096
+http_code: 200
+content_type: application/pdf
+context: 44 | 学术 / 产品安全评估 | The Cybersecurity of a Humanoid Robot | Mayoral-Vilches | 2025 | https://arxiv.org/abs/2509.14096 | 对生产型人形机器人平台的安全评估、遥测、加密和隐私问题。 | 适合提醒产品调研要加入“传感器数据如何处理、用户是否知情”的问题。 | 用于人形机器人 PRD 中的数据安全与用户告知条款。 | 人形机器人 / 隐私安全 | 开放 arXiv | P1
+location: Robot Briefs Index!F48

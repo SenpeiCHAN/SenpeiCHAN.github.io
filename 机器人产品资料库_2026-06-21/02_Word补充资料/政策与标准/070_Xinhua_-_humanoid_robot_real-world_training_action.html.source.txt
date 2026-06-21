@@ -1,0 +1,10 @@
+title: Xinhua - humanoid robot real-world training action
+source_type: word_supplement
+category: 政策与标准
+original_url: https://news.cctv.com/2026/06/09/ARTIFubd7PTLvCXVAHrSG0wx260609.shtml
+downloaded_url: https://news.cctv.com/2026/06/09/ARTIFubd7PTLvCXVAHrSG0wx260609.shtml
+effective_url: https://news.cctv.com/2026/06/09/ARTIFubd7PTLvCXVAHrSG0wx260609.shtml
+http_code: 200
+content_type: text/html
+context: 补充 Word 中实景实训、应用验证和规模化落地背景。
+location: 

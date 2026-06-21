@@ -1,0 +1,10 @@
+title: 36 - 中国调研简报 / 协作机器人 - 中国协作机器人行业调研简报 | 2025/08
+source_type: excel
+category: 市场与行业报告
+original_url: https://pdf.dfcfw.com/pdf/H3_AP202512261808681600_1.pdf?1766778848000.pdf=
+downloaded_url: https://pdf.dfcfw.com/pdf/H3_AP202512261808681600_1.pdf?1766778848000.pdf=
+effective_url: https://pdf.dfcfw.com/pdf/H3_AP202512261808681600_1.pdf?1766778848000.pdf=
+http_code: 200
+content_type: application/pdf
+context: 36 | 中国调研简报 / 协作机器人 | 中国协作机器人行业调研简报 | 2025/08 | 头豹研究院 | 2025-12 | https://pdf.dfcfw.com/pdf/H3_AP202512261808681600_1.pdf?1766778848000.pdf= | 协作机器人安全性、灵活性、易用性、全球与中国销量、国产厂商格局。 | 协作机器人是“人机协作”最成熟的工业形态，对 HRI 很有参考价值。 | 用于比较服务机器人和工业协作机器人的交互边界与安全设计。 | 协作机器人 / 工业 HRI | 公开 PDF | P0
+location: Robot Briefs Index!F40

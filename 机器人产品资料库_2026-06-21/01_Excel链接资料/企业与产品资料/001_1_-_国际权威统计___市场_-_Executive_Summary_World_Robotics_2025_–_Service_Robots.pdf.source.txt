@@ -1,0 +1,10 @@
+title: 1 - 国际权威统计 / 市场 - Executive Summary World Robotics 2025 – Service Robots
+source_type: excel
+category: 企业与产品资料
+original_url: https://ifr.org/img/worldrobotics/Executive_Summary_WR_2025_Service_Robots.pdf
+downloaded_url: https://ifr.org/img/worldrobotics/Executive_Summary_WR_2025_Service_Robots.pdf
+effective_url: https://ifr.org/img/worldrobotics/Executive_Summary_WR_2025_Service_Robots.pdf
+http_code: 200
+content_type: application/pdf
+context: 1 | 国际权威统计 / 市场 | Executive Summary World Robotics 2025 – Service Robots | International Federation of Robotics (IFR) / Fraunhofer IPA | 2025 | https://ifr.org/img/worldrobotics/Executive_Summary_WR_2025_Service_Robots.pdf | 全球专业服务机器人、医疗机器人、消费服务机器人销量与应用类别。 | IFR 是机器人市场统计的核心权威来源，可作为所有服务机器人产品调研的全球基准。 | 用于判断服务机器人从“能不能卖”到“在哪些场景已经卖得动”。 | 服务机器人 / 医疗机器人 / 家用机器人 | 公开 PDF 摘要；完整报告需购买 | P0
+location: Robot Briefs Index!F5

@@ -1,0 +1,10 @@
+title: Xpeng robotics whole-machine project management intern JD
+source_type: word_supplement
+category: 竞品与岗位能力
+original_url: https://xiaopeng.jobs.feishu.cn/campus/m/position/7579452910824622346/detail
+downloaded_url: https://xiaopeng.jobs.feishu.cn/campus/m/position/7579452910824622346/detail
+effective_url: https://xiaopeng.jobs.feishu.cn/campus/m/position/7579452910824622346/detail
+http_code: 200
+content_type: text/html; charset=utf-8
+context: 补充 Word 中整机研发过程管理、接口文档、节点规划和测试需求材料。
+location: 

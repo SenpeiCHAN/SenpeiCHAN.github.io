@@ -1,0 +1,10 @@
+title: 5 - AI / 技术趋势 - The 2025 AI Index Report
+source_type: excel
+category: 企业与产品资料
+original_url: https://hai.stanford.edu/ai-index/2025-ai-index-report
+downloaded_url: https://hai.stanford.edu/ai-index/2025-ai-index-report
+effective_url: https://hai.stanford.edu/ai-index/2025-ai-index-report
+http_code: 200
+content_type: text/html; charset=utf-8
+context: 5 | AI / 技术趋势 | The 2025 AI Index Report | Stanford HAI | 2025 | https://hai.stanford.edu/ai-index/2025-ai-index-report | AI 发展、模型能力、产业采用与社会影响。 | 机器人产品调研不能只看硬件，还要看 AI 能力如何改变感知、语言、决策与自主性。 | 用于把机器人产品从“硬件产品”提升到“AI + physical world”框架。 | AI 机器人 / 具身智能 | 公开网页与 PDF | P0
+location: Robot Briefs Index!F9

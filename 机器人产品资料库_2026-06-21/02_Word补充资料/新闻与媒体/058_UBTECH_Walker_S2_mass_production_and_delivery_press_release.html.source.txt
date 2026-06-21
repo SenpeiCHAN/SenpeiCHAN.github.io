@@ -1,0 +1,10 @@
+title: UBTECH Walker S2 mass production and delivery press release
+source_type: word_supplement
+category: 新闻与媒体
+original_url: https://www.prnewswire.com/news-releases/ubtech-humanoid-robot-walker-s2-begins-mass-production-and-delivery-with-orders-exceeding-800-million-yuan-302616924.html
+downloaded_url: https://www.prnewswire.com/news-releases/ubtech-humanoid-robot-walker-s2-begins-mass-production-and-delivery-with-orders-exceeding-800-million-yuan-302616924.html
+effective_url: https://www.prnewswire.com/news-releases/ubtech-humanoid-robot-walker-s2-begins-mass-production-and-delivery-with-orders-exceeding-800-million-yuan-302616924.html
+http_code: 200
+content_type: text/html; charset=UTF-8
+context: 补充 Word 中竞品商业化和量产进展材料。
+location: 

@@ -1,0 +1,3 @@
+title: 40 - 学术综述 / 信任 - Trust and Trustworthiness from Human-Centered Perspective in HRI — A Systematic Literature Review
+original_url: https://www.mdpi.com/2079-9292/14/8/1557
+snapshot_method: r.jina.ai Markdown reader

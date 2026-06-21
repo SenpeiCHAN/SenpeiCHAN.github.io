@@ -1,0 +1,10 @@
+title: Unitree G1 Basic User Manual PDF
+source_type: word_supplement
+category: 企业与产品资料
+original_url: https://reliablerobotics.ai/wp-content/uploads/2025/03/G1-User-Manual_compressed.pdf
+downloaded_url: https://reliablerobotics.ai/wp-content/uploads/2025/03/G1-User-Manual_compressed.pdf
+effective_url: https://reliablerobotics.ai/wp-content/uploads/2025/03/G1-User-Manual_compressed.pdf
+http_code: 200
+content_type: application/pdf
+context: 补充 Word 中用户手册样例。
+location: 

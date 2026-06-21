@@ -1,0 +1,10 @@
+title: 7 - 投资机构 / 人形机器人 - Humanoids: A $5 Trillion Market
+source_type: excel
+category: 市场与行业报告
+original_url: https://www.morganstanley.com/insights/articles/humanoid-robot-market-5-trillion-by-2050
+downloaded_url: https://www.morganstanley.com/insights/articles/humanoid-robot-market-5-trillion-by-2050
+effective_url: https://www.morganstanley.com/insights/articles/humanoid-robot-market-5-trillion-by-2050
+http_code: 200
+content_type: text/html;charset=utf-8
+context: 7 | 投资机构 / 人形机器人 | Humanoids: A $5 Trillion Market | Morgan Stanley Research | 2025-05-14 | https://www.morganstanley.com/insights/articles/humanoid-robot-market-5-trillion-by-2050 | 2050 年人形机器人存量、市场规模、产业链和维护生态预测。 | 给出极长期、极乐观的市场天花板，适合与保守预测对照。 | 用于在调研简报中区分“短期落地”与“长期终局叙事”。 | 人形机器人 | 公开网页 | P0
+location: Robot Briefs Index!F11

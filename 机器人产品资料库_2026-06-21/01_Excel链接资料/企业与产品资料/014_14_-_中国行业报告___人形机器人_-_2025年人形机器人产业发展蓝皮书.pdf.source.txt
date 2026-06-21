@@ -1,0 +1,10 @@
+title: 14 - 中国行业报告 / 人形机器人 - 2025年人形机器人产业发展蓝皮书
+source_type: excel
+category: 企业与产品资料
+original_url: https://pdf.dfcfw.com/pdf/H3_AP202412271641446309_1.pdf?1735315622000.pdf=
+downloaded_url: https://pdf.dfcfw.com/pdf/H3_AP202412271641446309_1.pdf?1735315622000.pdf=
+effective_url: https://pdf.dfcfw.com/pdf/H3_AP202412271641446309_1.pdf?1735315622000.pdf=
+http_code: 200
+content_type: application/pdf
+context: 14 | 中国行业报告 / 人形机器人 | 2025年人形机器人产业发展蓝皮书 | 前瞻产业研究院 | 2024-12-19 | https://pdf.dfcfw.com/pdf/H3_AP202412271641446309_1.pdf?1735315622000.pdf= | 中国人形机器人政策、产业规模、投融资、代表产品和产业链。 | 信息结构完整，适合快速拆出“政策—产业链—市场—应用”四块。 | 用于做中国市场环境和竞品公司分层。 | 人形机器人 | 公开 PDF | P0
+location: Robot Briefs Index!F18

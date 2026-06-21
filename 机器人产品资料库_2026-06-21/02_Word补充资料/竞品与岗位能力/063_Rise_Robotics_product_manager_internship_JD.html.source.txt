@@ -1,0 +1,10 @@
+title: Rise Robotics product manager internship JD
+source_type: word_supplement
+category: 竞品与岗位能力
+original_url: https://jobs.engine.xyz/companies/rise-robotics/jobs/44465777-product-manager-internship
+downloaded_url: https://jobs.engine.xyz/companies/rise-robotics/jobs/44465777-product-manager-internship
+effective_url: https://jobs.engine.xyz/companies/rise-robotics/jobs/44465777-product-manager-internship
+http_code: 200
+content_type: text/html; charset=utf-8
+context: 补充 Word 中岗位解析、产品实习职责与能力关键词。
+location: 

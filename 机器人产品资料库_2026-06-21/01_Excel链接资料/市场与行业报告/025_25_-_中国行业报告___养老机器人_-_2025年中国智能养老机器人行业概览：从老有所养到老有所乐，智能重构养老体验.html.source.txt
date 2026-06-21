@@ -1,0 +1,10 @@
+title: 25 - 中国行业报告 / 养老机器人 - 2025年中国智能养老机器人行业概览：从老有所养到老有所乐，智能重构养老体验
+source_type: excel
+category: 市场与行业报告
+original_url: https://www.leadleo.com/report/details/685a4a94be52016397bbd02c
+downloaded_url: https://www.leadleo.com/report/details/685a4a94be52016397bbd02c
+effective_url: https://www.leadleo.com/report/details/685a4a94be52016397bbd02c
+http_code: 200
+content_type: text/html
+context: 25 | 中国行业报告 / 养老机器人 | 2025年中国智能养老机器人行业概览：从老有所养到老有所乐，智能重构养老体验 | 头豹研究院 | 2025-06-24 | https://www.leadleo.com/report/details/685a4a94be52016397bbd02c | 智能养老机器人行业规模、类别、政策、技术与养老体验。 | 比调研简报更系统，适合做专题研究或 PRD 背景。 | 用于建立养老机器人专题的用户需求、场景和商业模式。 | 智能养老机器人 | 网页报告页；完整 PDF 可能需登录/授权 | P1
+location: Robot Briefs Index!F29

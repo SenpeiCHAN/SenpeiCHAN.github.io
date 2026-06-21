@@ -1,0 +1,10 @@
+title: Agility Robotics humanoid solutions
+source_type: word_supplement
+category: 企业与产品资料
+original_url: https://www.agilityrobotics.com/solutions
+downloaded_url: https://www.agilityrobotics.com/solutions
+effective_url: https://www.agilityrobotics.com/solutions
+http_code: 200
+content_type: text/html; charset=utf-8
+context: 补充 Word 中 Digit 应用场景、解决方案与部署模式。
+location: 

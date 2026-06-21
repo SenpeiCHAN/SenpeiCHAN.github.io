@@ -1,0 +1,10 @@
+title: 35 - 中国行业报告 / 商用清洁 - 2025-2031年中国商用清洁机器人行业发展全景监测及投资方向研究报告
+source_type: excel
+category: 市场与行业报告
+original_url: https://www.huaon.com/pdf/74/83/1047483.pdf
+downloaded_url: https://www.huaon.com/pdf/74/83/1047483.pdf
+effective_url: https://www.huaon.com/pdf/74/83/1047483.pdf
+http_code: 200
+content_type: application/pdf
+context: 35 | 中国行业报告 / 商用清洁 | 2025-2031年中国商用清洁机器人行业发展全景监测及投资方向研究报告 | 华经产业研究院 | 2025 | https://www.huaon.com/pdf/74/83/1047483.pdf | 商用清洁机器人行业环境、市场运行、竞争格局和重点企业目录。 | 补充清洁机器人的中国市场调研报告目录和统计口径。 | 用于设计清洁机器人市场调研表头和数据口径。 | 商用清洁机器人 | 公开目录 PDF；完整报告付费 | P2
+location: Robot Briefs Index!F39

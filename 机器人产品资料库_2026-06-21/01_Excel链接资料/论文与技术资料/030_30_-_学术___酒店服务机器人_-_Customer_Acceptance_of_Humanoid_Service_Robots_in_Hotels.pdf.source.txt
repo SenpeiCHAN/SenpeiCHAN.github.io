@@ -1,0 +1,10 @@
+title: 30 - 学术 / 酒店服务机器人 - Customer Acceptance of Humanoid Service Robots in Hotels
+source_type: excel
+category: 论文与技术资料
+original_url: https://irep.ntu.ac.uk/id/eprint/50253/1/1826308_Yousaf.pdf
+downloaded_url: https://irep.ntu.ac.uk/id/eprint/50253/1/1826308_Yousaf.pdf
+effective_url: https://irep.ntu.ac.uk/id/eprint/50253/1/1826308_Yousaf.pdf
+http_code: 200
+content_type: application/pdf
+context: 30 | 学术 / 酒店服务机器人 | Customer Acceptance of Humanoid Service Robots in Hotels | N. Said / Nottingham Trent University | 2023 | https://irep.ntu.ac.uk/id/eprint/50253/1/1826308_Yousaf.pdf | TAM3、Godspeed 问卷、人形服务机器人接受度、文化差异。 | 它把技术接受模型和机器人拟人化评估工具结合起来，非常适合做研究方法参考。 | 用于设计用户研究：感知有用性、易用性、拟人性、可爱度、安全感。 | 人形服务机器人 / 酒店 | 公开 PDF | P1
+location: Robot Briefs Index!F34

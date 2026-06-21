@@ -1,0 +1,10 @@
+title: 38 - 学术综述 / HRI - Human-robot interactions: a systematic literature review in tourism, travel, and hospitality
+source_type: excel
+category: 企业与产品资料
+original_url: https://iacis.org/iis/2025/3_iis_2025_421-436.pdf
+downloaded_url: https://iacis.org/iis/2025/3_iis_2025_421-436.pdf
+effective_url: https://iacis.org/iis/2025/3_iis_2025_421-436.pdf
+http_code: 200
+content_type: application/pdf
+context: 38 | 学术综述 / HRI | Human-robot interactions: a systematic literature review in tourism, travel, and hospitality | Tyagi et al. | 2025 | https://iacis.org/iis/2025/3_iis_2025_421-436.pdf | TTH 场景下 HRI 研究、接受度、信任、感知风险、设计因素。 | 和服务机器人产品体验强相关，可把行业报告中的“需求”转成研究变量。 | 用于做酒店/旅游/服务机器人产品研究理论框架。 | 旅游 / 酒店 / 服务机器人 | 公开 PDF | P0
+location: Robot Briefs Index!F42

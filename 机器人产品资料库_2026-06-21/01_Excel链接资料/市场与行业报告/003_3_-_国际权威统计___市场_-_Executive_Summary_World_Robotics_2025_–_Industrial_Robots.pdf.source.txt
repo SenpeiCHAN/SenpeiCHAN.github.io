@@ -1,0 +1,10 @@
+title: 3 - 国际权威统计 / 市场 - Executive Summary World Robotics 2025 – Industrial Robots
+source_type: excel
+category: 市场与行业报告
+original_url: https://ifr.org/img/worldrobotics/Executive_Summary_WR_2025_Industrial_Robots.pdf
+downloaded_url: https://ifr.org/img/worldrobotics/Executive_Summary_WR_2025_Industrial_Robots.pdf
+effective_url: https://ifr.org/img/worldrobotics/Executive_Summary_WR_2025_Industrial_Robots.pdf
+http_code: 200
+content_type: application/pdf
+context: 3 | 国际权威统计 / 市场 | Executive Summary World Robotics 2025 – Industrial Robots | International Federation of Robotics (IFR) | 2025 | https://ifr.org/img/worldrobotics/Executive_Summary_WR_2025_Industrial_Robots.pdf | 全球工业机器人安装量、地区分布、行业应用与机器人密度。 | 如果调研对象包含协作机器人、工厂机器人或人形机器人进入制造业，这份是基础参照。 | 用于比较“工业场景成熟度”与“服务场景商业化差异”。 | 工业机器人 / 协作机器人 | 公开 PDF 摘要；完整报告需购买 | P0
+location: Robot Briefs Index!F7

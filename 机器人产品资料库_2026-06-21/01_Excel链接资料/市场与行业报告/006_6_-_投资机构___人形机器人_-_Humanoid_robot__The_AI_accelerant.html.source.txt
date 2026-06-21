@@ -1,0 +1,10 @@
+title: 6 - 投资机构 / 人形机器人 - Humanoid robot: The AI accelerant
+source_type: excel
+category: 市场与行业报告
+original_url: https://www.goldmansachs.com/insights/goldman-sachs-research/global-automation-humanoid-robot-the-ai-accelerant
+downloaded_url: https://www.goldmansachs.com/insights/goldman-sachs-research/global-automation-humanoid-robot-the-ai-accelerant
+effective_url: https://www.goldmansachs.com/insights/goldman-sachs-research/global-automation-humanoid-robot-the-ai-accelerant
+http_code: 200
+content_type: text/html; charset=UTF-8
+context: 6 | 投资机构 / 人形机器人 | Humanoid robot: The AI accelerant | Goldman Sachs Research | 2024-02-26 | https://www.goldmansachs.com/insights/goldman-sachs-research/global-automation-humanoid-robot-the-ai-accelerant | 人形机器人市场规模、制造业劳动力缺口、养老需求替代潜力。 | 国际投行对人形机器人商业化的经典早期报告，适合做宏观假设。 | 用于研究“为什么资本认为人形机器人有机会成为新终端”。 | 人形机器人 / 养老 / 制造 | 公开摘要；PDF 为 redacted report | P0
+location: Robot Briefs Index!F10

@@ -1,0 +1,10 @@
+title: 27 - 学术 / Hospitality HRI - The Rise of Service Robots in the Hospitality Industry: Some Actionable Insights
+source_type: excel
+category: 企业与产品资料
+original_url: https://www.bu.edu/bhr/files/2021/10/BHR_Wan-Choi_-Service-Robots_OCT.21.docx.pdf
+downloaded_url: https://www.bu.edu/bhr/files/2021/10/BHR_Wan-Choi_-Service-Robots_OCT.21.docx.pdf
+effective_url: https://www.bu.edu/bhr/files/2021/10/BHR_Wan-Choi_-Service-Robots_OCT.21.docx.pdf
+http_code: 200
+content_type: application/pdf
+context: 27 | 学术 / Hospitality HRI | The Rise of Service Robots in the Hospitality Industry: Some Actionable Insights | Boston University Hospitality Review | 2021 | https://www.bu.edu/bhr/files/2021/10/BHR_Wan-Choi_-Service-Robots_OCT.21.docx.pdf | 酒店与餐饮服务机器人采用、消费者接受、疫情后非接触服务。 | 通俗但有行动建议，适合转化为产品调研简报语言。 | 用于写酒店机器人 adoption barriers 和服务流程重构。 | 酒店机器人 / 餐饮机器人 | 公开 PDF | P1
+location: Robot Briefs Index!F31

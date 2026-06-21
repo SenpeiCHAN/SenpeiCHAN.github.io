@@ -1,0 +1,10 @@
+title: 37 - 市场报告 / 协作机器人 - Collaborative Robots 2025–2045: Technologies, Players, and Markets
+source_type: excel
+category: 市场与行业报告
+original_url: https://www.idtechex.com/en/research-report/collaborative-robots-2025/1046
+downloaded_url: https://www.idtechex.com/en/research-report/collaborative-robots-2025/1046
+effective_url: https://www.idtechex.com/en/research-report/collaborative-robots-2025/1046
+http_code: 200
+content_type: text/html; Charset=UTF-8
+context: 37 | 市场报告 / 协作机器人 | Collaborative Robots 2025–2045: Technologies, Players, and Markets | IDTechEx | 2025 | https://www.idtechex.com/en/research-report/collaborative-robots-2025/1046 | 协作机器人技术、玩家、市场预测和行业应用。 | 国际商业报告，可补充中国资料之外的全球厂商和技术视角。 | 用于全球 cobot 市场与玩家参考。 | 协作机器人 | 公开摘要；完整报告付费 | P1
+location: Robot Briefs Index!F41

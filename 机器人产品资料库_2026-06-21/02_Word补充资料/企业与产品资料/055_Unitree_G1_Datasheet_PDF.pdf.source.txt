@@ -1,0 +1,10 @@
+title: Unitree G1 Datasheet PDF
+source_type: word_supplement
+category: 企业与产品资料
+original_url: https://www.roscomponents.com/wp-content/uploads/2024/11/G1-UNITREE-DATASHEET.pdf
+downloaded_url: https://www.roscomponents.com/wp-content/uploads/2024/11/G1-UNITREE-DATASHEET.pdf
+effective_url: https://www.roscomponents.com/wp-content/uploads/2024/11/G1-UNITREE-DATASHEET.pdf
+http_code: 200
+content_type: application/pdf
+context: 补充 Word 中竞品参数、硬件规格和产品对比表。
+location: 

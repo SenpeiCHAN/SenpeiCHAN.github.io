@@ -1,0 +1,10 @@
+title: 31 - 学术 / 中国酒店机器人 - 酒店机器人包容性服务定位对顾客公民行为的影响
+source_type: excel
+category: 企业与产品资料
+original_url: https://journal.bit.edu.cn/sk/cn/article/pdf/preview/10.15918/j.jbitss1009-3370.2024.1401.pdf
+downloaded_url: https://journal.bit.edu.cn/sk/cn/article/pdf/preview/10.15918/j.jbitss1009-3370.2024.1401.pdf
+effective_url: https://journal.bit.edu.cn/sk/cn/article/pdf/preview/10.15918/j.jbitss1009-3370.2024.1401.pdf
+http_code: 200
+content_type: application/pdf
+context: 31 | 学术 / 中国酒店机器人 | 酒店机器人包容性服务定位对顾客公民行为的影响 | 孙建鑫等，北京理工大学学报（社会科学版） | 2024 | https://journal.bit.edu.cn/sk/cn/article/pdf/preview/10.15918/j.jbitss1009-3370.2024.1401.pdf | 机器人包容性服务定位、社会认同、社会反应、顾客公民行为。 | 从服务设计角度看机器人如何被“定位”，比单纯技术功能更接近产品策略。 | 用于研究机器人角色：替代者、协作者、服务伙伴、品牌人格。 | 酒店机器人 / 服务设计 | 公开 PDF | P1
+location: Robot Briefs Index!F35

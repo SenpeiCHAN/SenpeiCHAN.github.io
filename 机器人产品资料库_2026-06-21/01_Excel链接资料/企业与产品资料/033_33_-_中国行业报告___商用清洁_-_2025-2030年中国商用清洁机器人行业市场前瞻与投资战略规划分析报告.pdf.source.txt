@@ -1,0 +1,10 @@
+title: 33 - 中国行业报告 / 商用清洁 - 2025-2030年中国商用清洁机器人行业市场前瞻与投资战略规划分析报告
+source_type: excel
+category: 企业与产品资料
+original_url: https://bg.qianzhan.com/report/downCatalogPDF?gid=2004131827080696
+downloaded_url: https://bg.qianzhan.com/report/downCatalogPDF?gid=2004131827080696
+effective_url: https://bg.qianzhan.com/report/downCatalogPDF?gid=2004131827080696
+http_code: 200
+content_type: application/pdf; charset=utf-8
+context: 33 | 中国行业报告 / 商用清洁 | 2025-2030年中国商用清洁机器人行业市场前瞻与投资战略规划分析报告 | 前瞻产业研究院 | 2026-06 | https://bg.qianzhan.com/report/downCatalogPDF?gid=2004131827080696 | 商用清洁机器人定义、分类、PEST、标准、产业链、投资策略目录。 | 清洁机器人是服务机器人中商业化最成熟的产品线之一，适合作为对照组。 | 用于分析“场景刚性 + 任务清晰 + ROI 可算”的机器人产品逻辑。 | 商用清洁机器人 | 公开目录 PDF；完整报告需购买 | P1
+location: Robot Briefs Index!F37

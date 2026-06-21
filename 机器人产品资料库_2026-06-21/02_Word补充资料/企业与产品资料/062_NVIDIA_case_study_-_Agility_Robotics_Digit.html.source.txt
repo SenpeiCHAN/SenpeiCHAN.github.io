@@ -1,0 +1,10 @@
+title: NVIDIA case study - Agility Robotics Digit
+source_type: word_supplement
+category: 企业与产品资料
+original_url: https://www.nvidia.com/en-us/case-studies/agility-robotics-digit-humanoid-robot/
+downloaded_url: https://www.nvidia.com/en-us/case-studies/agility-robotics-digit-humanoid-robot/
+effective_url: https://www.nvidia.com/en-us/case-studies/agility-robotics-digit-humanoid-robot/
+http_code: 200
+content_type: text/html; charset=UTF-8
+context: 补充 Word 中 Digit 技术栈、训练与部署材料。
+location: 

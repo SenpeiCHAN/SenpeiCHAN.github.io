@@ -1,0 +1,10 @@
+title: 16 - 中国调研简报 / 人形机器人 - 中国人形机器人行业调研简报 | 2025/02
+source_type: excel
+category: 企业与产品资料
+original_url: https://pdf.dfcfw.com/pdf/H3_AP202503201645173273_1.pdf
+downloaded_url: https://pdf.dfcfw.com/pdf/H3_AP202503201645173273_1.pdf
+effective_url: https://pdf.dfcfw.com/pdf/H3_AP202503201645173273_1.pdf
+http_code: 200
+content_type: application/pdf
+context: 16 | 中国调研简报 / 人形机器人 | 中国人形机器人行业调研简报 | 2025/02 | 头豹研究院 | 2025-03-20 | https://pdf.dfcfw.com/pdf/H3_AP202503201645173273_1.pdf | 人形机器人融资、零部件价值量、产业链代表企业、成本下降。 | “调研简报”形式短而密，适合直接复用到你的产品调研 brief。 | 用于列出关注企业、价值链、初期价格区间。 | 人形机器人 / 供应链 | 公开 PDF | P0
+location: Robot Briefs Index!F20

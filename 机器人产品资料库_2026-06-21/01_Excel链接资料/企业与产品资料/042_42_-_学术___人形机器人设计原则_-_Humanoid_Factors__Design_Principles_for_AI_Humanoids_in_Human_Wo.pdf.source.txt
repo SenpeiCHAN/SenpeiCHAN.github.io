@@ -1,0 +1,10 @@
+title: 42 - 学术 / 人形机器人设计原则 - Humanoid Factors: Design Principles for AI Humanoids in Human Worlds
+source_type: excel
+category: 企业与产品资料
+original_url: https://arxiv.org/abs/2602.10069
+downloaded_url: https://arxiv.org/pdf/2602.10069.pdf
+effective_url: https://arxiv.org/pdf/2602.10069
+http_code: 200
+content_type: application/pdf
+context: 42 | 学术 / 人形机器人设计原则 | Humanoid Factors: Design Principles for AI Humanoids in Human Worlds | Liu et al. | 2026 | https://arxiv.org/abs/2602.10069 | AI 人形机器人的 physical、cognitive、social、ethical 四类设计原则。 | 非常贴合智能交互设计：不仅看机器人性能，还看共存、信任、安全和伦理。 | 用于做人形机器人产品评估框架。 | 人形机器人 / HRI / 设计原则 | 开放 arXiv | P0
+location: Robot Briefs Index!F46

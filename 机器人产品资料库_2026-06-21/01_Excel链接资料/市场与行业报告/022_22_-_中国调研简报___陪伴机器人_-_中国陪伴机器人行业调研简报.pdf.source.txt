@@ -1,0 +1,10 @@
+title: 22 - 中国调研简报 / 陪伴机器人 - 中国陪伴机器人行业调研简报
+source_type: excel
+category: 市场与行业报告
+original_url: https://pdf.dfcfw.com/pdf/H3_AP202511171783151588_1.pdf?1763410009000.pdf=
+downloaded_url: https://pdf.dfcfw.com/pdf/H3_AP202511171783151588_1.pdf?1763410009000.pdf=
+effective_url: https://pdf.dfcfw.com/pdf/H3_AP202511171783151588_1.pdf?1763410009000.pdf=
+http_code: 200
+content_type: application/pdf
+context: 22 | 中国调研简报 / 陪伴机器人 | 中国陪伴机器人行业调研简报 | 头豹研究院 | 2025-11-17 | https://pdf.dfcfw.com/pdf/H3_AP202511171783151588_1.pdf?1763410009000.pdf= | 陪伴机器人定义、情感交互、养老、儿童教育、医疗康复、商业服务场景。 | 这是与你的 HRI / 智能交互设计最相关的细分方向之一。 | 用于研究情感交互、多模态感知、用户信任、隐私伦理。 | 陪伴机器人 / 社交机器人 / 养老 | 公开 PDF | P0
+location: Robot Briefs Index!F26

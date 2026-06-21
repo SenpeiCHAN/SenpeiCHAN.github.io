@@ -1,0 +1,3 @@
+title: 11 - 咨询公司 / 市场 - Robotics Outlook 2030: How Intelligence and Mobility Will Shape the Future of the Robotics Industry
+original_url: https://www.bcg.com/publications/2021/how-intelligence-and-mobility-will-shape-the-future-of-the-robotics-industry
+snapshot_method: r.jina.ai Markdown reader

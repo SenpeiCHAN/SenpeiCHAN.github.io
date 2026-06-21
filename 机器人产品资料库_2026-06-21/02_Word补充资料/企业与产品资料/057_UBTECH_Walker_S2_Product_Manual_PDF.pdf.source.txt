@@ -1,0 +1,10 @@
+title: UBTECH Walker S2 Product Manual PDF
+source_type: word_supplement
+category: 企业与产品资料
+original_url: https://cdn.robotshop.com/media/U/Ubt/RB-Ubt-37/pdf/ubtech-walker-s2-product%20manual.pdf
+downloaded_url: https://cdn.robotshop.com/media/U/Ubt/RB-Ubt-37/pdf/ubtech-walker-s2-product%20manual.pdf
+effective_url: https://cdn.robotshop.com/media/U/Ubt/RB-Ubt-37/pdf/ubtech-walker-s2-product%20manual.pdf
+http_code: 200
+content_type: application/pdf
+context: 补充 Word 中用户手册、产品功能和应用场景资料。
+location: 

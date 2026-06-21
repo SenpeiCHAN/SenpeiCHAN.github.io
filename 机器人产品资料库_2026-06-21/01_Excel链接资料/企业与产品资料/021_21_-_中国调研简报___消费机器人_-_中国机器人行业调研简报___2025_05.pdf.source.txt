@@ -1,0 +1,10 @@
+title: 21 - 中国调研简报 / 消费机器人 - 中国机器人行业调研简报 | 2025/05
+source_type: excel
+category: 企业与产品资料
+original_url: https://pdf.dfcfw.com/pdf/H3_AP202508181729933240_1.pdf?1755546294000.pdf=
+downloaded_url: https://pdf.dfcfw.com/pdf/H3_AP202508181729933240_1.pdf?1755546294000.pdf=
+effective_url: https://pdf.dfcfw.com/pdf/H3_AP202508181729933240_1.pdf?1755546294000.pdf=
+http_code: 200
+content_type: application/pdf
+context: 21 | 中国调研简报 / 消费机器人 | 中国机器人行业调研简报 | 2025/05 | 头豹研究院 | 2025-08-18 | https://pdf.dfcfw.com/pdf/H3_AP202508181729933240_1.pdf?1755546294000.pdf= | 扫地机器人“长出机械臂”、仿生机械臂、市场规模、落地可行性。 | 非常适合做“传统产品智能化 + 加硬件能力”的案例，对你的问题很有启发。 | 用于分析扫地机器人从清洁工具演化为家庭移动操作平台。 | 家用机器人 / 扫地机器人 / 机械臂 | 公开 PDF | P0
+location: Robot Briefs Index!F25

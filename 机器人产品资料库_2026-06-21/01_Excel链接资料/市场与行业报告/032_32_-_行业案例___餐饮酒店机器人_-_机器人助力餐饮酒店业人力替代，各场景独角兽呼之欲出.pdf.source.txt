@@ -1,0 +1,10 @@
+title: 32 - 行业案例 / 餐饮酒店机器人 - 机器人助力餐饮酒店业人力替代，各场景独角兽呼之欲出
+source_type: excel
+category: 市场与行业报告
+original_url: https://pdf.dfcfw.com/pdf/H3_AP202006181385787750_1.pdf?1592500973000.pdf=
+downloaded_url: https://pdf.dfcfw.com/pdf/H3_AP202006181385787750_1.pdf?1592500973000.pdf=
+effective_url: https://pdf.dfcfw.com/pdf/H3_AP202006181385787750_1.pdf?1592500973000.pdf=
+http_code: 200
+content_type: application/pdf
+context: 32 | 行业案例 / 餐饮酒店机器人 | 机器人助力餐饮酒店业人力替代，各场景独角兽呼之欲出 | 券商行业研究 / 东方财富 PDF 来源 | 2020-06-18 | https://pdf.dfcfw.com/pdf/H3_AP202006181385787750_1.pdf?1592500973000.pdf= | 餐饮配送机器人、酒店服务机器人、云迹科技、擎朗科技、优地科技等案例。 | 时间较早，但对餐饮酒店服务机器人的商业模式与 ROI 分析很直接。 | 用于做历史案例：为什么餐饮/酒店成为配送机器人早期落地场景。 | 餐饮机器人 / 酒店配送机器人 | 公开 PDF；数据需更新 | P2
+location: Robot Briefs Index!F36

@@ -1,0 +1,10 @@
+title: Unitree G1 official product page
+source_type: word_supplement
+category: 企业与产品资料
+original_url: https://www.unitree.com/g1
+downloaded_url: https://www.unitree.com/g1
+effective_url: https://www.unitree.com/g1/
+http_code: 200
+content_type: text/html
+context: 补充 Word 中 Unitree G1 竞品资料、参数与产品定位。
+location: 
