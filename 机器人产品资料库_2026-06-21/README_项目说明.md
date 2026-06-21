@@ -16,6 +16,7 @@
 - Word 文档没有直接链接，但抽取出“竞品调研、岗位解析、用户手册、场景验证、政策背景”等补充资料需求；据此补充 22 条资料源，19 条直接下载成功，1 条保存快照，2 条 Tesla 链接受限未能下载。
 - 当前资料库可用文件/快照共 68 个，约 104MB。
 - 文件类型：PDF 36 个，HTML 网页快照 26 个，Markdown 受限页快照 6 个。
+- 2026-06-21 追加：已将 26 个 HTML 网页快照全部转换为同目录 PDF，原 HTML 文件保留不变；转换结果记录在 `_metadata/html_to_pdf_results.csv` 和 `_metadata/html_to_pdf_results.json`。
 
 ## 二、目录结构
 
@@ -67,6 +68,8 @@
 - `_metadata/combined_download_manifest.json`：Excel 链接 + Word 补充资料源合并清单。
 - `_metadata/download_results.csv`：最适合人工查看的下载结果表。
 - `_metadata/download_results.json`：完整机器可读结果，包含保存路径、失败原因、快照说明。
+- `_metadata/html_to_pdf_results.csv`：HTML 转 PDF 的结果表，包含页数、大小、源 HTML 和生成 PDF 路径。
+- `_metadata/html_to_pdf_results.json`：HTML 转 PDF 的完整机器可读结果。
 
 ## 六、建议使用方式
 
