@@ -14,3 +14,13 @@ docs/
 personal-*.html
 pig*.html
 .vercel
+__pycache__/
+*.py[cod]
+*.zip
+translation_cache.json
+_lace_debug/
+figma_assets/
+pink_white_gradient_style.py
+selective_people_gradient_black_output.py
+selective_people_gradient_style.py
+stylize_zhucun_images.py
