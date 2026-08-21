@@ -87,7 +87,7 @@ export const researchQuestions = [
   {
     title: {
       zh: "人与智能硬件设备的交互",
-      en: "People and smart hardware",
+      en: "Human-smart hardware",
     },
     body: {
       zh: "我关注动作、触感和物理反馈如何让设备更容易理解。比起把所有操作放进屏幕，我更想知道：旋转、拍打、握持或移动能否成为准确而自然的输入。",
@@ -97,7 +97,7 @@ export const researchQuestions = [
   {
     title: {
       zh: "人与 AI 的交互",
-      en: "People and AI",
+      en: "Human-AI",
     },
     body: {
       zh: "我在意 AI 如何被人看见、理解和修正。研究重点不是隐藏模型，而是让识别结果、出错范围和反馈过程变得可感知，让人知道系统正在做什么。",
