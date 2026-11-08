@@ -1,8 +1,8 @@
 import { localePath, profile, type Locale } from "@/content/site";
 
 const labels = {
-  zh: { work: "项目", about: "关于", documents: "资料", contact: "联系", locale: "EN" },
-  en: { work: "Work", about: "About", documents: "Documents", contact: "Contact", locale: "中文" },
+  zh: { work: "项目", about: "关于", documents: "资料", study: "学习", contact: "联系", locale: "EN" },
+  en: { work: "Work", about: "About", documents: "Documents", study: "Study", contact: "Contact", locale: "中文" },
 };
 
 export function SiteHeader({ locale, path = "" }: { locale: Locale; path?: string }) {
@@ -20,6 +20,7 @@ export function SiteHeader({ locale, path = "" }: { locale: Locale; path?: strin
         <a href={localePath(locale, "/work")}>{labels[locale].work}</a>
         <a href={localePath(locale, "/about")}>{labels[locale].about}</a>
         <a href={localePath(locale, "/documents")}>{labels[locale].documents}</a>
+        <a href="/zhixu/">{labels[locale].study}</a>
         <a className="header-contact" href={`mailto:${profile.email}`}>{labels[locale].contact}</a>
         <a className="locale-switch" href={switchPath}>
           {labels[locale].locale}
