@@ -1,0 +1,6795 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>知序 · 学习工作台</title>
+  <meta name="description" content="知序 · 学习工作台：把学习目标拆成项目、阶段与任务，记录论文、投稿与每日复盘。">
+  <meta name="theme-color" content="#7d6b91">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%237d6b91'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='white' font-family='PingFang SC,Microsoft YaHei,sans-serif'%3E%E5%BA%8F%3C/text%3E%3C/svg%3E">
+
+  <style>
+    :root {
+      --primary: #7d6b91;
+      --primary-dark: #625471;
+      --primary-light: #a99bb8;
+      --lavender: #d8cfdf;
+      --lavender-soft: #eee9f1;
+
+      --background: #f5f2f4;
+      --surface: #fbf9fa;
+      --surface-strong: #ffffff;
+      --surface-muted: #e9e3e7;
+
+      --text: #403a42;
+      --text-muted: #777078;
+      --line: #dcd4da;
+
+      --success: #829486;
+      --warning: #b09a78;
+      --danger: #a9787d;
+
+      --shadow: 0 10px 30px rgba(80, 67, 88, 0.08);
+      --radius: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(216, 207, 223, 0.5), transparent 35%),
+        radial-gradient(circle at top right, rgba(169, 155, 184, 0.2), transparent 30%),
+        var(--background);
+      font-family:
+        Inter, "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC",
+        system-ui, -apple-system, sans-serif;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.55;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      padding: 11px 13px;
+      outline: none;
+      transition: 0.2s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 4px rgba(125, 107, 145, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    label {
+      display: block;
+    }
+
+    .app-shell {
+      min-height: 100vh;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 15px 24px;
+      background: rgba(245, 242, 244, 0.88);
+      border-bottom: 1px solid rgba(220, 212, 218, 0.9);
+      backdrop-filter: blur(16px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      color: white;
+      background: linear-gradient(145deg, var(--primary), var(--primary-light));
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      font-size: 20px;
+    }
+
+    .brand-title {
+      font-weight: 900;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-subtitle {
+      margin-top: 2px;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-button {
+      width: auto;
+      min-width: max-content;
+      padding: 9px 13px;
+      color: var(--text-muted);
+      background: transparent;
+      border: 0;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+
+    .nav-button:hover,
+    .nav-button.active {
+      color: var(--primary-dark);
+      background: var(--lavender-soft);
+    }
+
+    .container {
+      width: min(1440px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 26px 0 60px;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+      animation: fade-in 0.22s ease;
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .page-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .page-title {
+      margin: 0;
+      color: var(--primary-dark);
+      font-size: clamp(25px, 4vw, 34px);
+      font-weight: 900;
+    }
+
+    .page-description {
+      max-width: 780px;
+      margin: 7px 0 0;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .card {
+      background: rgba(251, 249, 250, 0.92);
+      border: 1px solid rgba(220, 212, 218, 0.9);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .card-padding {
+      padding: 20px;
+    }
+
+    .card-title {
+      margin: 0 0 5px;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .card-description,
+    .muted {
+      color: var(--text-muted);
+    }
+
+    .card-description {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.7fr);
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 11px;
+    }
+
+    .col-12 {
+      grid-column: span 12;
+    }
+
+    .col-8 {
+      grid-column: span 8;
+    }
+
+    .col-6 {
+      grid-column: span 6;
+    }
+
+    .col-4 {
+      grid-column: span 4;
+    }
+
+    .col-3 {
+      grid-column: span 3;
+    }
+
+    .field-name {
+      margin-bottom: 6px;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .button {
+      width: auto;
+      padding: 10px 15px;
+      color: var(--text);
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      font-weight: 800;
+      transition: 0.18s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: var(--primary-light);
+    }
+
+    .button-primary {
+      color: white;
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .button-soft {
+      color: var(--primary-dark);
+      background: var(--lavender-soft);
+      border-color: var(--lavender);
+    }
+
+    .button-success {
+      color: white;
+      background: var(--success);
+      border-color: var(--success);
+    }
+
+    .button-danger {
+      color: var(--danger);
+      background: rgba(169, 120, 125, 0.1);
+      border-color: rgba(169, 120, 125, 0.22);
+    }
+
+    .button-small {
+      padding: 7px 10px;
+      border-radius: 10px;
+      font-size: 12px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .full-width {
+      width: 100%;
+    }
+
+    .stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    .section-gap {
+      margin-top: 18px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .stat {
+      padding: 17px;
+      background: rgba(251, 249, 250, 0.9);
+      border: 1px solid var(--line);
+      border-radius: 17px;
+    }
+
+    .stat-label {
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .stat-value {
+      margin-top: 7px;
+      color: var(--primary-dark);
+      font-size: 27px;
+      font-weight: 900;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 5px 9px;
+      color: var(--primary-dark);
+      background: var(--lavender-soft);
+      border: 1px solid rgba(169, 155, 184, 0.22);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .pill-success {
+      color: #526556;
+      background: rgba(130, 148, 134, 0.14);
+    }
+
+    .pill-warning {
+      color: #796547;
+      background: rgba(176, 154, 120, 0.15);
+    }
+
+    .pill-danger {
+      color: #865a60;
+      background: rgba(169, 120, 125, 0.14);
+    }
+
+    .list-item {
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 15px;
+    }
+
+    .list-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .list-title {
+      font-weight: 900;
+      line-height: 1.45;
+    }
+
+    .list-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 9px;
+    }
+
+    .empty {
+      padding: 26px 15px;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.45);
+      border: 1px dashed var(--line);
+      border-radius: 15px;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .project-layout {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.65fr) minmax(0, 1.35fr);
+      gap: 18px;
+    }
+
+    .entity-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .entity-card::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 4px;
+      background: var(--primary-light);
+      content: "";
+    }
+
+    .progress {
+      height: 8px;
+      overflow: hidden;
+      background: var(--surface-muted);
+      border-radius: 999px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      border-radius: inherit;
+      transition: width 0.3s ease;
+    }
+
+    .waterfall {
+      column-count: 3;
+      column-gap: 15px;
+    }
+
+    .task-card {
+      display: inline-block;
+      width: 100%;
+      margin: 0 0 15px;
+      padding: 17px;
+      overflow: hidden;
+      background: rgba(251, 249, 250, 0.96);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(80, 67, 88, 0.07);
+      break-inside: avoid;
+    }
+
+    .task-card.active-task {
+      border: 2px solid var(--primary);
+    }
+
+    .task-card.done-task {
+      opacity: 0.68;
+    }
+
+    .task-title {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 900;
+      line-height: 1.45;
+    }
+
+    .task-notes {
+      margin: 12px 0;
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.65;
+      white-space: pre-wrap;
+    }
+
+    .filter-bar {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .divider {
+      height: 1px;
+      margin: 17px 0;
+      background: var(--line);
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 90px minmax(0, 1fr);
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .timeline-time {
+      color: var(--primary-dark);
+      font-weight: 900;
+    }
+
+    .review-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .review-item {
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+
+    .review-item h3 {
+      margin: 0 0 6px;
+    }
+
+    .review-content {
+      margin-top: 8px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .file-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+      padding: 10px 15px;
+      color: var(--primary-dark);
+      background: var(--lavender-soft);
+      border: 1px solid var(--lavender);
+      border-radius: 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .footer-note {
+      margin-top: 22px;
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    @media (max-width: 1050px) {
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        width: 100%;
+      }
+
+      .dashboard-grid,
+      .project-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .waterfall {
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .topbar {
+        padding: 13px 16px;
+      }
+
+      .container {
+        width: min(100% - 22px, 1440px);
+        padding-top: 18px;
+      }
+
+      .page-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .stats,
+      .grid-2,
+      .grid-3,
+      .filter-bar {
+        grid-template-columns: 1fr;
+      }
+
+      .waterfall {
+        column-count: 1;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .col-12,
+      .col-8,
+      .col-6,
+      .col-4,
+      .col-3 {
+        grid-column: span 1;
+      }
+
+      .timeline-item {
+        grid-template-columns: 75px minmax(0, 1fr);
+      }
+    }
+/* ===== 打卡区域：紫色系莫兰迪主题 ===== */
+
+/* 打卡卡片与下方统计卡片拉开距离 */
+#section-dashboard .checkin-morandi-card {
+  margin-bottom: 24px !important;
+}
+
+/* 避免原有样式抵消间距 */
+#section-dashboard .checkin-morandi-card + .stats {
+  margin-top: 0 !important;
+}
+
+/* 打卡区域内的按钮 */
+#section-dashboard .checkin-start-button,
+#section-dashboard .checkin-end-button,
+#section-dashboard .checkin-leave-button {
+  border: 1px solid transparent !important;
+  color: #ffffff !important;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease !important;
+}
+
+/* 开始工作 */
+#section-dashboard .checkin-start-button {
+  background: #81708f !important;
+  border-color: #81708f !important;
+  box-shadow: 0 10px 24px rgba(98, 84, 113, 0.18) !important;
+}
+
+#section-dashboard .checkin-start-button:hover:not(:disabled) {
+  background: #70617e !important;
+  border-color: #70617e !important;
+  box-shadow: 0 12px 28px rgba(98, 84, 113, 0.24) !important;
+  transform: translateY(-1px);
+}
+
+/* 结束工作 */
+#section-dashboard .checkin-end-button {
+  background: #9b8da5 !important;
+  border-color: #9b8da5 !important;
+  box-shadow: 0 10px 24px rgba(98, 84, 113, 0.14) !important;
+}
+
+#section-dashboard .checkin-end-button:hover:not(:disabled) {
+  background: #897b94 !important;
+  border-color: #897b94 !important;
+  transform: translateY(-1px);
+}
+
+/* 按钮不可用状态 */
+#section-dashboard .checkin-start-button:disabled,
+#section-dashboard .checkin-end-button:disabled {
+  background: #c9c0ce !important;
+  border-color: #c9c0ce !important;
+  color: rgba(255, 255, 255, 0.92) !important;
+  box-shadow: none !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+/* 请假按钮 */
+#section-dashboard .checkin-leave-button {
+  background: #927da3 !important;
+  border-color: #927da3 !important;
+  box-shadow: 0 10px 24px rgba(98, 84, 113, 0.18) !important;
+}
+
+#section-dashboard .checkin-leave-button:hover:not(:disabled) {
+  background: #7d698e !important;
+  border-color: #7d698e !important;
+  box-shadow: 0 12px 28px rgba(98, 84, 113, 0.24) !important;
+  transform: translateY(-1px);
+}
+
+/* 请假类别下拉框 */
+#section-dashboard .checkin-leave-select {
+  background: #faf8fb !important;
+  color: #514759 !important;
+  border: 1px solid #cec5d3 !important;
+  box-shadow: none !important;
+}
+
+#section-dashboard .checkin-leave-select:hover {
+  border-color: #a99bb8 !important;
+}
+
+#section-dashboard .checkin-leave-select:focus {
+  border-color: #81708f !important;
+  outline: none !important;
+  box-shadow: 0 0 0 4px rgba(125, 107, 145, 0.13) !important;
+}
+
+/* “今日尚未开始工作”等状态文字 */
+#section-dashboard .checkin-status-morandi {
+  color: #7d6b91 !important;
+}
+/* ==================================================
+   项目看板：项目—阶段—任务横向时间轴
+   ================================================== */
+
+.workflow-timeline-card {
+  margin-bottom: 24px;
+  overflow: visible;
+}
+
+.workflow-timeline-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.workflow-timeline-header .card-title {
+  margin-bottom: 6px;
+}
+
+.workflow-timeline-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px 14px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.workflow-timeline-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.timeline-legend-mark {
+  display: inline-block;
+  width: 22px;
+  height: 8px;
+  border-radius: 999px;
+}
+
+.timeline-legend-active {
+  background: #7d6b91;
+  box-shadow: 0 3px 8px rgba(98, 84, 113, 0.2);
+}
+
+.timeline-legend-done {
+  background: #7d6b91;
+  opacity: 0.38;
+}
+
+.timeline-legend-dot,
+.timeline-legend-overdue {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.timeline-legend-dot {
+  background: #7183a1;
+  box-shadow: 0 0 0 3px rgba(113, 131, 161, 0.14);
+}
+
+.timeline-legend-overdue {
+  background: #ffffff;
+  border: 2px solid #a97888;
+}
+
+/* 横向滚动区域 */
+.workflow-timeline-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2px 2px 12px;
+  scrollbar-color: #b8aabe #eee9f1;
+  scrollbar-width: thin;
+}
+
+.workflow-timeline-scroll::-webkit-scrollbar {
+  height: 9px;
+}
+
+.workflow-timeline-scroll::-webkit-scrollbar-track {
+  background: #eee9f1;
+  border-radius: 999px;
+}
+
+.workflow-timeline-scroll::-webkit-scrollbar-thumb {
+  background: #b8aabe;
+  border-radius: 999px;
+}
+
+.workflow-timeline-scroll::-webkit-scrollbar-thumb:hover {
+  background: #9987a5;
+}
+
+.workflow-timeline-canvas {
+  position: relative;
+  min-height: 150px;
+  color: var(--text);
+}
+
+/* 顶部日期刻度 */
+.workflow-timeline-axis {
+  position: relative;
+  height: 42px;
+  border-bottom: 1px solid #ded6e1;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(238, 233, 241, 0.42),
+      rgba(251, 249, 250, 0)
+    );
+}
+
+.workflow-timeline-axis-label {
+  position: absolute;
+  top: 8px;
+  z-index: 4;
+  color: #746b78;
+  font-size: 11px;
+  line-height: 1;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.workflow-timeline-axis-tick {
+  position: absolute;
+  top: 28px;
+  bottom: 0;
+  width: 1px;
+  background: #cfc5d2;
+}
+
+/* 贯穿内容的日期辅助线 */
+.workflow-timeline-grid-line {
+  position: absolute;
+  top: 42px;
+  bottom: 0;
+  z-index: 0;
+  width: 1px;
+  pointer-events: none;
+  background: rgba(125, 107, 145, 0.09);
+}
+
+/* 今天竖线 */
+.workflow-timeline-today {
+  position: absolute;
+  top: 28px;
+  bottom: 0;
+  z-index: 7;
+  width: 2px;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    #a97888,
+    rgba(169, 120, 136, 0.28)
+  );
+  box-shadow: 0 0 0 1px rgba(169, 120, 136, 0.06);
+}
+
+.workflow-timeline-today-label {
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  padding: 3px 7px;
+  color: #ffffff;
+  background: #a97888;
+  border-radius: 999px;
+  font-size: 10px;
+  line-height: 1;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+/* 每个项目占一行 */
+.workflow-timeline-project-row {
+  position: relative;
+  z-index: 1;
+  min-height: 100px;
+  border-bottom: 1px dashed rgba(125, 107, 145, 0.14);
+}
+
+.workflow-timeline-project-row:last-child {
+  border-bottom: 0;
+}
+
+/* 项目名称 */
+.workflow-timeline-project-label {
+  position: absolute;
+  z-index: 5;
+  top: 9px;
+  min-width: 0;
+  max-width: 320px;
+  overflow: hidden;
+  color: var(--tl-color, #7d6b91);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.workflow-timeline-project-label small {
+  margin-left: 6px;
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 500;
+}
+
+/* 项目背景长条 */
+.workflow-timeline-project-bar {
+  position: absolute;
+  z-index: 1;
+  top: 31px;
+  min-width: 8px;
+  border: 1px solid color-mix(
+    in srgb,
+    var(--tl-color, #7d6b91) 30%,
+    transparent
+  );
+  border-radius: 13px;
+  background: color-mix(
+    in srgb,
+    var(--tl-color, #7d6b91) 16%,
+    #ffffff
+  );
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+}
+
+/* 阶段名称 */
+.workflow-timeline-stage-label {
+  position: absolute;
+  z-index: 5;
+  min-width: 0;
+  max-width: 240px;
+  overflow: hidden;
+  color: #5e5464;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transform: translateY(-100%);
+}
+
+/* 阶段细条 */
+.workflow-timeline-stage-bar {
+  position: absolute;
+  z-index: 3;
+  min-width: 6px;
+  height: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  border-radius: 999px;
+  background: var(--tl-color, #7d6b91);
+  box-shadow: 0 4px 10px rgba(98, 84, 113, 0.15);
+}
+
+/* 已完成统一变虚，并显示完成感 */
+.workflow-timeline-project-bar.is-done,
+.workflow-timeline-stage-bar.is-done {
+  opacity: 0.4;
+  filter: saturate(0.7);
+}
+
+.workflow-timeline-project-label.is-done,
+.workflow-timeline-stage-label.is-done {
+  opacity: 0.5;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+/* 未开始稍浅，进行中最清楚 */
+.workflow-timeline-project-bar.is-todo,
+.workflow-timeline-stage-bar.is-todo {
+  opacity: 0.67;
+}
+
+.workflow-timeline-project-bar.is-active,
+.workflow-timeline-stage-bar.is-active {
+  opacity: 1;
+}
+
+/* 任务圆点 */
+.workflow-timeline-task-dot {
+  position: absolute;
+  z-index: 8;
+  width: 11px;
+  height: 11px;
+  padding: 0;
+  cursor: pointer;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  outline: none;
+  background: var(--tl-color, #7d6b91);
+  box-shadow:
+    0 0 0 2px color-mix(
+      in srgb,
+      var(--tl-color, #7d6b91) 25%,
+      transparent
+    ),
+    0 4px 9px rgba(75, 62, 84, 0.2);
+  transform: translate(-50%, -50%);
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease,
+    opacity 0.16s ease;
+}
+
+.workflow-timeline-task-dot:hover,
+.workflow-timeline-task-dot:focus-visible {
+  z-index: 12;
+  transform: translate(-50%, -50%) scale(1.35);
+  box-shadow:
+    0 0 0 4px color-mix(
+      in srgb,
+      var(--tl-color, #7d6b91) 20%,
+      transparent
+    ),
+    0 7px 16px rgba(75, 62, 84, 0.26);
+}
+
+/* 已完成任务圆点变虚 */
+.workflow-timeline-task-dot.is-done {
+  opacity: 0.42;
+  filter: saturate(0.65);
+}
+
+/* 逾期未完成：红紫色外圈 */
+.workflow-timeline-task-dot.is-overdue {
+  border-color: #fff7f8;
+  background: #a97888;
+  box-shadow:
+    0 0 0 3px rgba(169, 120, 136, 0.26),
+    0 5px 12px rgba(169, 120, 136, 0.25);
+}
+
+/* 鼠标悬浮气泡 */
+.workflow-timeline-tooltip {
+  position: fixed;
+  z-index: 99999;
+  width: max-content;
+  max-width: min(310px, calc(100vw - 28px));
+  padding: 12px 14px;
+  pointer-events: none;
+  color: #ffffff;
+  background: rgba(65, 55, 72, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 12px;
+  box-shadow: 0 14px 34px rgba(52, 42, 58, 0.25);
+  font-size: 12px;
+  line-height: 1.55;
+  backdrop-filter: blur(8px);
+}
+
+.workflow-timeline-tooltip[hidden] {
+  display: none;
+}
+
+.workflow-timeline-tooltip-title {
+  margin-bottom: 6px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.workflow-timeline-tooltip-row {
+  color: rgba(255, 255, 255, 0.83);
+}
+
+.workflow-timeline-tooltip-note {
+  max-width: 280px;
+  margin-top: 7px;
+  padding-top: 7px;
+  overflow-wrap: anywhere;
+  color: rgba(255, 255, 255, 0.72);
+  border-top: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.timeline-empty {
+  padding: 26px 16px;
+  color: var(--text-muted);
+  background: rgba(238, 233, 241, 0.55);
+  border: 1px dashed #cfc4d3;
+  border-radius: 14px;
+  text-align: center;
+  font-size: 13px;
+}
+
+@media (max-width: 760px) {
+  .workflow-timeline-header {
+    flex-direction: column;
+  }
+
+  .workflow-timeline-legend {
+    justify-content: flex-start;
+  }
+
+  .workflow-timeline-project-label {
+    max-width: 220px;
+  }
+}
+/* ===== 项目时间轴宽度与内部滚动修复 ===== */
+
+/* 防止时间轴把整个页面撑宽 */
+#section-workflow,
+#section-workflow .page-header,
+#section-workflow .project-layout {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* 时间轴外面的白色卡片 */
+#section-workflow .workflow-timeline-card {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* 只有这个区域可以横向滚动 */
+#workflowTimelineScroll {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-gutter: stable;
+  overscroll-behavior-x: contain;
+  padding-bottom: 8px;
+}
+
+/* 时间轴本身可以比白框宽，但不能撑宽页面 */
+#workflowTimelineCanvas {
+  display: block;
+  max-width: none;
+  flex: none;
+}
+
+/* 时间轴内部的小滚动条 */
+#workflowTimelineScroll::-webkit-scrollbar {
+  height: 10px;
+}
+
+#workflowTimelineScroll::-webkit-scrollbar-track {
+  background: #eee9f1;
+  border-radius: 999px;
+}
+
+#workflowTimelineScroll::-webkit-scrollbar-thumb {
+  background: #a99bb8;
+  border: 2px solid #eee9f1;
+  border-radius: 999px;
+}
+
+#workflowTimelineScroll::-webkit-scrollbar-thumb:hover {
+  background: #7d6b91;
+}
+
+/* Firefox 的滚动条颜色 */
+#workflowTimelineScroll {
+  scrollbar-width: thin;
+  scrollbar-color: #a99bb8 #eee9f1;
+}
+    /* ===== 登录页 ===== */
+    body.locked {
+      overflow: hidden;
+    }
+
+    .login-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 18% 10%, rgba(216, 207, 223, 0.7), transparent 44%),
+        radial-gradient(circle at 84% 90%, rgba(169, 155, 184, 0.38), transparent 46%),
+        linear-gradient(158deg, #f7f4f6 0%, #efeaf3 100%);
+      transition: opacity 0.38s ease, visibility 0.38s ease;
+    }
+
+    .login-screen::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(125, 107, 145, 0.16) 1px, transparent 1px);
+      background-size: 26px 26px;
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .login-screen-hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .login-card {
+      position: relative;
+      width: min(408px, 100%);
+      padding: 38px 34px 30px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 28px;
+      box-shadow:
+        0 32px 80px rgba(80, 67, 88, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(18px);
+      text-align: center;
+      animation: loginRise 0.5s ease both;
+    }
+
+    .login-logo {
+      display: grid;
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 16px;
+      place-items: center;
+      color: white;
+      background: linear-gradient(150deg, #7d6b91, #a99bb8);
+      border-radius: 22px;
+      box-shadow: 0 14px 30px rgba(125, 107, 145, 0.35);
+      font-size: 30px;
+      font-weight: 900;
+    }
+
+    .login-name {
+      margin: 0;
+      color: #403a42;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+    }
+
+    .login-sub {
+      margin: 7px 0 26px;
+      color: #8a828c;
+      font-size: 12px;
+      letter-spacing: 0.3em;
+    }
+
+    .login-form {
+      display: grid;
+      gap: 14px;
+      text-align: left;
+    }
+
+    .login-label {
+      display: block;
+      margin-bottom: 6px;
+      color: #777078;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .login-field input {
+      width: 100%;
+      padding: 13px 15px;
+      color: #403a42;
+      background: #fbf9fa;
+      border: 1px solid #dcd4da;
+      border-radius: 14px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .login-field input:focus {
+      border-color: #a99bb8;
+      box-shadow: 0 0 0 4px rgba(169, 155, 184, 0.18);
+    }
+
+    .login-field input[readonly] {
+      color: #8a828c;
+      background: #f1edf1;
+    }
+
+    .login-password {
+      position: relative;
+      display: block;
+    }
+
+    .login-password input {
+      padding-right: 58px;
+      letter-spacing: 0.18em;
+    }
+
+    .login-eye {
+      position: absolute;
+      top: 50%;
+      right: 6px;
+      display: grid;
+      width: 42px;
+      height: 34px;
+      padding: 0;
+      place-items: center;
+      color: #8a828c;
+      background: transparent;
+      border: 0;
+      border-radius: 10px;
+      transform: translateY(-50%);
+      font-family: inherit;
+      font-size: 11.5px;
+      font-weight: 800;
+    }
+
+    .login-eye:hover {
+      color: #625471;
+      background: #eee9f1;
+    }
+
+    .login-error {
+      min-height: 18px;
+      margin: 0;
+      color: var(--danger);
+      font-size: 12.5px;
+    }
+
+    .login-submit {
+      width: 100%;
+      margin-top: 4px;
+      padding: 14px 18px;
+      color: white;
+      background: linear-gradient(145deg, #7d6b91, #8f7fa4);
+      border: 0;
+      border-radius: 15px;
+      box-shadow: 0 14px 30px rgba(125, 107, 145, 0.28);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+    }
+
+    .login-submit:hover {
+      box-shadow: 0 18px 36px rgba(125, 107, 145, 0.34);
+      transform: translateY(-1px);
+    }
+
+    .login-submit:active {
+      transform: translateY(0);
+    }
+
+    .login-foot {
+      margin: 22px 0 0;
+      color: #9a939d;
+      font-size: 11.5px;
+      line-height: 1.7;
+    }
+
+    .login-card.shake {
+      animation: loginShake 0.4s ease;
+    }
+
+    @keyframes loginRise {
+      from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.985);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes loginShake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-7px); }
+      40% { transform: translateX(6px); }
+      60% { transform: translateX(-4px); }
+      80% { transform: translateX(3px); }
+    }
+
+    /* ===== 顶栏状态与退出 ===== */
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+      min-width: max-content;
+    }
+
+    .button-small {
+      padding: 7px 13px;
+      font-size: 12px;
+      border-radius: 11px;
+    }
+
+    .cloud-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 11px;
+      color: #777078;
+      background: rgba(233, 227, 231, 0.7);
+      border: 1px solid rgba(220, 212, 218, 0.9);
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 11.5px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .cloud-chip::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #b9b0bb;
+    }
+
+    .cloud-chip[data-state="synced"]::before {
+      background: #829486;
+    }
+
+    .cloud-chip[data-state="syncing"]::before,
+    .cloud-chip[data-state="dirty"]::before {
+      background: #b09a78;
+      animation: cloudPulse 1.1s ease-in-out infinite;
+    }
+
+    .cloud-chip[data-state="error"]::before {
+      background: #a9787d;
+    }
+
+    .cloud-chip:hover {
+      background: var(--lavender-soft);
+    }
+
+    @keyframes cloudPulse {
+      0%, 100% { opacity: 0.45; }
+      50% { opacity: 1; }
+    }
+
+    /* ===== 云端同步设置卡 ===== */
+    .cloud-card {
+      margin-top: 20px;
+    }
+
+    .cloud-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .cloud-badge {
+      padding: 5px 10px;
+      color: #777078;
+      background: #eee9f1;
+      border: 1px solid #dcd4da;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .cloud-badge[data-state="on"] {
+      color: #5c6f61;
+      background: #e8efe9;
+      border-color: #cdd9cf;
+    }
+
+    .cloud-badge[data-state="err"] {
+      color: #8d5f63;
+      background: #f3e7e8;
+      border-color: #e2cdcf;
+    }
+
+    .cloud-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .cloud-actions .button,
+    .cloud-actions .file-label {
+      width: auto;
+    }
+
+    .cloud-tip {
+      margin: 0;
+      padding: 12px 14px;
+      color: var(--text-muted);
+      background: rgba(238, 233, 241, 0.6);
+      border: 1px solid rgba(220, 212, 218, 0.8);
+      border-radius: 13px;
+      font-size: 12px;
+      line-height: 1.75;
+    }
+
+    .cloud-tip code {
+      padding: 1px 5px;
+      color: var(--primary-dark);
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 5px;
+      font-size: 11.5px;
+    }
+
+    .cloud-account {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .cloud-account img {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+    }
+
+    .cloud-hint {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 760px) {
+      .topbar {
+        flex-wrap: wrap;
+      }
+
+      .topbar-actions {
+        margin-left: 0;
+      }
+
+      .login-card {
+        padding: 30px 24px 24px;
+      }
+    }  </style>
+</head>
+
+<body class="locked">
+  <!-- 登录屏 -->
+  <div id="loginScreen" class="login-screen" role="dialog" aria-modal="true" aria-label="登录知序学习工作台">
+    <div class="login-card" id="loginCard">
+      <div class="login-logo">序</div>
+      <h1 class="login-name">知序</h1>
+      <p class="login-sub">学习工作台</p>
+
+      <form id="loginForm" class="login-form" autocomplete="on">
+        <label class="login-field">
+          <span class="login-label">账号</span>
+          <input id="loginAccount" type="text" value="senpeichen" autocomplete="username" readonly aria-readonly="true" tabindex="-1">
+        </label>
+
+        <label class="login-field">
+          <span class="login-label">密码</span>
+          <span class="login-password">
+            <input id="loginPassword" type="password" placeholder="请输入访问密码" autocomplete="current-password" required>
+            <button id="togglePassword" class="login-eye" type="button" aria-label="显示密码">显示</button>
+          </span>
+        </label>
+
+        <p id="loginError" class="login-error" role="alert"></p>
+
+        <button id="loginSubmit" class="login-submit" type="submit">进入工作台</button>
+      </form>
+
+      <p class="login-foot">个人学习空间 · 记录保存在本浏览器，可在设置中开启云端同步</p>
+    </div>
+  </div>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">序</div>
+        <div>
+          <div class="brand-title">知序 · 学习工作台</div>
+          <div class="brand-subtitle">学习 · 项目 · 复盘</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="主导航">
+        <button class="nav-button active" data-section="dashboard">总览首页</button>
+        <button class="nav-button" data-section="workflow">项目看板</button>
+        <button class="nav-button" data-section="thesis">论文进度</button>
+        <button class="nav-button" data-section="submission">投稿与参赛</button>
+        <button class="nav-button" data-section="review">每日复盘</button>
+        <button class="nav-button" data-section="settings">数据管理</button>
+      </nav>
+
+      <div class="topbar-actions">
+        <button id="cloudStatus" class="cloud-chip" type="button" data-state="off" title="点击进入数据管理">本地保存</button>
+        <button id="logoutButton" class="button button-small" type="button">退出</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- 总览首页 -->
+      <section id="section-dashboard" class="section active">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">今日总览</h1>
+            <p id="todayText" class="page-description"></p>
+          </div>
+
+          <button class="button button-soft" data-go="workflow">
+            进入项目看板
+          </button>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-label">进行中的项目</div>
+            <div id="statProjects" class="stat-value">0</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-label">本周阶段</div>
+            <div id="statStages" class="stat-value">0</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-label">今日待执行</div>
+            <div id="statTodayTasks" class="stat-value">0</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-label">今日专注</div>
+            <div id="statFocus" class="stat-value">0 分钟</div>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="stack">
+            <div class="card card-padding">
+              <h2 class="card-title">今日执行</h2>
+              <p class="card-description">
+                包含安排到今天、今天截止以及正在进行的任务。
+              </p>
+
+              <div class="divider"></div>
+
+              <div class="form-grid">
+                <div class="col-8">
+                  <label>
+                    <div class="field-name">临时任务</div>
+                    <input id="quickTaskTitle" placeholder="例如：整理课堂笔记">
+                  </label>
+                </div>
+
+                <div class="col-4">
+                  <label>
+                    <div class="field-name">预计用时（分钟）</div>
+                    <input id="quickTaskMinutes" type="number" min="0" value="30">
+                  </label>
+                </div>
+
+                <div class="col-12">
+                  <button id="addQuickTask" class="button button-primary full-width">
+                    新增到今日
+                  </button>
+                </div>
+              </div>
+
+              <div class="divider"></div>
+              <div id="todayTaskList" class="stack"></div>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="card card-padding">
+              <h2 class="card-title">时间块规划</h2>
+              <p class="card-description">为今日任务安排明确的开始和结束时间。</p>
+
+              <div class="divider"></div>
+
+              <div class="stack">
+                <label>
+                  <div class="field-name">选择任务</div>
+                  <select id="scheduleTask"></select>
+                </label>
+
+                <div class="grid-2">
+                  <label>
+                    <div class="field-name">开始时间</div>
+                    <input id="scheduleStart" type="time">
+                  </label>
+
+                  <label>
+                    <div class="field-name">结束时间</div>
+                    <input id="scheduleEnd" type="time">
+                  </label>
+                </div>
+
+                <button id="addSchedule" class="button button-primary full-width">
+                  添加时间块
+                </button>
+              </div>
+
+              <div class="divider"></div>
+              <div id="scheduleList"></div>
+            </div>
+
+            <div class="card card-padding">
+              <h2 class="card-title">当前专注</h2>
+              <p id="focusStatus" class="card-description">暂未开始专注。</p>
+
+              <div class="divider"></div>
+
+              <button id="stopFocus" class="button button-success full-width" disabled>
+                结束并记录专注
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 项目看板 -->
+      <section id="section-workflow" class="section">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">项目看板</h1>
+            <p class="page-description">
+              按“项目（月）—阶段（周）—任务（日）”安排学习节奏与阶段目标。
+            </p>
+          </div>
+        </div>
+
+<!-- 项目可视化时间轴 -->
+<div class="card card-padding workflow-timeline-card">
+  <div class="workflow-timeline-header">
+    <div>
+      <h2 class="card-title">项目时间轴</h2>
+      <p class="card-description">
+        项目为背景长条，阶段嵌套在项目内，圆点代表任务。
+      </p>
+    </div>
+
+    <div class="workflow-timeline-legend" aria-label="时间轴图例">
+      <span><i class="timeline-legend-mark timeline-legend-active"></i>进行中</span>
+      <span><i class="timeline-legend-mark timeline-legend-done"></i>已完成</span>
+      <span><i class="timeline-legend-dot"></i>任务</span>
+      <span><i class="timeline-legend-overdue"></i>逾期</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div id="workflowTimelineEmpty" class="timeline-empty" hidden>
+    暂无可以显示的日期数据。请先为项目、阶段或任务填写日期。
+  </div>
+
+  <div
+    id="workflowTimelineScroll"
+    class="workflow-timeline-scroll"
+    aria-label="项目时间轴，可横向滚动"
+  >
+    <div id="workflowTimelineCanvas" class="workflow-timeline-canvas"></div>
+  </div>
+</div>
+
+<!-- 任务悬浮气泡 -->
+<div id="workflowTimelineTooltip" class="workflow-timeline-tooltip" hidden></div>
+
+        <div class="project-layout">
+          <div class="stack">
+            <div class="card card-padding">
+              <h2 class="card-title">新建项目</h2>
+              <p class="card-description">项目用于管理一个月或跨月的整体目标。</p>
+
+              <div class="divider"></div>
+
+              <form id="projectForm" class="stack">
+                <label>
+                  <div class="field-name">项目名称</div>
+                  <input id="projectName" required placeholder="例如：完成课程论文初稿">
+                </label>
+
+                <label>
+                  <div class="field-name">项目分类</div>
+                  <select id="projectCategory" required>
+                    <option value="学习项目">学习项目</option>
+                    <option value="课程论文">课程论文</option>
+                    <option value="课程学习">课程学习</option>
+                    <option value="投稿参赛">投稿参赛</option>
+                    <option value="知识补充/能力提升">知识补充/能力提升</option>
+                  </select>
+                </label>
+
+                <div class="grid-2">
+                  <label>
+                    <div class="field-name">开始日期</div>
+                    <input id="projectStartDate" type="date" required>
+                  </label>
+
+                  <label>
+                    <div class="field-name">结束日期</div>
+                    <input id="projectEndDate" type="date" required>
+                  </label>
+                </div>
+
+                <label>
+                  <div class="field-name">项目目标</div>
+                  <textarea id="projectGoal" rows="3" placeholder="希望达成的明确结果"></textarea>
+                </label>
+
+                <button class="button button-primary full-width" type="submit">
+                  新增项目
+                </button>
+              </form>
+            </div>
+
+            <div class="card card-padding">
+              <h2 class="card-title">项目列表</h2>
+              <p class="card-description">项目进度根据其阶段和任务完成情况计算。</p>
+
+              <div class="divider"></div>
+              <div id="projectList" class="stack"></div>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="card card-padding">
+              <h2 class="card-title">新建阶段</h2>
+              <p class="card-description">阶段归属于项目，以周为主要规划单位。</p>
+
+              <div class="divider"></div>
+
+              <form id="stageForm" class="form-grid">
+                <div class="col-4">
+                  <label>
+                    <div class="field-name">所属项目</div>
+                    <select id="stageProject" required></select>
+                  </label>
+                </div>
+
+                <div class="col-4">
+                  <label>
+                    <div class="field-name">阶段名称</div>
+                    <input id="stageName" required placeholder="例如：完成文献整理">
+                  </label>
+                </div>
+
+                <div class="col-4">
+                  <label>
+                    <div class="field-name">计划周</div>
+                    <input id="stageWeek" type="week" required>
+                  </label>
+                </div>
+
+                <div class="col-6">
+                  <label>
+                    <div class="field-name">开始日期</div>
+                    <input id="stageStartDate" type="date">
+                  </label>
+                </div>
+
+                <div class="col-6">
+                  <label>
+                    <div class="field-name">结束日期</div>
+                    <input id="stageEndDate" type="date">
+                  </label>
+                </div>
+
+                <div class="col-12">
+                  <label>
+                    <div class="field-name">阶段目标</div>
+                    <textarea id="stageGoal" rows="2" placeholder="本阶段结束时要得到什么结果"></textarea>
+                  </label>
+                </div>
+
+                <div class="col-12">
+                  <button class="button button-primary full-width" type="submit">
+                    新增阶段
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <div class="card card-padding">
+              <h2 class="card-title">阶段列表</h2>
+              <p class="card-description">可按项目筛选查看阶段。</p>
+
+              <div class="divider"></div>
+
+              <label>
+                <div class="field-name">筛选项目</div>
+                <select id="stageProjectFilter"></select>
+              </label>
+
+              <div class="divider"></div>
+              <div id="stageList" class="stack"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-padding section-gap">
+          <h2 class="card-title">新建任务</h2>
+          <p class="card-description">
+            正式任务应归属于项目和阶段；临时任务可在总览首页直接创建。
+          </p>
+
+          <div class="divider"></div>
+
+          <form id="taskForm" class="form-grid">
+            <div class="col-4">
+              <label>
+                <div class="field-name">任务名称</div>
+                <input id="taskTitle" required placeholder="例如：重画课程作业图">
+              </label>
+            </div>
+
+            <div class="col-4">
+              <label>
+                <div class="field-name">所属项目</div>
+                <select id="taskProject" required></select>
+              </label>
+            </div>
+
+            <div class="col-4">
+              <label>
+                <div class="field-name">所属阶段</div>
+                <select id="taskStage" required></select>
+              </label>
+            </div>
+
+            <div class="col-3">
+              <label>
+                <div class="field-name">执行日期</div>
+                <input id="taskDate" type="date" required>
+              </label>
+            </div>
+
+            <div class="col-3">
+              <label>
+                <div class="field-name">截止日期</div>
+                <input id="taskDeadline" type="date">
+              </label>
+            </div>
+
+            <div class="col-3">
+              <label>
+                <div class="field-name">预计用时（分钟）</div>
+                <input id="taskMinutes" type="number" min="0" value="60">
+              </label>
+            </div>
+
+            <div class="col-3">
+              <label>
+                <div class="field-name">初始状态</div>
+                <select id="taskStatus">
+                  <option value="todo">待开始</option>
+                  <option value="active">进行中</option>
+                  <option value="done">已完成</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="col-12">
+              <label>
+                <div class="field-name">任务说明</div>
+                <textarea id="taskNotes" rows="3" placeholder="具体要求、资料位置或完成标准"></textarea>
+              </label>
+            </div>
+
+            <div class="col-12">
+              <button class="button button-primary full-width" type="submit">
+                新增任务
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="card card-padding section-gap">
+          <h2 class="card-title">任务池</h2>
+          <p class="card-description">采用响应式瀑布流卡片展示。</p>
+
+          <div class="divider"></div>
+
+          <div class="filter-bar">
+            <select id="taskFilterProject"></select>
+            <select id="taskFilterStage"></select>
+
+            <select id="taskFilterStatus">
+              <option value="all">全部状态</option>
+              <option value="todo">待开始</option>
+              <option value="active">进行中</option>
+              <option value="done">已完成</option>
+            </select>
+
+            <select id="taskFilterDate">
+              <option value="all">全部日期</option>
+              <option value="today">今日任务</option>
+              <option value="overdue">已经逾期</option>
+              <option value="future">未来任务</option>
+            </select>
+          </div>
+
+          <div id="taskWaterfall" class="waterfall"></div>
+        </div>
+      </section>
+
+      <!-- 论文进度 -->
+      <section id="section-thesis" class="section">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">论文进度</h1>
+            <p class="page-description">记录整体进度、当前重点和各章节完成情况。</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card card-padding">
+            <h2 class="card-title">论文概况</h2>
+
+            <div class="divider"></div>
+
+            <form id="thesisForm" class="stack">
+              <label>
+                <div class="field-name">论文题目</div>
+                <input id="thesisTitle" placeholder="暂定题目">
+              </label>
+
+              <div class="grid-2">
+                <label>
+                  <div class="field-name">计划完成日期</div>
+                  <input id="thesisDeadline" type="date">
+                </label>
+
+                <label>
+                  <div class="field-name">整体进度（0—100）</div>
+                  <input id="thesisProgress" type="number" min="0" max="100" value="0">
+                </label>
+              </div>
+
+              <label>
+                <div class="field-name">当前重点</div>
+                <textarea id="thesisCurrent" rows="3"></textarea>
+              </label>
+
+              <label>
+                <div class="field-name">下一步行动</div>
+                <textarea id="thesisNext" rows="3"></textarea>
+              </label>
+
+              <button class="button button-primary full-width" type="submit">
+                保存论文概况
+              </button>
+            </form>
+          </div>
+
+          <div class="card card-padding">
+            <h2 class="card-title">论文状态</h2>
+
+            <div class="divider"></div>
+
+            <h3 id="thesisDisplayTitle" style="margin-top: 0;">尚未填写题目</h3>
+            <p id="thesisDisplayMeta" class="muted">计划完成日期：未设置</p>
+
+            <div class="progress">
+              <div id="thesisProgressBar" class="progress-bar" style="width: 0%;"></div>
+            </div>
+
+            <p id="thesisProgressText" class="muted">整体进度：0%</p>
+
+            <div class="divider"></div>
+
+            <div class="field-name">当前重点</div>
+            <div id="thesisDisplayCurrent" class="review-content">未填写</div>
+
+            <div class="field-name" style="margin-top: 15px;">下一步行动</div>
+            <div id="thesisDisplayNext" class="review-content">未填写</div>
+          </div>
+        </div>
+
+        <div class="card card-padding section-gap">
+          <h2 class="card-title">章节进度</h2>
+
+          <div class="divider"></div>
+
+          <form id="chapterForm" class="form-grid">
+            <div class="col-6">
+              <input id="chapterName" required placeholder="章节名称，例如：核心章节">
+            </div>
+
+            <div class="col-3">
+              <input id="chapterProgress" type="number" min="0" max="100" value="0">
+            </div>
+
+            <div class="col-3">
+              <button class="button button-primary full-width" type="submit">
+                新增章节
+              </button>
+            </div>
+          </form>
+
+          <div class="divider"></div>
+          <div id="chapterList" class="stack"></div>
+        </div>
+      </section>
+
+      <!-- 投稿与参赛 -->
+      <section id="section-submission" class="section">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">投稿与参赛</h1>
+            <p class="page-description">集中记录作品与稿件、目标平台和关键时间节点。</p>
+          </div>
+        </div>
+
+        <div class="card card-padding">
+          <h2 class="card-title">新增投稿 / 参赛记录</h2>
+
+          <div class="divider"></div>
+
+          <form id="submissionForm" class="form-grid">
+            <div class="col-4">
+              <label>
+                <div class="field-name">作品 / 稿件名称</div>
+                <input id="submissionTitle" required>
+              </label>
+            </div>
+
+            <div class="col-4">
+              <label>
+                <div class="field-name">投稿平台 / 会议 / 赛事</div>
+                <input id="submissionVenue">
+              </label>
+            </div>
+
+            <div class="col-4">
+              <label>
+                <div class="field-name">当前状态</div>
+                <select id="submissionStatus">
+                  <option value="准备中">准备中</option>
+                  <option value="待投稿">待投稿</option>
+                  <option value="审稿中">审稿中</option>
+                  <option value="返修中">返修中</option>
+                  <option value="已接收">已接收</option>
+                  <option value="已拒稿">已拒稿</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="col-4">
+              <label>
+                <div class="field-name">投稿日期</div>
+                <input id="submissionDate" type="date">
+              </label>
+            </div>
+
+            <div class="col-4">
+              <label>
+                <div class="field-name">下一节点日期</div>
+                <input id="submissionNextDate" type="date">
+              </label>
+            </div>
+
+            <div class="col-4">
+              <label>
+                <div class="field-name">下一步行动</div>
+                <input id="submissionNextAction" placeholder="例如：完成回复信">
+              </label>
+            </div>
+
+            <div class="col-12">
+              <label>
+                <div class="field-name">备注</div>
+                <textarea id="submissionNotes" rows="3"></textarea>
+              </label>
+            </div>
+
+            <div class="col-12">
+              <button class="button button-primary full-width" type="submit">
+                保存投稿记录
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="card card-padding section-gap">
+          <h2 class="card-title">投稿 / 参赛列表</h2>
+
+          <div class="divider"></div>
+          <div id="submissionList" class="grid-2"></div>
+        </div>
+      </section>
+
+      <!-- 每日复盘 -->
+      <section id="section-review" class="section">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">每日复盘</h1>
+            <p class="page-description">整理成果、问题、发现以及下一步计划。</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card card-padding">
+            <h2 class="card-title">填写复盘</h2>
+
+            <div class="divider"></div>
+
+            <form id="reviewForm" class="stack">
+              <label>
+                <div class="field-name">复盘日期</div>
+                <input id="reviewDate" type="date" required>
+              </label>
+
+              <label>
+                <div class="field-name">状态与精力</div>
+                <select id="reviewEnergy">
+                  <option value="精力充足">精力充足</option>
+                  <option value="状态平稳">状态平稳</option>
+                  <option value="略有疲惫">略有疲惫</option>
+                  <option value="需要休整">需要休整</option>
+                </select>
+              </label>
+
+              <label>
+                <div class="field-name">今日核心成果</div>
+                <textarea id="reviewAccomplishments" rows="3"></textarea>
+              </label>
+
+              <label>
+                <div class="field-name">未完成事项与原因</div>
+                <textarea id="reviewUnfinished" rows="3"></textarea>
+              </label>
+
+              <label>
+                <div class="field-name">学习洞见或新发现</div>
+                <textarea id="reviewInsights" rows="3"></textarea>
+              </label>
+
+              <label>
+                <div class="field-name">遇到的障碍与对策</div>
+                <textarea id="reviewObstacles" rows="3"></textarea>
+              </label>
+
+              <label>
+                <div class="field-name">明日优先任务</div>
+                <textarea id="reviewTomorrow" rows="3"></textarea>
+              </label>
+
+              <button class="button button-primary full-width" type="submit">
+                保存每日复盘
+              </button>
+            </form>
+          </div>
+
+          <div class="card card-padding">
+            <h2 class="card-title">历史复盘</h2>
+
+            <div class="divider"></div>
+            <div id="reviewList" class="review-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 数据管理 -->
+      <section id="section-settings" class="section">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">数据管理</h1>
+            <p class="page-description">
+              数据默认保存在本浏览器；开启云端同步后，可在不同设备之间自动同步。
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card card-padding">
+            <h2 class="card-title">数据概况</h2>
+
+            <div class="divider"></div>
+
+            <div id="dataSummary" class="stack"></div>
+          </div>
+
+          <div class="card card-padding">
+            <h2 class="card-title">备份与恢复</h2>
+            <p class="card-description">
+              JSON 备份包含项目、阶段、任务、论文、投稿、复盘和打卡数据。
+            </p>
+
+            <div class="divider"></div>
+
+            <div class="stack">
+              <button id="exportData" class="button button-primary full-width">
+                下载 JSON 备份
+              </button>
+
+              <label class="file-label full-width">
+                导入 JSON 备份
+                <input id="importData" class="hidden" type="file" accept="application/json">
+              </label>
+
+              <button id="clearData" class="button button-danger full-width">
+                清空全部数据
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 云端同步 -->
+        <div class="card card-padding cloud-card">
+          <div class="cloud-head">
+            <div>
+              <h2 class="card-title">云端同步</h2>
+              <p id="cloudDescription" class="card-description">
+                登录后可在手机、平板和其他电脑上继续同一份学习记录。
+              </p>
+            </div>
+            <span id="cloudBadge" class="cloud-badge" data-state="off">未开启</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <form id="cloudConnectPanel" class="stack" autocomplete="off">
+            <p class="cloud-tip">
+              云端记录保存在你自己的 GitHub 私有 Gist 中，不经过任何第三方服务器。<br>
+              1. 打开下方链接，创建一个 <code>gist</code> 权限的访问令牌（只需一次）；<br>
+              2. 把令牌粘贴到下面，点击“开启云端同步”。<br>
+              之后在这台设备上只需要密码即可登录并自动同步。
+            </p>
+
+            <label>
+              <div class="field-name">GitHub 访问令牌（仅勾选 gist）</div>
+              <input id="cloudToken" type="password" placeholder="粘贴 ghp_ 开头的令牌" autocomplete="off" spellcheck="false">
+            </label>
+
+            <p id="cloudError" class="login-error" role="alert"></p>
+
+            <div class="cloud-actions">
+              <button id="cloudConnectButton" class="button button-primary" type="button">开启云端同步</button>
+              <a class="button button-soft" href="https://github.com/settings/tokens/new?scopes=gist&amp;description=zhixu-study-workspace" target="_blank" rel="noopener">创建 gist 令牌</a>
+            </div>
+          </form>
+
+          <div id="cloudConnectedPanel" class="stack hidden">
+            <div class="cloud-account">
+              <span id="cloudAccountName">已连接</span>
+            </div>
+
+            <p id="cloudSyncHint" class="cloud-hint">自动同步已开启，修改记录后会自动保存到云端。</p>
+
+            <div class="cloud-actions">
+              <button id="cloudSyncNow" class="button button-primary" type="button">立即同步</button>
+              <button id="cloudDisconnect" class="button button-soft" type="button">关闭云端同步</button>
+              <button id="cloudLogout" class="button button-danger" type="button">退出登录</button>
+            </div>
+          </div>
+        </div>
+        <p class="footer-note">
+          数据默认保存在当前浏览器；开启云端同步后，记录会通过 HTTPS 保存到你的私有 GitHub Gist，可在不同设备继续。更换设备前建议先同步一次。
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const STORAGE_KEY = "zhixu_workspace_v1";
+
+      const createDefaultState = () => ({
+        version: 1,
+        projects: [],
+        stages: [],
+        tasks: [],
+        schedules: [],
+        focusSessions: [],
+        activeFocus: null,
+        thesis: {
+          title: "",
+          deadline: "",
+          progress: 0,
+          current: "",
+          next: "",
+          chapters: []
+        },
+        submissions: [],
+        reviews: []
+      });
+
+      let state = loadState();
+
+      function $(id) {
+        return document.getElementById(id);
+      }
+
+      function uid(prefix) {
+        if (window.crypto && crypto.randomUUID) {
+          return `${prefix}_${crypto.randomUUID()}`;
+        }
+
+        return `${prefix}_${Date.now()}_${Math.random().toString(16).slice(2)}`;
+      }
+
+      function localDateString(date = new Date()) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+      }
+
+      function currentMonth() {
+        return localDateString().slice(0, 7);
+      }
+
+      function currentWeekValue() {
+        const date = new Date();
+        const target = new Date(date.valueOf());
+        const dayNumber = (date.getDay() + 6) % 7;
+
+        target.setDate(target.getDate() - dayNumber + 3);
+
+        const firstThursday = new Date(target.getFullYear(), 0, 4);
+        const firstDayNumber = (firstThursday.getDay() + 6) % 7;
+
+        firstThursday.setDate(firstThursday.getDate() - firstDayNumber + 3);
+
+        const week =
+          1 + Math.round((target - firstThursday) / (7 * 24 * 60 * 60 * 1000));
+
+        return `${target.getFullYear()}-W${String(week).padStart(2, "0")}`;
+      }
+
+      function escapeHTML(value) {
+        return String(value ?? "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function formatDate(value) {
+        if (!value) return "未设置";
+        const parts = value.split("-");
+        if (parts.length !== 3) return value;
+        return `${parts[0]}年${Number(parts[1])}月${Number(parts[2])}日`;
+      }
+
+      function formatMonth(value) {
+        if (!value) return "未设置";
+        const parts = value.split("-");
+        return `${parts[0]}年${Number(parts[1])}月`;
+      }
+
+      function clampProgress(value) {
+        return Math.max(0, Math.min(100, Number(value) || 0));
+      }
+
+      function loadState() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return createDefaultState();
+
+          const parsed = JSON.parse(raw);
+          const defaults = createDefaultState();
+
+          return {
+            ...defaults,
+            ...parsed,
+            thesis: {
+              ...defaults.thesis,
+              ...(parsed.thesis || {}),
+              chapters: Array.isArray(parsed?.thesis?.chapters)
+                ? parsed.thesis.chapters
+                : []
+            },
+            projects: Array.isArray(parsed.projects) ? parsed.projects : [],
+            stages: Array.isArray(parsed.stages) ? parsed.stages : [],
+            tasks: Array.isArray(parsed.tasks) ? parsed.tasks : [],
+            schedules: Array.isArray(parsed.schedules) ? parsed.schedules : [],
+            focusSessions: Array.isArray(parsed.focusSessions)
+              ? parsed.focusSessions
+              : [],
+            submissions: Array.isArray(parsed.submissions)
+              ? parsed.submissions
+              : [],
+            reviews: Array.isArray(parsed.reviews) ? parsed.reviews : []
+          };
+        } catch (error) {
+          console.error("读取数据失败：", error);
+          return createDefaultState();
+        }
+      }
+
+      function saveState() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      }
+
+      function commit() {
+        saveState();
+        renderAll();
+      }
+
+      function projectById(id) {
+        return state.projects.find(item => item.id === id);
+      }
+
+      function stageById(id) {
+        return state.stages.find(item => item.id === id);
+      }
+
+      function taskById(id) {
+        return state.tasks.find(item => item.id === id);
+      }
+
+      function taskStatusName(status) {
+        return {
+          todo: "待开始",
+          active: "进行中",
+          done: "已完成"
+        }[status] || "待开始";
+      }
+
+      function taskStatusPill(status) {
+        if (status === "done") return "pill pill-success";
+        if (status === "active") return "pill";
+        return "pill pill-warning";
+      }
+
+      function isTodayTask(task) {
+        const today = localDateString();
+
+        return (
+          task.date === today ||
+          task.deadline === today ||
+          task.status === "active" ||
+          task.today === true
+        );
+      }
+
+      function projectProgress(projectId) {
+        const tasks = state.tasks.filter(task => task.projectId === projectId);
+
+        if (tasks.length) {
+          const done = tasks.filter(task => task.status === "done").length;
+          return Math.round((done / tasks.length) * 100);
+        }
+
+        const stages = state.stages.filter(stage => stage.projectId === projectId);
+
+        if (stages.length) {
+          const done = stages.filter(stage => stage.status === "done").length;
+          return Math.round((done / stages.length) * 100);
+        }
+
+        return 0;
+      }
+
+      function stageProgress(stageId) {
+        const tasks = state.tasks.filter(task => task.stageId === stageId);
+        if (!tasks.length) return 0;
+
+        const done = tasks.filter(task => task.status === "done").length;
+        return Math.round((done / tasks.length) * 100);
+      }
+
+      function setDefaults() {
+        const today = localDateString();
+
+        $("todayText").textContent = new Intl.DateTimeFormat("zh-CN", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          weekday: "long"
+        }).format(new Date());
+
+        const projectStartMonth = $("projectStartMonth");
+        if (projectStartMonth && !projectStartMonth.value) {
+          projectStartMonth.value = currentMonth();
+        }
+
+        const projectEndMonth = $("projectEndMonth");
+        if (projectEndMonth && !projectEndMonth.value) {
+          projectEndMonth.value = currentMonth();
+        }
+
+        if (!$("stageWeek").value) {
+          $("stageWeek").value = currentWeekValue();
+        }
+
+        if (!$("taskDate").value) {
+          $("taskDate").value = today;
+        }
+
+        if (!$("reviewDate").value) {
+          $("reviewDate").value = today;
+        }
+      }
+
+      function switchSection(name) {
+        document.querySelectorAll(".section").forEach(section => {
+          section.classList.remove("active");
+        });
+
+        document.querySelectorAll(".nav-button").forEach(button => {
+          button.classList.toggle("active", button.dataset.section === name);
+        });
+
+        const target = $(`section-${name}`);
+        if (target) target.classList.add("active");
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function renderSelects() {
+        const projectOptions = state.projects
+          .map(project => (
+            `<option value="${project.id}">${escapeHTML(project.name)}</option>`
+          ))
+          .join("");
+
+        const allProjectOption = `<option value="all">全部项目</option>`;
+        const emptyProjectOption = `<option value="">请选择项目</option>`;
+
+        [
+          "stageProject",
+          "taskProject"
+        ].forEach(id => {
+          const select = $(id);
+          const old = select.value;
+          select.innerHTML = emptyProjectOption + projectOptions;
+
+          if ([...select.options].some(option => option.value === old)) {
+            select.value = old;
+          }
+        });
+
+        [
+          "stageProjectFilter",
+          "taskFilterProject"
+        ].forEach(id => {
+          const select = $(id);
+          const old = select.value;
+          select.innerHTML = allProjectOption + projectOptions;
+
+          if ([...select.options].some(option => option.value === old)) {
+            select.value = old;
+          } else {
+            select.value = "all";
+          }
+        });
+
+        renderTaskStageSelect();
+        renderTaskFilterStage();
+      }
+
+      function renderTaskStageSelect() {
+        const projectId = $("taskProject").value;
+        const old = $("taskStage").value;
+
+        const stages = state.stages.filter(stage => stage.projectId === projectId);
+
+        $("taskStage").innerHTML =
+          `<option value="">请选择阶段</option>` +
+          stages.map(stage => (
+            `<option value="${stage.id}">${escapeHTML(stage.name)}</option>`
+          )).join("");
+
+        if ([...$("taskStage").options].some(option => option.value === old)) {
+          $("taskStage").value = old;
+        }
+      }
+
+      function renderTaskFilterStage() {
+        const projectId = $("taskFilterProject").value;
+        const old = $("taskFilterStage").value;
+
+        let stages = state.stages;
+
+        if (projectId && projectId !== "all") {
+          stages = stages.filter(stage => stage.projectId === projectId);
+        }
+
+        $("taskFilterStage").innerHTML =
+          `<option value="all">全部阶段</option>` +
+          stages.map(stage => (
+            `<option value="${stage.id}">${escapeHTML(stage.name)}</option>`
+          )).join("");
+
+        if ([...$("taskFilterStage").options].some(option => option.value === old)) {
+          $("taskFilterStage").value = old;
+        } else {
+          $("taskFilterStage").value = "all";
+        }
+      }
+
+      function renderDashboard() {
+        const today = localDateString();
+        const todayTasks = state.tasks
+          .filter(isTodayTask)
+          .sort((a, b) => {
+            const rank = status => status === "active" ? 0 : status === "todo" ? 1 : 2;
+            return rank(a.status) - rank(b.status);
+          });
+
+        const focusMinutes = state.focusSessions
+          .filter(session => session.date === today)
+          .reduce((sum, session) => sum + Number(session.minutes || 0), 0);
+
+        $("statProjects").textContent =
+          state.projects.filter(project => project.status !== "done").length;
+
+        $("statStages").textContent =
+          state.stages.filter(stage => stage.week === currentWeekValue()).length;
+
+        $("statTodayTasks").textContent =
+          todayTasks.filter(task => task.status !== "done").length;
+
+        $("statFocus").textContent = `${focusMinutes} 分钟`;
+
+        $("todayTaskList").innerHTML = todayTasks.length
+          ? todayTasks.map(task => {
+              const project = projectById(task.projectId);
+              const stage = stageById(task.stageId);
+
+              return `
+                <div class="list-item">
+                  <div class="list-head">
+                    <div>
+                      <div class="list-title">${escapeHTML(task.title)}</div>
+                      <div class="list-meta">
+                        <span class="${taskStatusPill(task.status)}">
+                          ${taskStatusName(task.status)}
+                        </span>
+                        ${
+                          project
+                            ? `<span class="pill">${escapeHTML(project.name)}</span>`
+                            : `<span class="pill">临时任务</span>`
+                        }
+                        ${
+                          stage
+                            ? `<span class="pill">${escapeHTML(stage.name)}</span>`
+                            : ""
+                        }
+                        ${
+                          task.minutes
+                            ? `<span class="pill">${Number(task.minutes)} 分钟</span>`
+                            : ""
+                        }
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="button-row" style="margin-top: 12px;">
+                    ${
+                      task.status !== "active"
+                        ? `<button class="button button-small button-soft"
+                             data-task-action="start" data-id="${task.id}">
+                             开始专注
+                           </button>`
+                        : ""
+                    }
+
+                    ${
+                      task.status !== "done"
+                        ? `<button class="button button-small button-success"
+                             data-task-action="done" data-id="${task.id}">
+                             完成
+                           </button>`
+                        : ""
+                    }
+
+                    <button class="button button-small"
+                      data-task-action="toggle-today" data-id="${task.id}">
+                      移出今日
+                    </button>
+                  </div>
+                </div>
+              `;
+            }).join("")
+          : `<div class="empty">今天还没有任务。可新增临时任务，或在项目看板中安排任务。</div>`;
+
+        const schedulableTasks = todayTasks.filter(task => task.status !== "done");
+
+        $("scheduleTask").innerHTML =
+          `<option value="">选择今日任务</option>` +
+          schedulableTasks.map(task => (
+            `<option value="${task.id}">${escapeHTML(task.title)}</option>`
+          )).join("");
+
+        const schedules = state.schedules
+          .filter(item => item.date === today)
+          .sort((a, b) => a.start.localeCompare(b.start));
+
+        $("scheduleList").innerHTML = schedules.length
+          ? schedules.map(item => {
+              const task = taskById(item.taskId);
+
+              return `
+                <div class="timeline-item">
+                  <div class="timeline-time">${item.start}–${item.end}</div>
+                  <div>
+                    <div class="list-title">
+                      ${escapeHTML(task?.title || "任务已删除")}
+                    </div>
+                    <button class="button button-small button-danger"
+                      data-delete-schedule="${item.id}" style="margin-top: 7px;">
+                      删除时间块
+                    </button>
+                  </div>
+                </div>
+              `;
+            }).join("")
+          : `<div class="empty">今天还没有时间块。</div>`;
+
+        if (state.activeFocus) {
+          const task = taskById(state.activeFocus.taskId);
+          const started = new Date(state.activeFocus.startedAt);
+
+          $("focusStatus").textContent =
+            `正在专注：${task?.title || "未命名任务"}，开始于 ${started.toLocaleTimeString("zh-CN", {
+              hour: "2-digit",
+              minute: "2-digit"
+            })}`;
+
+          $("stopFocus").disabled = false;
+        } else {
+          $("focusStatus").textContent = "暂未开始专注。";
+          $("stopFocus").disabled = true;
+        }
+      }
+
+      function renderProjects() {
+        $("projectList").innerHTML = state.projects.length
+          ? state.projects.map(project => {
+              const progress = projectProgress(project.id);
+              const stageCount = state.stages.filter(
+                stage => stage.projectId === project.id
+              ).length;
+
+              return `
+                <div class="list-item entity-card">
+                  <div class="list-head">
+                    <div>
+                      <div class="list-title">${escapeHTML(project.name)}</div>
+                      <div class="list-meta">
+                        <span class="pill">${escapeHTML(project.category)}</span>
+                        <span class="pill">${stageCount} 个阶段</span>
+                      </div>
+                    </div>
+
+                    <button class="button button-small button-danger"
+                      data-delete-project="${project.id}">
+                      删除
+                    </button>
+                  </div>
+
+                  ${
+                    project.goal
+                      ? `<p class="task-notes">${escapeHTML(project.goal)}</p>`
+                      : ""
+                  }
+
+                  <div class="muted" style="font-size: 12px; margin-bottom: 8px;">
+                    ${project.startDate || formatMonth(project.startMonth)} – ${project.endDate || formatMonth(project.endMonth)}
+                  </div>
+
+                  <div class="progress">
+                    <div class="progress-bar" style="width: ${progress}%;"></div>
+                  </div>
+
+                  <div class="muted" style="font-size: 12px; margin-top: 7px;">
+                    进度 ${progress}%
+                  </div>
+                </div>
+              `;
+            }).join("")
+          : `<div class="empty">还没有项目，请先建立一个月度项目。</div>`;
+      }
+
+      function renderStages() {
+        const projectFilter = $("stageProjectFilter").value || "all";
+
+        const stages = state.stages
+          .filter(stage => (
+            projectFilter === "all" || stage.projectId === projectFilter
+          ))
+          .sort((a, b) => String(a.week).localeCompare(String(b.week)));
+
+        $("stageList").innerHTML = stages.length
+          ? stages.map(stage => {
+              const project = projectById(stage.projectId);
+              const progress = stageProgress(stage.id);
+
+              return `
+                <div class="list-item entity-card">
+                  <div class="list-head">
+                    <div>
+                      <div class="list-title">${escapeHTML(stage.name)}</div>
+                      <div class="list-meta">
+                        <span class="pill">${escapeHTML(project?.name || "项目已删除")}</span>
+                        <span class="pill">${escapeHTML(stage.week || "未设置周")}</span>
+                      </div>
+                    </div>
+
+                    <button class="button button-small button-danger"
+                      data-delete-stage="${stage.id}">
+                      删除
+                    </button>
+                  </div>
+
+                  ${
+                    stage.goal
+                      ? `<p class="task-notes">${escapeHTML(stage.goal)}</p>`
+                      : ""
+                  }
+
+                  <div class="progress">
+                    <div class="progress-bar" style="width: ${progress}%;"></div>
+                  </div>
+
+                  <div class="muted" style="font-size: 12px; margin-top: 7px;">
+                    阶段进度 ${progress}%
+                  </div>
+                </div>
+              `;
+            }).join("")
+          : `<div class="empty">当前筛选条件下没有阶段。</div>`;
+      }
+
+      function renderTaskWaterfall() {
+        const projectFilter = $("taskFilterProject").value || "all";
+        const stageFilter = $("taskFilterStage").value || "all";
+        const statusFilter = $("taskFilterStatus").value || "all";
+        const dateFilter = $("taskFilterDate").value || "all";
+        const today = localDateString();
+
+        const tasks = state.tasks
+          .filter(task => {
+            if (
+              projectFilter !== "all" &&
+              task.projectId !== projectFilter
+            ) return false;
+
+            if (
+              stageFilter !== "all" &&
+              task.stageId !== stageFilter
+            ) return false;
+
+            if (
+              statusFilter !== "all" &&
+              task.status !== statusFilter
+            ) return false;
+
+            if (dateFilter === "today" && !isTodayTask(task)) return false;
+
+            if (
+              dateFilter === "overdue" &&
+              !(task.deadline && task.deadline < today && task.status !== "done")
+            ) return false;
+
+            if (
+              dateFilter === "future" &&
+              !(task.date && task.date > today)
+            ) return false;
+
+            return true;
+          })
+          .sort((a, b) => {
+            if (a.status === "done" && b.status !== "done") return 1;
+            if (a.status !== "done" && b.status === "done") return -1;
+            return String(a.date || "").localeCompare(String(b.date || ""));
+          });
+
+        $("taskWaterfall").innerHTML = tasks.length
+          ? tasks.map(task => {
+              const project = projectById(task.projectId);
+              const stage = stageById(task.stageId);
+              const overdue =
+                task.deadline &&
+                task.deadline < today &&
+                task.status !== "done";
+
+              return `
+                <article class="task-card
+                  ${task.status === "active" ? "active-task" : ""}
+                  ${task.status === "done" ? "done-task" : ""}">
+
+                  <div class="list-head">
+                    <h3 class="task-title">${escapeHTML(task.title)}</h3>
+                    <span class="${taskStatusPill(task.status)}">
+                      ${taskStatusName(task.status)}
+                    </span>
+                  </div>
+
+                  <div class="list-meta">
+                    <span class="pill">
+                      ${escapeHTML(project?.name || "临时任务")}
+                    </span>
+
+                    ${
+                      stage
+                        ? `<span class="pill">${escapeHTML(stage.name)}</span>`
+                        : ""
+                    }
+
+                    ${
+                      task.date
+                        ? `<span class="pill">执行：${formatDate(task.date)}</span>`
+                        : ""
+                    }
+
+                    ${
+                      task.deadline
+                        ? `<span class="${overdue ? "pill pill-danger" : "pill"}">
+                             截止：${formatDate(task.deadline)}
+                           </span>`
+                        : ""
+                    }
+
+                    ${
+                      task.minutes
+                        ? `<span class="pill">${Number(task.minutes)} 分钟</span>`
+                        : ""
+                    }
+
+                    ${
+                      task.today
+                        ? `<span class="pill pill-success">已加入今日</span>`
+                        : ""
+                    }
+                  </div>
+
+                  ${
+                    task.notes
+                      ? `<p class="task-notes">${escapeHTML(task.notes)}</p>`
+                      : ""
+                  }
+
+                  <div class="button-row">
+                    ${
+                      task.status !== "active"
+                        ? `<button class="button button-small button-soft"
+                             data-task-action="start" data-id="${task.id}">
+                             开始
+                           </button>`
+                        : ""
+                    }
+
+                    ${
+                      task.status !== "done"
+                        ? `<button class="button button-small button-success"
+                             data-task-action="done" data-id="${task.id}">
+                             完成
+                           </button>`
+                        : `<button class="button button-small"
+                             data-task-action="reopen" data-id="${task.id}">
+                             重新打开
+                           </button>`
+                    }
+
+                    <button class="button button-small"
+                      data-task-action="toggle-today" data-id="${task.id}">
+                      ${task.today ? "移出今日" : "加入今日"}
+                    </button>
+
+                    <button class="button button-small button-danger"
+                      data-task-action="delete" data-id="${task.id}">
+                      删除
+                    </button>
+                  </div>
+                </article>
+              `;
+            }).join("")
+          : `<div class="empty">当前筛选条件下没有任务。</div>`;
+      }
+
+      function renderThesis() {
+        const thesis = state.thesis;
+        const progress = clampProgress(thesis.progress);
+
+        $("thesisTitle").value = thesis.title || "";
+        $("thesisDeadline").value = thesis.deadline || "";
+        $("thesisProgress").value = progress;
+        $("thesisCurrent").value = thesis.current || "";
+        $("thesisNext").value = thesis.next || "";
+
+        $("thesisDisplayTitle").textContent = thesis.title || "尚未填写题目";
+        $("thesisDisplayMeta").textContent =
+          `计划完成日期：${formatDate(thesis.deadline)}`;
+
+        $("thesisProgressBar").style.width = `${progress}%`;
+        $("thesisProgressText").textContent = `整体进度：${progress}%`;
+        $("thesisDisplayCurrent").textContent = thesis.current || "未填写";
+        $("thesisDisplayNext").textContent = thesis.next || "未填写";
+
+        $("chapterList").innerHTML = thesis.chapters.length
+          ? thesis.chapters.map(chapter => {
+              const chapterProgress = clampProgress(chapter.progress);
+
+              return `
+                <div class="list-item">
+                  <div class="list-head">
+                    <div class="list-title">${escapeHTML(chapter.name)}</div>
+
+                    <button class="button button-small button-danger"
+                      data-delete-chapter="${chapter.id}">
+                      删除
+                    </button>
+                  </div>
+
+                  <div class="progress" style="margin-top: 12px;">
+                    <div class="progress-bar" style="width: ${chapterProgress}%;"></div>
+                  </div>
+
+                  <div class="muted" style="font-size: 12px; margin-top: 7px;">
+                    ${chapterProgress}%
+                  </div>
+                </div>
+              `;
+            }).join("")
+          : `<div class="empty">还没有添加论文章节。</div>`;
+      }
+
+      function renderSubmissions() {
+        const records = [...state.submissions].sort((a, b) =>
+          String(b.nextDate || b.date || "").localeCompare(
+            String(a.nextDate || a.date || "")
+          )
+        );
+
+        $("submissionList").innerHTML = records.length
+          ? records.map(item => `
+              <div class="list-item entity-card">
+                <div class="list-head">
+                  <div>
+                    <div class="list-title">${escapeHTML(item.title)}</div>
+                    <div class="list-meta">
+                      <span class="pill">${escapeHTML(item.status)}</span>
+                      ${
+                        item.venue
+                          ? `<span class="pill">${escapeHTML(item.venue)}</span>`
+                          : ""
+                      }
+                    </div>
+                  </div>
+
+                  <button class="button button-small button-danger"
+                    data-delete-submission="${item.id}">
+                    删除
+                  </button>
+                </div>
+
+                <div class="task-notes">
+                  投稿日期：${formatDate(item.date)}<br>
+                  下一节点：${formatDate(item.nextDate)}<br>
+                  下一步：${escapeHTML(item.nextAction || "未填写")}
+                </div>
+
+                ${
+                  item.notes
+                    ? `<div class="review-content">${escapeHTML(item.notes)}</div>`
+                    : ""
+                }
+              </div>
+            `).join("")
+          : `<div class="empty">还没有投稿记录。</div>`;
+      }
+
+      function renderReviews() {
+        const reviews = [...state.reviews].sort((a, b) =>
+          b.date.localeCompare(a.date)
+        );
+
+        $("reviewList").innerHTML = reviews.length
+          ? reviews.map(review => `
+              <article class="review-item">
+                <div class="list-head">
+                  <div>
+                    <h3>${formatDate(review.date)}</h3>
+                    <span class="pill">${escapeHTML(review.energy)}</span>
+                  </div>
+
+                  <button class="button button-small button-danger"
+                    data-delete-review="${review.id}">
+                    删除
+                  </button>
+                </div>
+
+                <div class="field-name" style="margin-top: 14px;">核心成果</div>
+                <div class="review-content">
+                  ${escapeHTML(review.accomplishments || "未填写")}
+                </div>
+
+                <div class="field-name" style="margin-top: 12px;">未完成与原因</div>
+                <div class="review-content">
+                  ${escapeHTML(review.unfinished || "未填写")}
+                </div>
+
+                <div class="field-name" style="margin-top: 12px;">洞见与发现</div>
+                <div class="review-content">
+                  ${escapeHTML(review.insights || "未填写")}
+                </div>
+
+                <div class="field-name" style="margin-top: 12px;">障碍与对策</div>
+                <div class="review-content">
+                  ${escapeHTML(review.obstacles || "未填写")}
+                </div>
+
+                <div class="field-name" style="margin-top: 12px;">明日优先任务</div>
+                <div class="review-content">
+                  ${escapeHTML(review.tomorrow || "未填写")}
+                </div>
+              </article>
+            `).join("")
+          : `<div class="empty">还没有保存每日复盘。</div>`;
+      }
+
+      function renderDataSummary() {
+        const rows = [
+          ["项目", state.projects.length],
+          ["阶段", state.stages.length],
+          ["任务", state.tasks.length],
+          ["时间块", state.schedules.length],
+          ["专注记录", state.focusSessions.length],
+          ["论文章节", state.thesis.chapters.length],
+          ["投稿记录", state.submissions.length],
+          ["每日复盘", state.reviews.length]
+        ];
+
+        $("dataSummary").innerHTML = rows.map(([label, value]) => `
+          <div class="list-item list-head">
+            <span>${label}</span>
+            <strong>${value}</strong>
+          </div>
+        `).join("");
+      }
+
+      // 给项目时间轴提供当前工作台数据
+      window.getWorkflowTimelineState = function () {
+        return state;
+      };
+
+      function renderAll() {
+        renderSelects();
+        renderDashboard();
+        renderProjects();
+        renderStages();
+        renderTaskWaterfall();
+        renderThesis();
+        renderSubmissions();
+        renderReviews();
+        renderDataSummary();
+        setDefaults();
+        if (typeof renderWorkflowTimeline === "function") {
+          renderWorkflowTimeline();
+        }
+      }
+
+      function handleTaskAction(action, taskId) {
+        const task = taskById(taskId);
+        if (!task) return;
+
+        if (action === "start") {
+          if (state.activeFocus && state.activeFocus.taskId !== taskId) {
+            alert("请先结束当前专注任务。");
+            return;
+          }
+
+          state.tasks.forEach(item => {
+            if (item.status === "active" && item.id !== taskId) {
+              item.status = "todo";
+            }
+          });
+
+          task.status = "active";
+          task.today = true;
+
+          if (!state.activeFocus) {
+            state.activeFocus = {
+              taskId,
+              startedAt: new Date().toISOString()
+            };
+          }
+        }
+
+        if (action === "done") {
+          task.status = "done";
+
+          if (state.activeFocus?.taskId === taskId) {
+            finishFocus();
+            return;
+          }
+        }
+
+        if (action === "reopen") {
+          task.status = "todo";
+        }
+
+        if (action === "toggle-today") {
+          task.today = !task.today;
+        }
+
+        if (action === "delete") {
+          if (!confirm(`确定删除任务“${task.title}”吗？`)) return;
+
+          state.tasks = state.tasks.filter(item => item.id !== taskId);
+          state.schedules = state.schedules.filter(item => item.taskId !== taskId);
+
+          if (state.activeFocus?.taskId === taskId) {
+            state.activeFocus = null;
+          }
+        }
+
+        commit();
+      }
+
+      function finishFocus() {
+        if (!state.activeFocus) return;
+
+        const startedAt = new Date(state.activeFocus.startedAt);
+        const endedAt = new Date();
+
+        const minutes = Math.max(
+          1,
+          Math.round((endedAt - startedAt) / 60000)
+        );
+
+        state.focusSessions.push({
+          id: uid("focus"),
+          taskId: state.activeFocus.taskId,
+          date: localDateString(),
+          startedAt: state.activeFocus.startedAt,
+          endedAt: endedAt.toISOString(),
+          minutes
+        });
+
+        const task = taskById(state.activeFocus.taskId);
+        if (task && task.status === "active") {
+          task.status = "todo";
+        }
+
+        state.activeFocus = null;
+        commit();
+
+        alert(`已记录 ${minutes} 分钟专注。`);
+      }
+
+      document.querySelectorAll(".nav-button").forEach(button => {
+        button.addEventListener("click", () => {
+          switchSection(button.dataset.section);
+        });
+      });
+
+      document.querySelectorAll("[data-go]").forEach(button => {
+        button.addEventListener("click", () => {
+          switchSection(button.dataset.go);
+        });
+      });
+
+      $("projectForm").addEventListener("submit", event => {
+        event.preventDefault();
+
+        const startDate = $("projectStartDate").value;
+        const endDate = $("projectEndDate").value;
+
+        if (endDate < startDate) {
+          alert("结束日期不能早于开始日期。");
+          return;
+        }
+
+        state.projects.push({
+          id: uid("project"),
+          name: $("projectName").value.trim(),
+          category: $("projectCategory").value,
+
+          startDate,
+          endDate,
+
+          // 兼容原来的项目列表
+          startMonth: startDate.slice(0, 7),
+          endMonth: endDate.slice(0, 7),
+
+          goal: $("projectGoal").value.trim(),
+          status: "active",
+          createdAt: new Date().toISOString()
+        });
+
+        event.target.reset();
+        commit();
+      });
+
+      $("stageForm").addEventListener("submit", event => {
+        event.preventDefault();
+
+        if (!$("stageProject").value) {
+          alert("请先选择所属项目。");
+          return;
+        }
+
+        if (
+          $("stageStartDate").value &&
+          $("stageEndDate").value &&
+          $("stageEndDate").value < $("stageStartDate").value
+        ) {
+          alert("阶段结束日期不能早于开始日期。");
+          return;
+        }
+
+        state.stages.push({
+          id: uid("stage"),
+          projectId: $("stageProject").value,
+          name: $("stageName").value.trim(),
+          week: $("stageWeek").value,
+          startDate: $("stageStartDate").value,
+          endDate: $("stageEndDate").value,
+          goal: $("stageGoal").value.trim(),
+          status: "active",
+          createdAt: new Date().toISOString()
+        });
+
+        event.target.reset();
+        commit();
+      });
+
+      $("taskForm").addEventListener("submit", event => {
+        event.preventDefault();
+
+        const projectId = $("taskProject").value;
+        const stageId = $("taskStage").value;
+        const stage = stageById(stageId);
+
+        if (!projectId || !stageId) {
+          alert("正式任务必须选择所属项目和阶段。");
+          return;
+        }
+
+        if (!stage || stage.projectId !== projectId) {
+          alert("所选阶段不属于当前项目。");
+          return;
+        }
+
+        state.tasks.push({
+          id: uid("task"),
+          title: $("taskTitle").value.trim(),
+          projectId,
+          stageId,
+          date: $("taskDate").value,
+          deadline: $("taskDeadline").value,
+          minutes: Number($("taskMinutes").value) || 0,
+          status: $("taskStatus").value,
+          notes: $("taskNotes").value.trim(),
+          today: $("taskDate").value === localDateString(),
+          createdAt: new Date().toISOString()
+        });
+
+        event.target.reset();
+        commit();
+      });
+
+      $("addQuickTask").addEventListener("click", () => {
+        const title = $("quickTaskTitle").value.trim();
+
+        if (!title) {
+          alert("请输入临时任务名称。");
+          return;
+        }
+
+        state.tasks.push({
+          id: uid("task"),
+          title,
+          projectId: "",
+          stageId: "",
+          date: localDateString(),
+          deadline: "",
+          minutes: Number($("quickTaskMinutes").value) || 0,
+          status: "todo",
+          notes: "",
+          today: true,
+          createdAt: new Date().toISOString()
+        });
+
+        $("quickTaskTitle").value = "";
+        $("quickTaskMinutes").value = "30";
+        commit();
+      });
+
+      $("addSchedule").addEventListener("click", () => {
+        const taskId = $("scheduleTask").value;
+        const start = $("scheduleStart").value;
+        const end = $("scheduleEnd").value;
+
+        if (!taskId || !start || !end) {
+          alert("请选择任务并填写开始、结束时间。");
+          return;
+        }
+
+        if (end <= start) {
+          alert("结束时间必须晚于开始时间。");
+          return;
+        }
+
+        state.schedules.push({
+          id: uid("schedule"),
+          taskId,
+          date: localDateString(),
+          start,
+          end
+        });
+
+        $("scheduleStart").value = "";
+        $("scheduleEnd").value = "";
+        commit();
+      });
+
+      $("stopFocus").addEventListener("click", finishFocus);
+
+      $("thesisForm").addEventListener("submit", event => {
+        event.preventDefault();
+
+        state.thesis = {
+          ...state.thesis,
+          title: $("thesisTitle").value.trim(),
+          deadline: $("thesisDeadline").value,
+          progress: clampProgress($("thesisProgress").value),
+          current: $("thesisCurrent").value.trim(),
+          next: $("thesisNext").value.trim()
+        };
+
+        commit();
+      });
+
+      $("chapterForm").addEventListener("submit", event => {
+        event.preventDefault();
+
+        state.thesis.chapters.push({
+          id: uid("chapter"),
+          name: $("chapterName").value.trim(),
+          progress: clampProgress($("chapterProgress").value)
+        });
+
+        event.target.reset();
+        $("chapterProgress").value = "0";
+        commit();
+      });
+
+      $("submissionForm").addEventListener("submit", event => {
+        event.preventDefault();
+
+        state.submissions.push({
+          id: uid("submission"),
+          title: $("submissionTitle").value.trim(),
+          venue: $("submissionVenue").value.trim(),
+          status: $("submissionStatus").value,
+          date: $("submissionDate").value,
+          nextDate: $("submissionNextDate").value,
+          nextAction: $("submissionNextAction").value.trim(),
+          notes: $("submissionNotes").value.trim(),
+          createdAt: new Date().toISOString()
+        });
+
+        event.target.reset();
+        commit();
+      });
+
+      $("reviewForm").addEventListener("submit", event => {
+        event.preventDefault();
+
+        const review = {
+          id: uid("review"),
+          date: $("reviewDate").value,
+          energy: $("reviewEnergy").value,
+          accomplishments: $("reviewAccomplishments").value.trim(),
+          unfinished: $("reviewUnfinished").value.trim(),
+          insights: $("reviewInsights").value.trim(),
+          obstacles: $("reviewObstacles").value.trim(),
+          tomorrow: $("reviewTomorrow").value.trim(),
+          updatedAt: new Date().toISOString()
+        };
+
+        const oldIndex = state.reviews.findIndex(
+          item => item.date === review.date
+        );
+
+        if (oldIndex >= 0) {
+          review.id = state.reviews[oldIndex].id;
+          state.reviews[oldIndex] = review;
+        } else {
+          state.reviews.push(review);
+        }
+
+        commit();
+        alert("每日复盘已保存。同一日期再次保存会覆盖该日记录。");
+      });
+
+      $("taskProject").addEventListener("change", renderTaskStageSelect);
+
+      $("stageProjectFilter").addEventListener("change", renderStages);
+
+      $("taskFilterProject").addEventListener("change", () => {
+        renderTaskFilterStage();
+        renderTaskWaterfall();
+      });
+
+      [
+        "taskFilterStage",
+        "taskFilterStatus",
+        "taskFilterDate"
+      ].forEach(id => {
+        $(id).addEventListener("change", renderTaskWaterfall);
+      });
+
+      document.addEventListener("click", event => {
+        const taskButton = event.target.closest("[data-task-action]");
+
+        if (taskButton) {
+          handleTaskAction(
+            taskButton.dataset.taskAction,
+            taskButton.dataset.id
+          );
+          return;
+        }
+
+        const projectButton = event.target.closest("[data-delete-project]");
+
+        if (projectButton) {
+          const projectId = projectButton.dataset.deleteProject;
+          const project = projectById(projectId);
+
+          if (
+            !confirm(
+              `删除项目“${project?.name || ""}”将同时删除其阶段和任务，是否继续？`
+            )
+          ) return;
+
+          const stageIds = state.stages
+            .filter(stage => stage.projectId === projectId)
+            .map(stage => stage.id);
+
+          const taskIds = state.tasks
+            .filter(task => task.projectId === projectId)
+            .map(task => task.id);
+
+          state.projects = state.projects.filter(item => item.id !== projectId);
+          state.stages = state.stages.filter(item => item.projectId !== projectId);
+          state.tasks = state.tasks.filter(item => item.projectId !== projectId);
+          state.schedules = state.schedules.filter(
+            item => !taskIds.includes(item.taskId)
+          );
+
+          if (
+            state.activeFocus &&
+            taskIds.includes(state.activeFocus.taskId)
+          ) {
+            state.activeFocus = null;
+          }
+
+          commit();
+          return;
+        }
+
+        const stageButton = event.target.closest("[data-delete-stage]");
+
+        if (stageButton) {
+          const stageId = stageButton.dataset.deleteStage;
+          const stage = stageById(stageId);
+
+          if (
+            !confirm(
+              `删除阶段“${stage?.name || ""}”将同时删除其任务，是否继续？`
+            )
+          ) return;
+
+          const taskIds = state.tasks
+            .filter(task => task.stageId === stageId)
+            .map(task => task.id);
+
+          state.stages = state.stages.filter(item => item.id !== stageId);
+          state.tasks = state.tasks.filter(item => item.stageId !== stageId);
+          state.schedules = state.schedules.filter(
+            item => !taskIds.includes(item.taskId)
+          );
+
+          if (
+            state.activeFocus &&
+            taskIds.includes(state.activeFocus.taskId)
+          ) {
+            state.activeFocus = null;
+          }
+
+          commit();
+          return;
+        }
+
+        const scheduleButton = event.target.closest("[data-delete-schedule]");
+
+        if (scheduleButton) {
+          state.schedules = state.schedules.filter(
+            item => item.id !== scheduleButton.dataset.deleteSchedule
+          );
+          commit();
+          return;
+        }
+
+        const chapterButton = event.target.closest("[data-delete-chapter]");
+
+        if (chapterButton) {
+          state.thesis.chapters = state.thesis.chapters.filter(
+            item => item.id !== chapterButton.dataset.deleteChapter
+          );
+          commit();
+          return;
+        }
+
+        const submissionButton = event.target.closest("[data-delete-submission]");
+
+        if (submissionButton) {
+          if (!confirm("确定删除这条投稿记录吗？")) return;
+
+          state.submissions = state.submissions.filter(
+            item => item.id !== submissionButton.dataset.deleteSubmission
+          );
+          commit();
+          return;
+        }
+
+        const reviewButton = event.target.closest("[data-delete-review]");
+
+        if (reviewButton) {
+          if (!confirm("确定删除这条复盘记录吗？")) return;
+
+          state.reviews = state.reviews.filter(
+            item => item.id !== reviewButton.dataset.deleteReview
+          );
+          commit();
+        }
+      });
+
+      $("exportData").addEventListener("click", () => {
+        const content = JSON.stringify(state, null, 2);
+        const blob = new Blob([content], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+
+        link.href = url;
+        link.download = `知序学习工作台备份_${localDateString()}.json`;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+
+        URL.revokeObjectURL(url);
+      });
+
+      $("importData").addEventListener("change", async event => {
+        const file = event.target.files?.[0];
+        if (!file) return;
+
+        try {
+          const text = await file.text();
+          const imported = JSON.parse(text);
+
+          if (
+            !imported ||
+            !Array.isArray(imported.projects) ||
+            !Array.isArray(imported.stages) ||
+            !Array.isArray(imported.tasks)
+          ) {
+            throw new Error("文件结构不正确");
+          }
+
+          if (!confirm("导入将覆盖当前工作台数据，是否继续？")) {
+            event.target.value = "";
+            return;
+          }
+
+          const defaults = createDefaultState();
+
+          state = {
+            ...defaults,
+            ...imported,
+            thesis: {
+              ...defaults.thesis,
+              ...(imported.thesis || {}),
+              chapters: Array.isArray(imported?.thesis?.chapters)
+                ? imported.thesis.chapters
+                : []
+            }
+          };
+
+          saveState();
+          renderAll();
+          alert("数据导入成功。");
+        } catch (error) {
+          console.error(error);
+          alert("导入失败，请确认所选文件是本工作台导出的 JSON 备份。");
+        }
+
+        event.target.value = "";
+      });
+
+      $("clearData").addEventListener("click", () => {
+        const firstConfirm = confirm(
+          "此操作将清空项目、阶段、任务、论文、投稿和复盘数据。是否继续？"
+        );
+
+        if (!firstConfirm) return;
+
+        const text = prompt("请输入“确认清空”以继续：");
+
+        if (text !== "确认清空") {
+          alert("输入不匹配，已取消清空。");
+          return;
+        }
+
+        state = createDefaultState();
+        saveState();
+        renderAll();
+        alert("全部数据已清空。");
+      });
+
+      renderAll();
+    })();
+  </script>
+<script>
+  (() => {
+    function applyCheckinMorandiTheme() {
+      const dashboard = document.querySelector("#section-dashboard");
+      if (!dashboard) return;
+
+      const buttons = Array.from(dashboard.querySelectorAll("button"));
+
+      const startButton = buttons.find(button =>
+        /开始工作|到位打卡/.test(button.textContent || "")
+      );
+
+      const endButton = buttons.find(button =>
+        /结束工作|离开打卡/.test(button.textContent || "")
+      );
+
+      const leaveButton = buttons.find(button =>
+        /请假/.test(button.textContent || "") &&
+        !/病假|事假|年假/.test(button.textContent || "")
+      );
+
+      if (startButton) {
+        startButton.classList.add("checkin-start-button");
+      }
+
+      if (endButton) {
+        endButton.classList.add("checkin-end-button");
+      }
+
+      if (leaveButton) {
+        leaveButton.classList.add("checkin-leave-button");
+
+        const buttonArea =
+          leaveButton.parentElement ||
+          leaveButton.closest(".card");
+
+        const leaveSelect = buttonArea
+          ? buttonArea.querySelector("select")
+          : null;
+
+        if (leaveSelect) {
+          leaveSelect.classList.add("checkin-leave-select");
+        }
+      }
+
+      /* 找到“打卡记录”所在卡片 */
+      const headings = Array.from(
+        dashboard.querySelectorAll("h1, h2, h3, h4, .card-title")
+      );
+
+      const checkinHeading = headings.find(element =>
+        (element.textContent || "").includes("打卡记录")
+      );
+
+      if (checkinHeading) {
+        const checkinCard =
+          checkinHeading.closest(".card") ||
+          checkinHeading.parentElement;
+
+        if (checkinCard) {
+          checkinCard.classList.add("checkin-morandi-card");
+
+          const textElements = Array.from(
+            checkinCard.querySelectorAll("p, div, span")
+          );
+
+          const statusElement = textElements.find(element =>
+            /今日尚未|今日已开始|今日已结束|工作中/.test(
+              element.textContent || ""
+            )
+          );
+
+          if (statusElement) {
+            statusElement.classList.add("checkin-status-morandi");
+          }
+        }
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", applyCheckinMorandiTheme);
+
+    /* 防止页面重新渲染后样式类丢失 */
+    const observer = new MutationObserver(applyCheckinMorandiTheme);
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  })();
+/* ==================================================
+   项目看板：项目—阶段—任务横向时间轴
+   ================================================== */
+
+const WORKFLOW_TIMELINE_COLORS = [
+  "#7d6b91", // 主紫
+  "#7183a1", // 蓝紫
+  "#a97888", // 红紫
+  "#81789c", // 灰蓝紫
+  "#94758e", // 玫瑰紫
+  "#687f9a"  // 雾霾蓝
+];
+
+function timelineEscapeHTML(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+/* 支持 YYYY-MM-DD、时间戳和普通日期字符串 */
+function timelineParseDate(value) {
+  if (!value) return null;
+
+  if (value instanceof Date) {
+    if (Number.isNaN(value.getTime())) return null;
+
+    return new Date(
+      value.getFullYear(),
+      value.getMonth(),
+      value.getDate()
+    );
+  }
+
+  const text = String(value).trim();
+  /* 兼容月份控件产生的 YYYY-MM */
+  const monthOnlyMatch = text.match(/^(\d{4})-(\d{1,2})$/);
+
+  if (monthOnlyMatch) {
+    const year = Number(monthOnlyMatch[1]);
+    const month = Number(monthOnlyMatch[2]) - 1;
+
+    const result = new Date(year, month, 1);
+
+    return Number.isNaN(result.getTime()) ? null : result;
+  }
+
+  const dateOnlyMatch = text.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+
+  if (dateOnlyMatch) {
+    const year = Number(dateOnlyMatch[1]);
+    const month = Number(dateOnlyMatch[2]) - 1;
+    const day = Number(dateOnlyMatch[3]);
+
+    const result = new Date(year, month, day);
+
+    return Number.isNaN(result.getTime()) ? null : result;
+  }
+
+  const result = new Date(value);
+
+  if (Number.isNaN(result.getTime())) return null;
+
+  return new Date(
+    result.getFullYear(),
+    result.getMonth(),
+    result.getDate()
+  );
+}
+
+function timelineStartOfDay(value) {
+  const date = timelineParseDate(value);
+
+  if (!date) return null;
+
+  date.setHours(0, 0, 0, 0);
+  return date;
+}
+
+function timelineAddDays(date, amount) {
+  const result = new Date(date);
+  result.setDate(result.getDate() + amount);
+  return result;
+}
+
+function timelineDayDifference(start, end) {
+  const dayMilliseconds = 24 * 60 * 60 * 1000;
+  return Math.round((end.getTime() - start.getTime()) / dayMilliseconds);
+}
+
+function timelineFormatDate(value) {
+  const date = timelineParseDate(value);
+
+  if (!date) return "未填写";
+
+  return [
+    date.getFullYear(),
+    String(date.getMonth() + 1).padStart(2, "0"),
+    String(date.getDate()).padStart(2, "0")
+  ].join("-");
+}
+
+function timelineShortDate(value) {
+  const date = timelineParseDate(value);
+
+  if (!date) return "";
+
+  return `${date.getMonth() + 1}/${date.getDate()}`;
+}
+
+function timelineGetId(item) {
+  return item?.id ?? item?._id ?? item?.key ?? "";
+}
+
+function timelineGetTitle(item, fallback = "未命名") {
+  return (
+    item?.title ??
+    item?.name ??
+    item?.projectName ??
+    item?.stageName ??
+    item?.taskName ??
+    fallback
+  );
+}
+
+function timelineGetProjectId(item) {
+  return (
+    item?.projectId ??
+    item?.projectID ??
+    item?.project_id ??
+    item?.parentProjectId ??
+    ""
+  );
+}
+
+function timelineGetStageId(item) {
+  return (
+    item?.stageId ??
+    item?.stageID ??
+    item?.stage_id ??
+    item?.parentStageId ??
+    ""
+  );
+}
+
+/*
+ * 将月份转换为日期：
+ * 开始月份使用当月第一天；
+ * 结束月份使用当月最后一天。
+ */
+function timelineParseMonth(value, useMonthEnd = false) {
+  if (!value) return null;
+
+  const text = String(value).trim();
+
+  /* 兼容 2026-07、2026/07、2026年07月 */
+  const match = text.match(
+    /^(\d{4})(?:-|\/|年)(\d{1,2})(?:月)?$/
+  );
+
+  if (!match) return null;
+
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+
+  if (month < 1 || month > 12) return null;
+
+  if (useMonthEnd) {
+    /* 下个月第 0 天，即本月最后一天 */
+    return new Date(year, month, 0);
+  }
+
+  return new Date(year, month - 1, 1);
+}
+
+function timelineGetStartDate(item) {
+  const normalDate =
+    item?.startDate ??
+    item?.start_date ??
+    item?.beginDate ??
+    item?.begin ??
+    item?.date;
+
+  if (normalDate) {
+    const parsed = timelineParseDate(normalDate);
+    if (parsed) return parsed;
+  }
+
+  const monthValue =
+    item?.startMonth ??
+    item?.start_month ??
+    item?.projectStartMonth ??
+    item?.beginMonth;
+
+  return timelineParseMonth(monthValue, false);
+}
+
+function timelineGetEndDate(item) {
+  const normalDate =
+    item?.endDate ??
+    item?.end_date ??
+    item?.finishDate ??
+    item?.deadline ??
+    item?.dueDate;
+
+  if (normalDate) {
+    const parsed = timelineParseDate(normalDate);
+    if (parsed) return parsed;
+  }
+
+  const monthValue =
+    item?.endMonth ??
+    item?.end_month ??
+    item?.projectEndMonth ??
+    item?.finishMonth;
+
+  return timelineParseMonth(monthValue, true);
+}
+
+function timelineGetTaskDate(task) {
+  return timelineParseDate(
+    task?.deadline ??
+    task?.dueDate ??
+    task?.date ??
+    task?.scheduledDate ??
+    task?.planDate ??
+    task?.taskDate ??
+    task?.createdDate
+  );
+}
+
+function timelineStatus(item) {
+  const rawStatus = String(
+    item?.status ??
+    item?.state ??
+    ""
+  ).toLowerCase();
+
+  const isDone =
+    item?.completed === true ||
+    item?.done === true ||
+    [
+      "done",
+      "completed",
+      "complete",
+      "finished",
+      "已完成",
+      "完成"
+    ].includes(rawStatus);
+
+  if (isDone) return "done";
+
+  const isActive = [
+    "active",
+    "doing",
+    "in-progress",
+    "in_progress",
+    "progress",
+    "进行中",
+    "正在进行"
+  ].includes(rawStatus);
+
+  return isActive ? "active" : "todo";
+}
+
+/*
+ * 从现有工作台读取数据。
+ * 优先读取 state.projects / state.stages / state.tasks。
+ * 同时兼容 data、appState 和独立数组。
+ */
+function getWorkflowTimelineCollections() {
+  let source = {};
+
+  // 首先通过主程序提供的接口读取最新 state
+  if (typeof window.getWorkflowTimelineState === "function") {
+    source = window.getWorkflowTimelineState() || {};
+  } else if (typeof appState !== "undefined" && appState) {
+    source = appState;
+  } else if (typeof data !== "undefined" && data) {
+    source = data;
+  }
+
+  const projectArray = Array.isArray(source.projects)
+    ? source.projects
+    : [];
+
+  const stageArray = Array.isArray(source.stages)
+    ? source.stages
+    : [];
+
+  const taskArray = Array.isArray(source.tasks)
+    ? source.tasks
+    : [];
+
+  return {
+    projects: projectArray,
+    stages: stageArray,
+    tasks: taskArray
+  };
+}
+
+function timelineDateRange(dates) {
+  const validDates = dates
+    .map(timelineParseDate)
+    .filter(Boolean)
+    .sort((a, b) => a - b);
+
+  if (!validDates.length) return null;
+
+  return {
+    start: validDates[0],
+    end: validDates[validDates.length - 1]
+  };
+}
+
+function timelineIsSameId(first, second) {
+  if (first === null || first === undefined) return false;
+  if (second === null || second === undefined) return false;
+
+  return String(first) === String(second);
+}
+
+/* 整理一个项目对应的阶段和任务 */
+function timelineBuildProject(project, projectIndex, stages, tasks) {
+  const projectId = timelineGetId(project);
+
+  const projectStages = stages.filter(stage =>
+    timelineIsSameId(timelineGetProjectId(stage), projectId)
+  );
+
+  const projectTasks = tasks.filter(task =>
+    timelineIsSameId(timelineGetProjectId(task), projectId)
+  );
+
+  const stageModels = projectStages.map(stage => {
+    const stageId = timelineGetId(stage);
+
+    const stageTasks = projectTasks.filter(task =>
+      timelineIsSameId(timelineGetStageId(task), stageId)
+    );
+
+    let start = timelineGetStartDate(stage);
+    let end = timelineGetEndDate(stage);
+
+    const taskRange = timelineDateRange(
+      stageTasks.map(timelineGetTaskDate)
+    );
+
+    if (!start && taskRange) start = taskRange.start;
+    if (!end && taskRange) end = taskRange.end;
+
+    if (start && !end) end = new Date(start);
+    if (!start && end) start = new Date(end);
+
+    if (start && end && end < start) {
+      [start, end] = [end, start];
+    }
+
+    return {
+      raw: stage,
+      id: stageId,
+      title: timelineGetTitle(stage, "未命名阶段"),
+      start,
+      end,
+      status: timelineStatus(stage),
+      tasks: stageTasks
+    };
+  });
+
+  /*
+   * 有所属项目，但没有所属阶段的任务，
+   * 统一放入“未分阶段”细条中。
+   */
+  const ungroupedTasks = projectTasks.filter(task => {
+    const stageId = timelineGetStageId(task);
+
+    return !stageId || !projectStages.some(stage =>
+      timelineIsSameId(timelineGetId(stage), stageId)
+    );
+  });
+
+  if (ungroupedTasks.length) {
+    const ungroupedRange = timelineDateRange(
+      ungroupedTasks.map(timelineGetTaskDate)
+    );
+
+    if (ungroupedRange) {
+      stageModels.push({
+        raw: {},
+        id: `ungrouped-${projectId}`,
+        title: "未分阶段",
+        start: ungroupedRange.start,
+        end: ungroupedRange.end,
+        status: "todo",
+        tasks: ungroupedTasks
+      });
+    }
+  }
+
+  let projectStart = timelineGetStartDate(project);
+  let projectEnd = timelineGetEndDate(project);
+
+  const childDates = [];
+
+  stageModels.forEach(stage => {
+    if (stage.start) childDates.push(stage.start);
+    if (stage.end) childDates.push(stage.end);
+  });
+
+  projectTasks.forEach(task => {
+    const taskDate = timelineGetTaskDate(task);
+    if (taskDate) childDates.push(taskDate);
+  });
+
+  const childRange = timelineDateRange(childDates);
+
+  if (!projectStart && childRange) projectStart = childRange.start;
+  if (!projectEnd && childRange) projectEnd = childRange.end;
+
+  if (projectStart && !projectEnd) {
+    projectEnd = new Date(projectStart);
+  }
+
+  if (!projectStart && projectEnd) {
+    projectStart = new Date(projectEnd);
+  }
+
+  if (projectStart && projectEnd && projectEnd < projectStart) {
+    [projectStart, projectEnd] = [projectEnd, projectStart];
+  }
+
+  return {
+    raw: project,
+    id: projectId,
+    title: timelineGetTitle(project, "未命名项目"),
+    start: projectStart,
+    end: projectEnd,
+    status: timelineStatus(project),
+    color: WORKFLOW_TIMELINE_COLORS[
+      projectIndex % WORKFLOW_TIMELINE_COLORS.length
+    ],
+    stages: stageModels.filter(stage => stage.start && stage.end)
+  };
+}
+
+function timelinePercent(date, rangeStart, totalDays) {
+  const current = timelineDayDifference(rangeStart, date);
+  return Math.max(0, Math.min(100, (current / totalDays) * 100));
+}
+
+function timelineWidthPercent(start, end, rangeStart, totalDays) {
+  const startPosition = timelineDayDifference(rangeStart, start);
+  const endPosition = timelineDayDifference(rangeStart, end) + 1;
+
+  return Math.max(
+    0.35,
+    ((endPosition - startPosition) / totalDays) * 100
+  );
+}
+
+function timelineStatusText(status) {
+  if (status === "done") return "已完成";
+  if (status === "active") return "进行中";
+  return "待开始";
+}
+
+function timelineTaskIsOverdue(task) {
+  const taskDate = timelineGetTaskDate(task);
+
+  if (!taskDate || timelineStatus(task) === "done") return false;
+
+  const today = timelineStartOfDay(new Date());
+  return taskDate < today;
+}
+
+function timelineFindStageTitle(task, stages) {
+  const stageId = timelineGetStageId(task);
+
+  const stage = stages.find(item =>
+    timelineIsSameId(timelineGetId(item), stageId)
+  );
+
+  return stage ? timelineGetTitle(stage, "未命名阶段") : "未分阶段";
+}
+
+function timelineTaskTooltipHTML(task, projectTitle, stageTitle) {
+  const taskDate = timelineGetTaskDate(task);
+  const status = timelineStatus(task);
+  const overdue = timelineTaskIsOverdue(task);
+
+  const notes =
+    task?.notes ??
+    task?.note ??
+    task?.description ??
+    task?.remark ??
+    "";
+
+  const minutes =
+    task?.minutes ??
+    task?.estimatedMinutes ??
+    task?.duration ??
+    "";
+
+  return `
+    <div class="workflow-timeline-tooltip-title">
+      ${timelineEscapeHTML(timelineGetTitle(task, "未命名任务"))}
+    </div>
+
+    <div class="workflow-timeline-tooltip-row">
+      项目：${timelineEscapeHTML(projectTitle)}
+    </div>
+
+    <div class="workflow-timeline-tooltip-row">
+      阶段：${timelineEscapeHTML(stageTitle)}
+    </div>
+
+    <div class="workflow-timeline-tooltip-row">
+      日期：${timelineEscapeHTML(timelineFormatDate(taskDate))}
+    </div>
+
+    ${
+      minutes
+        ? `<div class="workflow-timeline-tooltip-row">
+             预计用时：${timelineEscapeHTML(minutes)} 分钟
+           </div>`
+        : ""
+    }
+
+    <div class="workflow-timeline-tooltip-row">
+      状态：${overdue ? "已逾期" : timelineStatusText(status)}
+    </div>
+
+    ${
+      notes
+        ? `<div class="workflow-timeline-tooltip-note">
+             ${timelineEscapeHTML(notes)}
+           </div>`
+        : ""
+    }
+  `;
+}
+
+function renderWorkflowTimeline() {
+  const canvas = document.getElementById("workflowTimelineCanvas");
+  const scroll = document.getElementById("workflowTimelineScroll");
+  const empty = document.getElementById("workflowTimelineEmpty");
+
+  if (!canvas || !scroll || !empty) return;
+
+  const {
+    projects,
+    stages,
+    tasks
+  } = getWorkflowTimelineCollections();
+
+  const projectModels = projects
+    .map((project, index) =>
+      timelineBuildProject(project, index, stages, tasks)
+    )
+    .filter(project => project.start && project.end);
+
+  if (!projectModels.length) {
+    canvas.innerHTML = "";
+    scroll.hidden = true;
+    empty.hidden = false;
+    return;
+  }
+
+  scroll.hidden = false;
+  empty.hidden = true;
+
+  const allDates = [];
+
+  projectModels.forEach(project => {
+    allDates.push(project.start, project.end);
+
+    project.stages.forEach(stage => {
+      allDates.push(stage.start, stage.end);
+
+      stage.tasks.forEach(task => {
+        const taskDate = timelineGetTaskDate(task);
+        if (taskDate) allDates.push(taskDate);
+      });
+    });
+  });
+
+  let range = timelineDateRange(allDates);
+
+  if (!range) {
+    canvas.innerHTML = "";
+    scroll.hidden = true;
+    empty.hidden = false;
+    return;
+  }
+
+  /* 时间轴前后各留两天空间 */
+  const rangeStart = timelineAddDays(range.start, -2);
+  const rangeEnd = timelineAddDays(range.end, 2);
+
+  const totalDays = Math.max(
+    1,
+    timelineDayDifference(rangeStart, rangeEnd) + 1
+  );
+
+  /*
+   * 每天约 28px。
+   * 日期很多时自动变成可横向滚动的长时间轴。
+   */
+  const dayWidth = totalDays <= 45 ? 30 : totalDays <= 120 ? 18 : 11;
+  const canvasWidth = Math.max(
+    scroll.clientWidth - 4,
+    totalDays * dayWidth
+  );
+
+  canvas.style.width = `${canvasWidth}px`;
+
+  let tickStep = 7;
+
+  if (totalDays > 220) {
+    tickStep = 30;
+  } else if (totalDays > 100) {
+    tickStep = 14;
+  }
+
+  let html = `<div class="workflow-timeline-axis">`;
+
+  for (let day = 0; day < totalDays; day += tickStep) {
+    const date = timelineAddDays(rangeStart, day);
+    const left = (day / totalDays) * 100;
+
+    html += `
+      <div
+        class="workflow-timeline-axis-label"
+        style="left:${left}%"
+      >
+        ${timelineShortDate(date)}
+      </div>
+
+      <div
+        class="workflow-timeline-axis-tick"
+        style="left:${left}%"
+      ></div>
+    `;
+  }
+
+  html += `</div>`;
+
+  /* 日期纵向辅助线 */
+  for (let day = 0; day < totalDays; day += tickStep) {
+    const left = (day / totalDays) * 100;
+
+    html += `
+      <div
+        class="workflow-timeline-grid-line"
+        style="left:${left}%"
+      ></div>
+    `;
+  }
+
+  const today = timelineStartOfDay(new Date());
+
+  if (today >= rangeStart && today <= rangeEnd) {
+    const todayLeft = timelinePercent(today, rangeStart, totalDays);
+
+    html += `
+      <div
+        id="workflowTimelineToday"
+        class="workflow-timeline-today"
+        style="left:${todayLeft}%"
+      >
+        <span class="workflow-timeline-today-label">今天</span>
+      </div>
+    `;
+  }
+
+  projectModels.forEach(project => {
+    const projectLeft = timelinePercent(
+      project.start,
+      rangeStart,
+      totalDays
+    );
+
+    const projectWidth = timelineWidthPercent(
+      project.start,
+      project.end,
+      rangeStart,
+      totalDays
+    );
+
+    const stageCount = Math.max(1, project.stages.length);
+    const rowHeight = 58 + stageCount * 31;
+    const projectBarHeight = Math.max(39, stageCount * 31 + 10);
+
+    html += `
+      <div
+        class="workflow-timeline-project-row"
+        style="
+          height:${rowHeight}px;
+          --tl-color:${project.color};
+        "
+      >
+        <div
+          class="workflow-timeline-project-label is-${project.status}"
+          style="left:${projectLeft}%"
+          title="${timelineEscapeHTML(project.title)}"
+        >
+          ${timelineEscapeHTML(project.title)}
+          <small>
+            ${timelineFormatDate(project.start)}
+            —
+            ${timelineFormatDate(project.end)}
+          </small>
+        </div>
+
+        <div
+          class="workflow-timeline-project-bar is-${project.status}"
+          style="
+            left:${projectLeft}%;
+            width:${projectWidth}%;
+            height:${projectBarHeight}px;
+          "
+          title="${timelineEscapeHTML(project.title)}"
+        ></div>
+    `;
+
+    project.stages.forEach((stage, stageIndex) => {
+      const stageLeft = timelinePercent(
+        stage.start,
+        rangeStart,
+        totalDays
+      );
+
+      const stageWidth = timelineWidthPercent(
+        stage.start,
+        stage.end,
+        rangeStart,
+        totalDays
+      );
+
+      const stageTop = 53 + stageIndex * 31;
+
+      html += `
+        <div
+          class="workflow-timeline-stage-label is-${stage.status}"
+          style="
+            left:${stageLeft}%;
+            top:${stageTop - 3}px;
+          "
+          title="${timelineEscapeHTML(stage.title)}"
+        >
+          ${timelineEscapeHTML(stage.title)}
+        </div>
+
+        <div
+          class="workflow-timeline-stage-bar is-${stage.status}"
+          style="
+            left:${stageLeft}%;
+            top:${stageTop}px;
+            width:${stageWidth}%;
+          "
+          title="${timelineEscapeHTML(stage.title)}"
+        ></div>
+      `;
+
+      stage.tasks.forEach(task => {
+        const taskDate = timelineGetTaskDate(task);
+        if (!taskDate) return;
+
+        const taskLeft = timelinePercent(
+          taskDate,
+          rangeStart,
+          totalDays
+        );
+
+        const taskStatus = timelineStatus(task);
+        const overdue = timelineTaskIsOverdue(task);
+
+        const tooltipHTML = timelineTaskTooltipHTML(
+          task,
+          project.title,
+          stage.title
+        );
+
+        html += `
+          <button
+            type="button"
+            class="
+              workflow-timeline-task-dot
+              is-${taskStatus}
+              ${overdue ? "is-overdue" : ""}
+            "
+            style="
+              left:${taskLeft}%;
+              top:${stageTop + 5.5}px;
+              --tl-color:${project.color};
+            "
+            data-timeline-tooltip="${encodeURIComponent(tooltipHTML)}"
+            aria-label="${timelineEscapeHTML(
+              `${timelineGetTitle(task, "未命名任务")}，${timelineFormatDate(taskDate)}`
+            )}"
+          ></button>
+        `;
+      });
+    });
+
+    html += `</div>`;
+  });
+
+  canvas.innerHTML = html;
+
+  workflowTimelineCentered = false;
+
+  window.requestAnimationFrame(() => {
+    centerWorkflowTimelineToday(true);
+    setTimeout(() => centerWorkflowTimelineToday(true), 80);
+    setTimeout(() => centerWorkflowTimelineToday(true), 220);
+  });
+
+  bindWorkflowTimelineTooltips();
+}
+let workflowTimelineCentered = false;
+
+function centerWorkflowTimelineToday(force = false) {
+  const scroll = document.getElementById("workflowTimelineScroll");
+  const today = document.getElementById("workflowTimelineToday");
+
+  if (!scroll || !today) return false;
+
+  const viewportWidth = scroll.clientWidth;
+  const contentWidth = scroll.scrollWidth;
+
+  if (viewportWidth <= 0 || contentWidth <= viewportWidth) return false;
+
+  const todayCenter = today.offsetLeft + today.offsetWidth / 2;
+  const targetLeft = todayCenter - viewportWidth / 2;
+  const maxLeft = contentWidth - viewportWidth;
+
+  if (workflowTimelineCentered && !force) return true;
+
+  scroll.scrollLeft = Math.max(0, Math.min(targetLeft, maxLeft));
+  workflowTimelineCentered = true;
+
+  return true;
+}
+
+function retryCenterWorkflowTimelineToday(times = 12, delay = 120) {
+  let count = 0;
+
+  const timer = setInterval(() => {
+    const ok = centerWorkflowTimelineToday();
+
+    count += 1;
+
+    if (ok || count >= times) {
+      clearInterval(timer);
+    }
+  }, delay);
+}
+
+window.addEventListener("load", () => {
+  retryCenterWorkflowTimelineToday(12, 120);
+});
+document.addEventListener("click", () => {
+  setTimeout(() => {
+    workflowTimelineCentered = false;
+    centerWorkflowTimelineToday(true);
+  }, 120);
+});
+
+
+function bindWorkflowTimelineTooltips() {
+  const tooltip = document.getElementById("workflowTimelineTooltip");
+  const dots = document.querySelectorAll(
+    ".workflow-timeline-task-dot[data-timeline-tooltip]"
+  );
+
+  if (!tooltip) return;
+
+  dots.forEach(dot => {
+    dot.addEventListener("mouseenter", event => {
+      showWorkflowTimelineTooltip(event.currentTarget);
+    });
+
+    dot.addEventListener("mousemove", event => {
+      positionWorkflowTimelineTooltip(event.clientX, event.clientY);
+    });
+
+    dot.addEventListener("mouseleave", hideWorkflowTimelineTooltip);
+
+    dot.addEventListener("focus", event => {
+      showWorkflowTimelineTooltip(event.currentTarget);
+    });
+
+    dot.addEventListener("blur", hideWorkflowTimelineTooltip);
+  });
+}
+
+function showWorkflowTimelineTooltip(dot) {
+  const tooltip = document.getElementById("workflowTimelineTooltip");
+
+  if (!tooltip || !dot) return;
+
+  try {
+    tooltip.innerHTML = decodeURIComponent(
+      dot.dataset.timelineTooltip || ""
+    );
+  } catch (error) {
+    tooltip.textContent = "无法读取任务信息";
+  }
+
+  tooltip.hidden = false;
+
+  const rect = dot.getBoundingClientRect();
+
+  positionWorkflowTimelineTooltip(
+    rect.left + rect.width / 2,
+    rect.top
+  );
+}
+
+function positionWorkflowTimelineTooltip(clientX, clientY) {
+  const tooltip = document.getElementById("workflowTimelineTooltip");
+
+  if (!tooltip || tooltip.hidden) return;
+
+  const gap = 14;
+  const margin = 10;
+
+  let left = clientX + gap;
+  let top = clientY + gap;
+
+  const rect = tooltip.getBoundingClientRect();
+
+  if (left + rect.width > window.innerWidth - margin) {
+    left = clientX - rect.width - gap;
+  }
+
+  if (top + rect.height > window.innerHeight - margin) {
+    top = clientY - rect.height - gap;
+  }
+
+  left = Math.max(margin, left);
+  top = Math.max(margin, top);
+
+  tooltip.style.left = `${left}px`;
+  tooltip.style.top = `${top}px`;
+}
+
+function hideWorkflowTimelineTooltip() {
+  const tooltip = document.getElementById("workflowTimelineTooltip");
+
+  if (!tooltip) return;
+
+  tooltip.hidden = true;
+}
+
+/* 首次打开页面时绘制 */
+document.addEventListener("DOMContentLoaded", () => {
+  window.setTimeout(renderWorkflowTimeline, 0);
+});
+
+/* 浏览器尺寸改变后重新计算时间轴宽度 */
+let workflowTimelineResizeTimer = null;
+
+window.addEventListener("resize", () => {
+  window.clearTimeout(workflowTimelineResizeTimer);
+
+  workflowTimelineResizeTimer = window.setTimeout(() => {
+    renderWorkflowTimeline();
+  }, 160);
+});
+</script>
+
+<!-- ATTENDANCE_MODULE_START -->
+<style>
+  /* ==================== 打卡模块 ==================== */
+
+  .attendance-action-card {
+    margin-top: 16px;
+    padding: 20px 22px;
+  }
+
+  .attendance-action-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .attendance-action-info {
+    flex: 1;
+    min-width: 240px;
+  }
+
+  .attendance-title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .attendance-title-row .card-title {
+    margin: 0;
+  }
+
+  .attendance-icon {
+    color: #ff873c;
+    font-size: 26px;
+    line-height: 1;
+  }
+
+  .attendance-status {
+    margin-top: 8px;
+    color: #ff873c;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .attendance-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .attendance-button {
+    min-height: 46px;
+    padding: 0 20px;
+    border: 0;
+    border-radius: 24px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+      transform 0.18s ease,
+      opacity 0.18s ease,
+      box-shadow 0.18s ease;
+  }
+
+  .attendance-button:hover:not(:disabled) {
+    transform: translateY(-1px);
+  }
+
+  .attendance-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+  }
+
+  .attendance-button-start {
+    background: #ff873c;
+    box-shadow: 0 8px 20px rgba(255, 135, 60, 0.2);
+  }
+
+  .attendance-button-end {
+    background: #589ce1;
+    box-shadow: 0 8px 20px rgba(88, 156, 225, 0.2);
+  }
+
+  .attendance-button-leave {
+    background: #9b50e6;
+    box-shadow: 0 8px 20px rgba(155, 80, 230, 0.2);
+  }
+
+  .attendance-leave-select {
+    width: auto !important;
+    min-width: 105px;
+    height: 46px;
+    padding: 0 14px;
+    border-radius: 24px !important;
+  }
+
+  .attendance-history-card {
+    margin-top: 18px;
+  }
+
+  .attendance-summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .attendance-summary-item {
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid var(--border, #e8e2eb);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.58);
+  }
+
+  .attendance-summary-label {
+    margin-bottom: 8px;
+    color: var(--muted, #8b849d);
+    font-size: 14px;
+  }
+
+  .attendance-summary-value {
+    color: var(--text, #514968);
+    font-size: 25px;
+    font-weight: 800;
+  }
+
+  .attendance-summary-value.orange {
+    color: #ff873c;
+  }
+
+  .attendance-summary-value.purple {
+    color: #9b50e6;
+  }
+
+  .attendance-summary-value.blue {
+    color: #589ce1;
+  }
+
+  .attendance-subtitle {
+    margin: 24px 0 12px;
+    color: var(--text, #514968);
+    font-size: 17px;
+    font-weight: 800;
+  }
+
+  .attendance-record-list {
+    display: grid;
+    gap: 10px;
+  }
+
+  .attendance-record {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 13px 15px;
+    border: 1px solid var(--border, #e8e2eb);
+    border-radius: 13px;
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  .attendance-record-main {
+    min-width: 0;
+  }
+
+  .attendance-record-title {
+    color: var(--text, #514968);
+    font-weight: 700;
+  }
+
+  .attendance-record-meta {
+    margin-top: 4px;
+    color: var(--muted, #8b849d);
+    font-size: 13px;
+  }
+
+  .attendance-record-actions {
+    display: flex;
+    flex-shrink: 0;
+    gap: 8px;
+  }
+
+  .attendance-text-button {
+    padding: 4px 6px;
+    border: 0;
+    background: transparent;
+    color: #ff873c;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .attendance-text-button.danger {
+    color: #d85a68;
+  }
+
+  .attendance-correction {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .attendance-correction-button {
+    width: 100%;
+    min-height: 42px;
+    padding: 8px 12px;
+    border: 1px solid var(--border, #e8e2eb);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--text, #514968);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .attendance-correction-button:hover {
+    border-color: #8b73a2;
+    background: #fff;
+  }
+
+  .attendance-history-group {
+    margin-top: 14px;
+  }
+
+  .attendance-history-date {
+    margin-bottom: 9px;
+    color: var(--text, #514968);
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .attendance-empty {
+    padding: 24px;
+    border: 1px dashed var(--border, #e8e2eb);
+    border-radius: 13px;
+    color: var(--muted, #8b849d);
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .attendance-action-layout {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .attendance-actions {
+      justify-content: flex-start;
+    }
+
+    .attendance-summary {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 560px) {
+    .attendance-actions,
+    .attendance-correction {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .attendance-button,
+    .attendance-leave-select {
+      width: 100% !important;
+    }
+
+    .attendance-summary {
+      grid-template-columns: 1fr;
+    }
+
+    .attendance-record {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>
+
+<script>
+(() => {
+  "use strict";
+
+  const ATTENDANCE_KEY = "zhixu_workspace_attendance_v1";
+  const WORKSPACE_KEY = "zhixu_workspace_v1";
+
+  let attendanceRecords = [];
+
+  function byId(id) {
+    return document.getElementById(id);
+  }
+
+  function createId() {
+    if (window.crypto && typeof window.crypto.randomUUID === "function") {
+      return "attendance_" + window.crypto.randomUUID();
+    }
+
+    return (
+      "attendance_" +
+      Date.now().toString(36) +
+      Math.random().toString(36).slice(2)
+    );
+  }
+
+  function pad(value) {
+    return String(value).padStart(2, "0");
+  }
+
+  function dateKey(timestamp = Date.now()) {
+    const date = new Date(timestamp);
+
+    return [
+      date.getFullYear(),
+      pad(date.getMonth() + 1),
+      pad(date.getDate())
+    ].join("-");
+  }
+
+  function formatDate(key) {
+    const parts = String(key).split("-");
+
+    if (parts.length !== 3) return key;
+
+    return (
+      parts[0] +
+      "年" +
+      Number(parts[1]) +
+      "月" +
+      Number(parts[2]) +
+      "日"
+    );
+  }
+
+  function formatTime(timestamp) {
+    if (!timestamp) return "--:--";
+
+    const date = new Date(timestamp);
+
+    return pad(date.getHours()) + ":" + pad(date.getMinutes());
+  }
+
+  function formatDuration(milliseconds) {
+    const totalMinutes = Math.max(
+      0,
+      Math.floor(Number(milliseconds || 0) / 60000)
+    );
+
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+
+    if (!hours) return minutes + "分钟";
+
+    return hours + "小时" + minutes + "分钟";
+  }
+
+  function toLocalInput(timestamp) {
+    if (!timestamp) return "";
+
+    const date = new Date(timestamp);
+
+    return (
+      date.getFullYear() +
+      "-" +
+      pad(date.getMonth() + 1) +
+      "-" +
+      pad(date.getDate()) +
+      "T" +
+      pad(date.getHours()) +
+      ":" +
+      pad(date.getMinutes())
+    );
+  }
+
+  function parseLocalInput(value) {
+    if (!value) return null;
+
+    const timestamp = new Date(value).getTime();
+
+    return Number.isFinite(timestamp) ? timestamp : null;
+  }
+
+  function escapeHTML(value) {
+    return String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function loadRecords() {
+    try {
+      const saved = JSON.parse(
+        localStorage.getItem(ATTENDANCE_KEY) || "[]"
+      );
+
+      attendanceRecords = Array.isArray(saved) ? saved : [];
+    } catch (error) {
+      console.error(error);
+      attendanceRecords = [];
+    }
+  }
+
+  function saveRecords() {
+    localStorage.setItem(
+      ATTENDANCE_KEY,
+      JSON.stringify(attendanceRecords)
+    );
+
+    syncAttendanceIntoWorkspace();
+  }
+
+  function syncAttendanceIntoWorkspace() {
+    try {
+      const workspace = JSON.parse(
+        localStorage.getItem(WORKSPACE_KEY) || "{}"
+      );
+
+      if (workspace && typeof workspace === "object") {
+        workspace.attendance = attendanceRecords;
+        localStorage.setItem(
+          WORKSPACE_KEY,
+          JSON.stringify(workspace)
+        );
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  function createInterface() {
+    const dashboard = byId("section-dashboard");
+
+    if (!dashboard || byId("attendanceModule")) return false;
+
+    const actionCard = document.createElement("div");
+    actionCard.id = "attendanceModule";
+    actionCard.className = "card attendance-action-card";
+    actionCard.innerHTML = `
+      <div class="attendance-action-layout">
+        <div class="attendance-action-info">
+          <div class="attendance-title-row">
+            <span class="attendance-icon">◷</span>
+            <h2 class="card-title">打卡记录</h2>
+          </div>
+
+          <p class="card-description">
+            一天内可多次开始或结束工作；请假只记录类别。
+          </p>
+
+          <div id="attendanceCurrentStatus" class="attendance-status">
+            今日尚未开始工作
+          </div>
+        </div>
+
+        <div class="attendance-actions">
+          <button
+            id="attendanceStartButton"
+            class="attendance-button attendance-button-start"
+            type="button"
+          >
+            ▶ 开始工作 / 到位打卡
+          </button>
+
+          <button
+            id="attendanceEndButton"
+            class="attendance-button attendance-button-end"
+            type="button"
+          >
+            ■ 结束工作 / 离开打卡
+          </button>
+
+          <select
+            id="attendanceLeaveType"
+            class="attendance-leave-select"
+            aria-label="请假类型"
+          >
+            <option value="病假">病假</option>
+            <option value="事假">事假</option>
+            <option value="年假">年假</option>
+            <option value="调休">调休</option>
+            <option value="其他">其他</option>
+          </select>
+
+          <button
+            id="attendanceLeaveButton"
+            class="attendance-button attendance-button-leave"
+            type="button"
+          >
+            ☂ 请假
+          </button>
+        </div>
+      </div>
+    `;
+
+    const pageHeader = dashboard.querySelector(".page-header");
+
+    if (pageHeader && pageHeader.nextSibling) {
+      pageHeader.parentNode.insertBefore(
+        actionCard,
+        pageHeader.nextSibling
+      );
+    } else {
+      dashboard.prepend(actionCard);
+    }
+
+    const historyCard = document.createElement("div");
+    historyCard.className =
+      "card card-padding attendance-history-card";
+
+    historyCard.innerHTML = `
+      <h2 class="card-title">打卡历史记录</h2>
+
+      <p class="card-description">
+        查看工作时长、打卡明细和请假记录，并可快速修正数据。
+      </p>
+
+      <div class="divider"></div>
+
+      <div class="attendance-summary">
+        <div class="attendance-summary-item">
+          <div class="attendance-summary-label">今日打卡次数</div>
+          <div
+            id="attendanceTodayCount"
+            class="attendance-summary-value"
+          >
+            0
+          </div>
+        </div>
+
+        <div class="attendance-summary-item">
+          <div class="attendance-summary-label">今日工作时长</div>
+          <div
+            id="attendanceTodayDuration"
+            class="attendance-summary-value orange"
+          >
+            0分钟
+          </div>
+        </div>
+
+        <div class="attendance-summary-item">
+          <div class="attendance-summary-label">今日请假记录</div>
+          <div
+            id="attendanceTodayLeaveCount"
+            class="attendance-summary-value purple"
+          >
+            0
+          </div>
+        </div>
+
+        <div class="attendance-summary-item">
+          <div class="attendance-summary-label">未结束工作段</div>
+          <div
+            id="attendanceOpenCount"
+            class="attendance-summary-value blue"
+          >
+            0
+          </div>
+        </div>
+      </div>
+
+      <h3 class="attendance-subtitle">今日打卡 / 请假明细</h3>
+      <div
+        id="attendanceTodayList"
+        class="attendance-record-list"
+      ></div>
+
+      <h3 class="attendance-subtitle">快速修正</h3>
+
+      <div class="attendance-correction">
+        <button
+          id="attendanceCloseOpenButton"
+          class="attendance-correction-button"
+          type="button"
+        >
+          关闭今天所有未结束工作段
+        </button>
+
+        <button
+          id="attendanceClearLeaveButton"
+          class="attendance-correction-button"
+          type="button"
+        >
+          清空今日请假记录
+        </button>
+      </div>
+
+      <h3 class="attendance-subtitle">历史记录</h3>
+      <div id="attendanceHistoryList"></div>
+    `;
+
+    dashboard.appendChild(historyCard);
+
+    return true;
+  }
+
+  function todayRecords() {
+    const today = dateKey();
+
+    return attendanceRecords.filter(record => {
+      const timestamp =
+        record.type === "work" ? record.start : record.time;
+
+      return timestamp && dateKey(timestamp) === today;
+    });
+  }
+
+  function openRecordsToday() {
+    return todayRecords().filter(
+      record => record.type === "work" && !record.end
+    );
+  }
+
+  function startWork() {
+    if (openRecordsToday().length) {
+      alert("当前已有未结束的工作段，请先进行离开打卡。");
+      return;
+    }
+
+    attendanceRecords.push({
+      id: createId(),
+      type: "work",
+      start: Date.now(),
+      end: null
+    });
+
+    saveRecords();
+    render();
+  }
+
+  function endWork() {
+    const record = openRecordsToday()
+      .sort((a, b) => b.start - a.start)[0];
+
+    if (!record) {
+      alert("今天没有正在进行的工作段。");
+      return;
+    }
+
+    record.end = Date.now();
+
+    saveRecords();
+    render();
+  }
+
+  function addLeave() {
+    const typeSelect = byId("attendanceLeaveType");
+
+    attendanceRecords.push({
+      id: createId(),
+      type: "leave",
+      leaveType: typeSelect ? typeSelect.value : "请假",
+      time: Date.now()
+    });
+
+    saveRecords();
+    render();
+  }
+
+  function deleteRecord(id) {
+    if (!confirm("确定删除这条记录吗？")) return;
+
+    attendanceRecords = attendanceRecords.filter(
+      record => record.id !== id
+    );
+
+    saveRecords();
+    render();
+  }
+
+  function editRecord(id) {
+    const record = attendanceRecords.find(
+      item => item.id === id
+    );
+
+    if (!record) return;
+
+    if (record.type === "leave") {
+      const leaveType = prompt(
+        "请输入请假类型：",
+        record.leaveType || "请假"
+      );
+
+      if (leaveType === null) return;
+
+      const timeValue = prompt(
+        "请输入请假时间，格式为 YYYY-MM-DDTHH:mm：",
+        toLocalInput(record.time)
+      );
+
+      if (timeValue === null) return;
+
+      const parsedTime = parseLocalInput(timeValue);
+
+      if (!parsedTime) {
+        alert("时间格式不正确。");
+        return;
+      }
+
+      record.leaveType = leaveType.trim() || "请假";
+      record.time = parsedTime;
+    } else {
+      const startValue = prompt(
+        "请输入开始时间，格式为 YYYY-MM-DDTHH:mm：",
+        toLocalInput(record.start)
+      );
+
+      if (startValue === null) return;
+
+      const parsedStart = parseLocalInput(startValue);
+
+      if (!parsedStart) {
+        alert("开始时间格式不正确。");
+        return;
+      }
+
+      const endValue = prompt(
+        "请输入结束时间；如需设为未结束，请留空：",
+        toLocalInput(record.end)
+      );
+
+      if (endValue === null) return;
+
+      const parsedEnd = endValue.trim()
+        ? parseLocalInput(endValue)
+        : null;
+
+      if (endValue.trim() && !parsedEnd) {
+        alert("结束时间格式不正确。");
+        return;
+      }
+
+      if (parsedEnd && parsedEnd < parsedStart) {
+        alert("结束时间不能早于开始时间。");
+        return;
+      }
+
+      record.start = parsedStart;
+      record.end = parsedEnd;
+    }
+
+    saveRecords();
+    render();
+  }
+
+  function closeOpenRecords() {
+    const records = openRecordsToday();
+
+    if (!records.length) {
+      alert("今天没有未结束的工作段。");
+      return;
+    }
+
+    if (!confirm(
+      "确定关闭今天的 " +
+      records.length +
+      " 个未结束工作段吗？"
+    )) {
+      return;
+    }
+
+    const now = Date.now();
+
+    records.forEach(record => {
+      record.end = Math.max(now, record.start);
+    });
+
+    saveRecords();
+    render();
+  }
+
+  function clearTodayLeave() {
+    const today = dateKey();
+
+    const leaveRecords = attendanceRecords.filter(
+      record =>
+        record.type === "leave" &&
+        dateKey(record.time) === today
+    );
+
+    if (!leaveRecords.length) {
+      alert("今天没有请假记录。");
+      return;
+    }
+
+    if (!confirm(
+      "确定清空今天的 " +
+      leaveRecords.length +
+      " 条请假记录吗？"
+    )) {
+      return;
+    }
+
+    attendanceRecords = attendanceRecords.filter(
+      record =>
+        !(
+          record.type === "leave" &&
+          dateKey(record.time) === today
+        )
+    );
+
+    saveRecords();
+    render();
+  }
+
+  function recordHTML(record) {
+    const id = escapeHTML(record.id);
+
+    if (record.type === "leave") {
+      return `
+        <div class="attendance-record">
+          <div class="attendance-record-main">
+            <div class="attendance-record-title">
+              请假 · ${escapeHTML(record.leaveType || "请假")}
+            </div>
+
+            <div class="attendance-record-meta">
+              记录时间 ${formatTime(record.time)}
+            </div>
+          </div>
+
+          <div class="attendance-record-actions">
+            <button
+              type="button"
+              class="attendance-text-button"
+              data-attendance-edit="${id}"
+            >
+              修改
+            </button>
+
+            <button
+              type="button"
+              class="attendance-text-button danger"
+              data-attendance-delete="${id}"
+            >
+              删除
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    const duration = record.end
+      ? formatDuration(record.end - record.start)
+      : "尚未结束";
+
+    return `
+      <div class="attendance-record">
+        <div class="attendance-record-main">
+          <div class="attendance-record-title">
+            工作段
+            ${formatTime(record.start)}
+            -
+            ${record.end ? formatTime(record.end) : "进行中"}
+          </div>
+
+          <div class="attendance-record-meta">
+            ${duration}
+          </div>
+        </div>
+
+        <div class="attendance-record-actions">
+          <button
+            type="button"
+            class="attendance-text-button"
+            data-attendance-edit="${id}"
+          >
+            修改
+          </button>
+
+          <button
+            type="button"
+            class="attendance-text-button danger"
+            data-attendance-delete="${id}"
+          >
+            删除
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderToday() {
+    const records = todayRecords().sort((a, b) => {
+      const aTime = a.type === "work" ? a.start : a.time;
+      const bTime = b.type === "work" ? b.start : b.time;
+
+      return bTime - aTime;
+    });
+
+    const workRecords = records.filter(
+      record => record.type === "work"
+    );
+
+    const leaveRecords = records.filter(
+      record => record.type === "leave"
+    );
+
+    const openRecords = workRecords.filter(
+      record => !record.end
+    );
+
+    const punchCount = workRecords.reduce(
+      (count, record) =>
+        count + 1 + (record.end ? 1 : 0),
+      0
+    );
+
+    const totalDuration = workRecords.reduce(
+      (total, record) =>
+        total +
+        (
+          record.end
+            ? Math.max(0, record.end - record.start)
+            : 0
+        ),
+      0
+    );
+
+    byId("attendanceTodayCount").textContent = punchCount;
+
+    byId("attendanceTodayDuration").textContent =
+      formatDuration(totalDuration);
+
+    byId("attendanceTodayLeaveCount").textContent =
+      leaveRecords.length;
+
+    byId("attendanceOpenCount").textContent =
+      openRecords.length;
+
+    byId("attendanceTodayList").innerHTML = records.length
+      ? records.map(recordHTML).join("")
+      : `
+        <div class="attendance-empty">
+          今天还没有打卡或请假记录。
+        </div>
+      `;
+
+    const status = byId("attendanceCurrentStatus");
+
+    if (openRecords.length) {
+      const latest = [...openRecords].sort(
+        (a, b) => b.start - a.start
+      )[0];
+
+      status.textContent =
+        "当前工作中，开始于 " + formatTime(latest.start);
+    } else if (workRecords.length) {
+      status.textContent = "今日工作段均已结束";
+    } else {
+      status.textContent = "今日尚未开始工作";
+    }
+
+    byId("attendanceStartButton").disabled =
+      openRecords.length > 0;
+
+    byId("attendanceEndButton").disabled =
+      openRecords.length === 0;
+  }
+
+  function renderHistory() {
+    const container = byId("attendanceHistoryList");
+
+    if (!attendanceRecords.length) {
+      container.innerHTML = `
+        <div class="attendance-empty">
+          暂无历史打卡记录。
+        </div>
+      `;
+      return;
+    }
+
+    const grouped = {};
+
+    attendanceRecords.forEach(record => {
+      const timestamp =
+        record.type === "work" ? record.start : record.time;
+
+      const key = dateKey(timestamp);
+
+      if (!grouped[key]) grouped[key] = [];
+
+      grouped[key].push(record);
+    });
+
+    container.innerHTML = Object.keys(grouped)
+      .sort((a, b) => b.localeCompare(a))
+      .map(key => {
+        const records = grouped[key].sort((a, b) => {
+          const aTime =
+            a.type === "work" ? a.start : a.time;
+
+          const bTime =
+            b.type === "work" ? b.start : b.time;
+
+          return bTime - aTime;
+        });
+
+        return `
+          <div class="attendance-history-group">
+            <div class="attendance-history-date">
+              ${formatDate(key)}
+            </div>
+
+            <div class="attendance-record-list">
+              ${records.map(recordHTML).join("")}
+            </div>
+          </div>
+        `;
+      })
+      .join("");
+  }
+
+  function updateDataSummary() {
+    const summary = byId("dataSummary");
+
+    if (!summary || byId("attendanceDataSummaryRow")) return;
+
+    const row = document.createElement("div");
+    row.id = "attendanceDataSummaryRow";
+    row.className = "list-item list-head";
+
+    row.innerHTML = `
+      <span>打卡与请假记录</span>
+      <strong>${attendanceRecords.length}</strong>
+    `;
+
+    summary.appendChild(row);
+  }
+
+  function render() {
+    if (!byId("attendanceModule")) return;
+
+    renderToday();
+    renderHistory();
+    updateDataSummary();
+  }
+
+  function bindEvents() {
+    byId("attendanceStartButton")
+      .addEventListener("click", startWork);
+
+    byId("attendanceEndButton")
+      .addEventListener("click", endWork);
+
+    byId("attendanceLeaveButton")
+      .addEventListener("click", addLeave);
+
+    byId("attendanceCloseOpenButton")
+      .addEventListener("click", closeOpenRecords);
+
+    byId("attendanceClearLeaveButton")
+      .addEventListener("click", clearTodayLeave);
+
+    document.addEventListener("click", event => {
+      const editButton = event.target.closest(
+        "[data-attendance-edit]"
+      );
+
+      if (editButton) {
+        editRecord(editButton.dataset.attendanceEdit);
+        return;
+      }
+
+      const deleteButton = event.target.closest(
+        "[data-attendance-delete]"
+      );
+
+      if (deleteButton) {
+        deleteRecord(deleteButton.dataset.attendanceDelete);
+      }
+    });
+  }
+
+  function installBackupIntegration() {
+    /*
+      使用捕获阶段接管原有导出、导入和清空按钮，
+      使打卡数据与原工作台数据位于同一个 JSON 备份中。
+    */
+
+    document.addEventListener("click", event => {
+      const exportButton = event.target.closest("#exportData");
+
+      if (exportButton) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+
+        let workspace = {};
+
+        try {
+          workspace = JSON.parse(
+            localStorage.getItem(WORKSPACE_KEY) || "{}"
+          );
+        } catch (error) {
+          console.error(error);
+        }
+
+        workspace.attendance = attendanceRecords;
+
+        const blob = new Blob(
+          [JSON.stringify(workspace, null, 2)],
+          { type: "application/json;charset=utf-8" }
+        );
+
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+
+        link.href = url;
+        link.download =
+          "知序学习工作台备份_" + dateKey() + ".json";
+
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+
+        setTimeout(() => URL.revokeObjectURL(url), 0);
+        return;
+      }
+
+      const clearButton = event.target.closest("#clearData");
+
+      if (clearButton) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+
+        const firstConfirm = confirm(
+          "此操作将清空项目、阶段、任务、论文、投稿、复盘和打卡数据。是否继续？"
+        );
+
+        if (!firstConfirm) return;
+
+        const text = prompt("请输入“确认清空”以继续：");
+
+        if (text !== "确认清空") {
+          alert("输入不匹配，已取消清空。");
+          return;
+        }
+
+        localStorage.removeItem(WORKSPACE_KEY);
+        localStorage.removeItem(ATTENDANCE_KEY);
+
+        alert("全部数据已清空，页面将重新载入。");
+        location.reload();
+      }
+    }, true);
+
+    document.addEventListener("change", async event => {
+      if (!event.target.matches("#importData")) return;
+
+      event.preventDefault();
+      event.stopImmediatePropagation();
+
+      const file = event.target.files?.[0];
+
+      if (!file) return;
+
+      try {
+        const imported = JSON.parse(await file.text());
+
+        if (
+          !imported ||
+          !Array.isArray(imported.projects) ||
+          !Array.isArray(imported.stages) ||
+          !Array.isArray(imported.tasks)
+        ) {
+          throw new Error("文件结构不正确");
+        }
+
+        if (!confirm(
+          "导入将覆盖当前工作台及打卡数据，是否继续？"
+        )) {
+          event.target.value = "";
+          return;
+        }
+
+        const importedAttendance = Array.isArray(
+          imported.attendance
+        )
+          ? imported.attendance
+          : [];
+
+        localStorage.setItem(
+          ATTENDANCE_KEY,
+          JSON.stringify(importedAttendance)
+        );
+
+        localStorage.setItem(
+          WORKSPACE_KEY,
+          JSON.stringify(imported)
+        );
+
+        alert("数据导入成功，页面将重新载入。");
+        location.reload();
+      } catch (error) {
+        console.error(error);
+
+        alert(
+          "导入失败，请确认所选文件是本工作台导出的 JSON 备份。"
+        );
+
+        event.target.value = "";
+      }
+    }, true);
+  }
+
+  function init() {
+    loadRecords();
+
+    if (!createInterface()) {
+      console.warn("未找到总览首页，打卡模块无法安装。");
+      return;
+    }
+
+    bindEvents();
+    installBackupIntegration();
+    syncAttendanceIntoWorkspace();
+    render();
+
+    const summary = byId("dataSummary");
+
+    if (summary) {
+      const observer = new MutationObserver(() => {
+        updateDataSummary();
+      });
+
+      observer.observe(summary, {
+        childList: true
+      });
+    }
+
+    window.setInterval(render, 60000);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      init,
+      { once: true }
+    );
+  } else {
+    init();
+  }
+})();
+</script>
+<!-- ATTENDANCE_MODULE_END -->
+
+<script>
+/* ===== 知序 · 学习工作台：登录与云端同步 ===== */
+(function () {
+  "use strict";
+
+  var AUTH_KEY = "zhixu_auth";
+  var TOKEN_KEY = "zhixu_sync_token";
+  var ACCOUNT_KEY = "zhixu_sync_account";
+  var GIST_KEY = "zhixu_sync_gist";
+  var META_KEY = "zhixu_sync_meta";
+  var DATA_KEYS = ["zhixu_workspace_v1", "zhixu_workspace_attendance_v1"];
+  var API_ROOT = "https://api.github.com";
+  var GIST_DESC = "知序 · 学习工作台 · 云端同步";
+  var GIST_FILE = "zhixu-workspace.json";
+  var PASSWORD = atob("MDAxMjI0");
+
+  var syncTimer = null;
+  var suppressDirty = false;
+  var cloudStarted = false;
+  var syncBusy = false;
+  var pendingPush = false;
+  var syncReady = false;
+
+  function byId(id) {
+    return document.getElementById(id);
+  }
+
+  function nowISO() {
+    return new Date().toISOString();
+  }
+
+  function safeParse(text, fallback) {
+    try {
+      return JSON.parse(text);
+    } catch (error) {
+      return fallback;
+    }
+  }
+
+  function readMeta() {
+    return safeParse(localStorage.getItem(META_KEY) || "{}", {});
+  }
+
+  function writeMeta(meta) {
+    localStorage.setItem(META_KEY, JSON.stringify(meta));
+  }
+
+  function clockText() {
+    var date = new Date();
+    return String(date.getHours()).padStart(2, "0") + ":" + String(date.getMinutes()).padStart(2, "0");
+  }
+
+  function token() {
+    return localStorage.getItem(TOKEN_KEY) || "";
+  }
+
+  function setChip(state, text) {
+    var chip = byId("cloudStatus");
+    if (!chip) return;
+    chip.setAttribute("data-state", state);
+    chip.textContent = text;
+  }
+
+  function setCloudBadge(state, text) {
+    var badge = byId("cloudBadge");
+    if (!badge) return;
+    badge.setAttribute("data-state", state);
+    badge.textContent = text;
+  }
+
+  function updateCloudHint(text) {
+    var hint = byId("cloudSyncHint");
+    if (hint) hint.textContent = text;
+  }
+
+  function showCloudError(message) {
+    var error = byId("cloudError");
+    if (error) error.textContent = message || "";
+  }
+
+  /* ---------- 登录 ---------- */
+
+  function unlockUI() {
+    document.body.classList.remove("locked");
+    var screen = byId("loginScreen");
+    if (screen) {
+      screen.classList.add("login-screen-hide");
+      window.setTimeout(function () {
+        if (screen.parentNode) screen.parentNode.removeChild(screen);
+      }, 420);
+    }
+    window.setTimeout(function () {
+      window.dispatchEvent(new Event("resize"));
+    }, 160);
+  }
+
+  function initLogin() {
+    var form = byId("loginForm");
+    var card = byId("loginCard");
+    var input = byId("loginPassword");
+    var error = byId("loginError");
+    var toggle = byId("togglePassword");
+
+    if (!form || !input) {
+      unlockUI();
+      startCloud();
+      return;
+    }
+
+    if (toggle) {
+      toggle.addEventListener("click", function () {
+        var showing = input.getAttribute("type") === "text";
+        input.setAttribute("type", showing ? "password" : "text");
+        toggle.textContent = showing ? "显示" : "隐藏";
+        try {
+          input.focus();
+        } catch (e) {}
+      });
+    }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var value = (input.value || "").trim();
+      if (value === PASSWORD) {
+        localStorage.setItem(AUTH_KEY, "1");
+        if (error) error.textContent = "";
+        unlockUI();
+        startCloud();
+      } else {
+        if (error) {
+          error.textContent = value ? "密码不正确，请再试一次。" : "请输入访问密码。";
+        }
+        if (card) {
+          card.classList.remove("shake");
+          void card.offsetWidth;
+          card.classList.add("shake");
+        }
+        try {
+          input.select();
+        } catch (e) {}
+      }
+    });
+
+    window.setTimeout(function () {
+      try {
+        input.focus();
+      } catch (e) {}
+    }, 150);
+  }
+
+  function logout() {
+    if (!window.confirm("退出登录后，下次进入需要重新输入密码。确定退出吗？")) return;
+    localStorage.removeItem(AUTH_KEY);
+    window.location.reload();
+  }
+
+  /* ---------- 数据变更监听 ---------- */
+
+  var nativeSetItem = Storage.prototype.setItem;
+
+  Storage.prototype.setItem = function (key, value) {
+    nativeSetItem.call(this, key, value);
+    if (this === window.localStorage && syncReady && !suppressDirty && DATA_KEYS.indexOf(key) !== -1) {
+      try {
+        markDirty();
+      } catch (error) {}
+    }
+  };
+
+  function markDirty() {
+    if (!token()) return;
+    var meta = readMeta();
+    meta.dirty = true;
+    writeMeta(meta);
+    setChip("dirty", "待同步");
+    if (syncTimer) window.clearTimeout(syncTimer);
+    syncTimer = window.setTimeout(pushNow, 1500);
+  }
+
+  /* ---------- GitHub Gist 云端同步 ---------- */
+
+  async function api(path, options) {
+    var opts = options || {};
+    var headers = {
+      Accept: "application/vnd.github+json",
+      Authorization: "Bearer " + token()
+    };
+    var init = { method: opts.method || "GET", headers: headers, cache: "no-store" };
+    if (opts.body) {
+      headers["Content-Type"] = "application/json";
+      init.body = JSON.stringify(opts.body);
+    }
+    var response = await fetch(API_ROOT + path, init);
+    if (!response.ok) {
+      var message = "";
+      try {
+        var data = await response.json();
+        message = data && data.message ? data.message : "";
+      } catch (error) {}
+      throw new Error("GitHub " + response.status + (message ? "：" + message : ""));
+    }
+    return response.json();
+  }
+
+  function collectData() {
+    var data = {};
+    DATA_KEYS.forEach(function (key) {
+      var value = localStorage.getItem(key);
+      if (value !== null) data[key] = value;
+    });
+    return data;
+  }
+
+  function buildPayload(rev) {
+    return {
+      app: "zhixu-study-workspace",
+      version: 1,
+      rev: rev,
+      updatedAt: nowISO(),
+      device: navigator.userAgent.indexOf("Mobile") >= 0 ? "移动端" : "桌面端",
+      data: collectData()
+    };
+  }
+
+  function gistFilesOf(content) {
+    var files = {};
+    files[GIST_FILE] = { content: content };
+    return files;
+  }
+
+  function hasLocalData() {
+    var workspace = safeParse(localStorage.getItem("zhixu_workspace_v1") || "null", null);
+    if (workspace) {
+      var fields = ["projects", "stages", "tasks", "schedules", "focusSessions", "submissions", "reviews"];
+      for (var index = 0; index < fields.length; index += 1) {
+        var list = workspace[fields[index]];
+        if (list && list.length) return true;
+      }
+      if (workspace.thesis) {
+        if (workspace.thesis.title) return true;
+        if (workspace.thesis.chapters && workspace.thesis.chapters.length) return true;
+      }
+    }
+    var attendance = safeParse(localStorage.getItem("zhixu_workspace_attendance_v1") || "[]", []);
+    return Array.isArray(attendance) && attendance.length > 0;
+  }
+
+  async function ensureGist() {
+    var gistId = localStorage.getItem(GIST_KEY) || "";
+    if (gistId) return gistId;
+
+    var found = null;
+    for (var page = 1; page <= 3 && !found; page += 1) {
+      var list = await api("/gists?per_page=100&page=" + page);
+      if (!Array.isArray(list) || !list.length) break;
+      list.some(function (gist) {
+        if (gist.description === GIST_DESC) {
+          found = gist;
+          return true;
+        }
+        if (!found && gist.files && gist.files[GIST_FILE]) {
+          found = gist;
+        }
+        return false;
+      });
+    }
+
+    if (found) {
+      localStorage.setItem(GIST_KEY, found.id);
+      return found.id;
+    }
+
+    var initial = buildPayload(1);
+    var created = await api("/gists", {
+      method: "POST",
+      body: {
+        description: GIST_DESC,
+        public: false,
+        files: gistFilesOf(JSON.stringify(initial))
+      }
+    });
+    localStorage.setItem(GIST_KEY, created.id);
+    var meta = readMeta();
+    meta.rev = 1;
+    meta.lastPushedAt = nowISO();
+    meta.dirty = false;
+    writeMeta(meta);
+    return created.id;
+  }
+
+  async function fetchRemote() {
+    var gistId = localStorage.getItem(GIST_KEY) || "";
+    if (!gistId) return null;
+    var gist = await api("/gists/" + gistId);
+    var file = gist.files && gist.files[GIST_FILE];
+    if (!file) return null;
+    if (file.truncated && file.raw_url) {
+      var raw = await fetch(file.raw_url, { cache: "no-store" });
+      return safeParse(await raw.text(), null);
+    }
+    return safeParse(file.content, null);
+  }
+
+  function applyRemote(remote) {
+    if (!remote || !remote.data) return;
+    suppressDirty = true;
+    try {
+      DATA_KEYS.forEach(function (key) {
+        if (typeof remote.data[key] === "string") {
+          localStorage.setItem(key, remote.data[key]);
+        }
+      });
+    } finally {
+      suppressDirty = false;
+    }
+    var meta = readMeta();
+    meta.rev = remote.rev || 0;
+    meta.dirty = false;
+    meta.lastAppliedAt = nowISO();
+    writeMeta(meta);
+    window.location.reload();
+  }
+
+  async function pushNow() {
+    if (!token()) return;
+    if (syncBusy) {
+      pendingPush = true;
+      return;
+    }
+    syncBusy = true;
+    pendingPush = false;
+    setChip("syncing", "同步中…");
+    setCloudBadge("on", "同步中");
+    try {
+      var gistId = await ensureGist();
+      var remote = await fetchRemote();
+      var meta = readMeta();
+      var rev = Math.max((remote && remote.rev) || 0, meta.rev || 0) + 1;
+      var payload = buildPayload(rev);
+      await api("/gists/" + gistId, {
+        method: "PATCH",
+        body: {
+          description: GIST_DESC,
+          files: gistFilesOf(JSON.stringify(payload))
+        }
+      });
+      var next = readMeta();
+      next.rev = rev;
+      next.dirty = false;
+      next.lastPushedAt = nowISO();
+      writeMeta(next);
+      setChip("synced", "已同步 " + clockText());
+      setCloudBadge("on", "已开启");
+      updateCloudHint("已同步，最近的修改已经保存到云端。");
+    } catch (error) {
+      console.warn("云端同步失败：", error);
+      setChip("error", "同步失败");
+      setCloudBadge("err", "同步异常");
+      updateCloudHint("同步失败：" + (error.message || "网络异常") + "。可以点击“立即同步”重试。");
+    } finally {
+      syncBusy = false;
+      if (pendingPush) {
+        pendingPush = false;
+        window.setTimeout(pushNow, 900);
+      }
+    }
+  }
+
+  async function pullIfNewer() {
+    if (!token() || syncBusy || document.hidden) return;
+    try {
+      var remote = await fetchRemote();
+      if (!remote) return;
+      var meta = readMeta();
+      if ((remote.rev || 0) > (meta.rev || 0) && !meta.dirty) {
+        applyRemote(remote);
+      }
+    } catch (error) {}
+  }
+
+  function renderCloudUI(hasError) {
+    var connected = !!token();
+    var connectPanel = byId("cloudConnectPanel");
+    var connectedPanel = byId("cloudConnectedPanel");
+    if (connectPanel) connectPanel.classList.toggle("hidden", connected);
+    if (connectedPanel) connectedPanel.classList.toggle("hidden", !connected);
+
+    setCloudBadge(connected ? (hasError ? "err" : "on") : "off", connected ? (hasError ? "连接异常" : "已开启") : "未开启");
+
+    var accountName = byId("cloudAccountName");
+    if (accountName) {
+      var login = localStorage.getItem(ACCOUNT_KEY) || "";
+      accountName.textContent = login ? "已连接 @" + login : "已连接 GitHub";
+    }
+
+    var description = byId("cloudDescription");
+    if (description) {
+      description.textContent = connected
+        ? "记录会自动同步到你的 GitHub 私有 Gist，可在不同设备继续。"
+        : "登录后可在手机、平板和其他电脑上继续同一份学习记录。";
+    }
+  }
+
+  async function startCloud() {
+    if (cloudStarted) return;
+    cloudStarted = true;
+    renderCloudUI(false);
+
+    if (!token()) {
+      setChip("off", "本地保存");
+      updateCloudHint("尚未开启云端同步，记录只保存在当前浏览器。");
+      return;
+    }
+
+    setChip("syncing", "连接中…");
+    try {
+      var user = await api("/user");
+      localStorage.setItem(ACCOUNT_KEY, user.login);
+      await ensureGist();
+
+      var meta = readMeta();
+      if (!meta.rev && hasLocalData()) {
+        meta.dirty = true;
+        writeMeta(meta);
+      }
+
+      var remote = await fetchRemote();
+      if (readMeta().dirty) {
+        await pushNow();
+      } else if (remote && (remote.rev || 0) > (readMeta().rev || 0)) {
+        applyRemote(remote);
+        return;
+      } else {
+        setChip("synced", "已同步 " + clockText());
+        updateCloudHint("自动同步已开启，修改记录后会自动保存到云端。");
+      }
+
+      renderCloudUI(false);
+    } catch (error) {
+      console.warn("云端连接失败：", error);
+      setChip("error", "同步失败");
+      renderCloudUI(true);
+      updateCloudHint("连接云端失败：" + (error.message || "网络异常") + "。可以尝试关闭后重新开启云端同步。");
+    }
+  }
+
+  function initCloudUI() {
+    renderCloudUI(false);
+
+    var connectButton = byId("cloudConnectButton");
+    if (connectButton) {
+      connectButton.addEventListener("click", async function () {
+        var input = byId("cloudToken");
+        var value = ((input && input.value) || "").trim();
+        if (!value) {
+          showCloudError("请先粘贴访问令牌。");
+          return;
+        }
+        showCloudError("");
+        connectButton.disabled = true;
+        connectButton.textContent = "正在连接…";
+        try {
+          var response = await fetch(API_ROOT + "/user", {
+            headers: {
+              Accept: "application/vnd.github+json",
+              Authorization: "Bearer " + value
+            },
+            cache: "no-store"
+          });
+          if (!response.ok) throw new Error("令牌无效或已过期");
+          var user = await response.json();
+          localStorage.setItem(TOKEN_KEY, value);
+          localStorage.setItem(ACCOUNT_KEY, user.login);
+          localStorage.removeItem(GIST_KEY);
+          localStorage.removeItem(META_KEY);
+          if (input) input.value = "";
+          cloudStarted = false;
+          await startCloud();
+        } catch (error) {
+          showCloudError("连接失败：" + (error.message || "请检查令牌是否勾选了 gist 权限。"));
+        } finally {
+          connectButton.disabled = false;
+          connectButton.textContent = "开启云端同步";
+        }
+      });
+    }
+
+    var connectPanel = byId("cloudConnectPanel");
+    if (connectPanel && connectPanel.tagName === "FORM") {
+      connectPanel.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (connectButton) connectButton.click();
+      });
+    }
+
+    var syncNow = byId("cloudSyncNow");
+    if (syncNow) {
+      syncNow.addEventListener("click", function () {
+        pushNow();
+      });
+    }
+
+    var disconnect = byId("cloudDisconnect");
+    if (disconnect) {
+      disconnect.addEventListener("click", function () {
+        if (!window.confirm("关闭云端同步后，这台设备将不再自动上传和下载记录。确定关闭吗？")) return;
+        localStorage.removeItem(TOKEN_KEY);
+        localStorage.removeItem(ACCOUNT_KEY);
+        localStorage.removeItem(GIST_KEY);
+        localStorage.removeItem(META_KEY);
+        cloudStarted = false;
+        setChip("off", "本地保存");
+        renderCloudUI(false);
+        updateCloudHint("已关闭云端同步，记录仅保存在当前浏览器。");
+      });
+    }
+
+    var cloudLogout = byId("cloudLogout");
+    if (cloudLogout) cloudLogout.addEventListener("click", logout);
+
+    var logoutButton = byId("logoutButton");
+    if (logoutButton) logoutButton.addEventListener("click", logout);
+
+    var chip = byId("cloudStatus");
+    if (chip) {
+      chip.addEventListener("click", function () {
+        var navButton = document.querySelector('.nav-button[data-section="settings"]');
+        if (navButton) navButton.click();
+      });
+    }
+  }
+
+  function initWatchers() {
+    window.setInterval(pullIfNewer, 60000);
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "visible") pullIfNewer();
+    });
+
+    window.addEventListener("online", function () {
+      if (token()) pushNow();
+    });
+
+    window.addEventListener("pagehide", function () {
+      if (!token()) return;
+      var meta = readMeta();
+      if (!meta.dirty) return;
+      var gistId = localStorage.getItem(GIST_KEY) || "";
+      if (!gistId) return;
+      try {
+        var rev = (meta.rev || 0) + 1;
+        var payload = buildPayload(rev);
+        fetch(API_ROOT + "/gists/" + gistId, {
+          method: "PATCH",
+          headers: {
+            Accept: "application/vnd.github+json",
+            Authorization: "Bearer " + token(),
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ description: GIST_DESC, files: gistFilesOf(JSON.stringify(payload)) }),
+          keepalive: true
+        });
+      } catch (error) {}
+    });
+  }
+
+  function boot() {
+    initCloudUI();
+    initWatchers();
+    window.setTimeout(function () {
+      syncReady = true;
+    }, 1200);
+    if (localStorage.getItem(AUTH_KEY) === "1") {
+      unlockUI();
+      startCloud();
+    } else {
+      initLogin();
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
+  }
+})();</script>
+</body>
+</html>
