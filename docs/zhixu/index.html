@@ -4134,12 +4134,12 @@
    ================================================== */
 
 const WORKFLOW_TIMELINE_COLORS = [
-  "#7d6b91", // 主紫
-  "#7183a1", // 蓝紫
-  "#a97888", // 红紫
-  "#81789c", // 灰蓝紫
-  "#94758e", // 玫瑰紫
-  "#687f9a"  // 雾霾蓝
+  "#8b5cf6",
+  "#6366f1",
+  "#ec4899",
+  "#a78bfa",
+  "#38bdf8",
+  "#4f46e5"
 ];
 
 function timelineEscapeHTML(value) {
@@ -6349,6 +6349,899 @@ window.addEventListener("resize", () => {
 </script>
 <!-- ATTENDANCE_MODULE_END -->
 
+<style>
+    /* ============================================================
+       紫蓝渐变 · iOS 毛玻璃主题（theme override，最后加载）
+       ============================================================ */
+    :root {
+      --primary: #6d5dfc;
+      --primary-dark: #4f46e5;
+      --primary-light: #a78bfa;
+      --lavender: rgba(255, 255, 255, 0.42);
+      --lavender-soft: rgba(255, 255, 255, 0.26);
+      --background: #6d5dfc;
+      --surface: rgba(255, 255, 255, 0.52);
+      --surface-strong: rgba(255, 255, 255, 0.7);
+      --surface-muted: rgba(255, 255, 255, 0.2);
+      --text: #241f3d;
+      --text-muted: rgba(45, 40, 72, 0.62);
+      --line: rgba(255, 255, 255, 0.5);
+      --success: #34c759;
+      --warning: #ff9f0a;
+      --danger: #ff3b30;
+      --shadow: 0 18px 44px rgba(48, 36, 120, 0.14);
+      --radius: 24px;
+      --glass-bg: rgba(255, 255, 255, 0.56);
+      --glass-bg-strong: rgba(255, 255, 255, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.66);
+      --glass-blur: 30px;
+      --glass-shadow:
+        0 18px 44px rgba(48, 36, 120, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.78);
+      --ios-primary-gradient: linear-gradient(135deg, #8b5cf6 0%, #6366f1 48%, #3b82f6 100%);
+    }
+
+    html {
+      background: #5b4bdb;
+    }
+
+    body {
+      color: var(--text) !important;
+      background:
+        radial-gradient(1000px 720px at 88% -12%, rgba(255, 255, 255, 0.42), transparent 58%),
+        radial-gradient(900px 720px at -12% 2%, rgba(196, 150, 255, 0.42), transparent 60%),
+        radial-gradient(1000px 900px at 106% 90%, rgba(56, 189, 248, 0.44), transparent 62%),
+        radial-gradient(1100px 900px at 4% 104%, rgba(64, 118, 255, 0.6), transparent 66%),
+        linear-gradient(135deg, #9a6bff 0%, #7b5cff 30%, #4f7cf7 62%, #2563eb 100%) !important;
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .app-shell {
+      background: transparent !important;
+    }
+
+    /* ---------- 顶部导航 ---------- */
+    .topbar {
+      background: rgba(255, 255, 255, 0.5) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.46) !important;
+      box-shadow: 0 10px 34px rgba(48, 36, 120, 0.12) !important;
+      backdrop-filter: blur(34px) saturate(185%) !important;
+      -webkit-backdrop-filter: blur(34px) saturate(185%) !important;
+    }
+
+    .brand-mark {
+      color: #fff !important;
+      background: linear-gradient(145deg, #b18cff 0%, #7c8cff 48%, #60a5fa 100%) !important;
+      box-shadow: 0 10px 26px rgba(76, 58, 200, 0.34) !important;
+    }
+
+    .brand-title {
+      color: #241f3d !important;
+    }
+
+    .brand-subtitle {
+      color: rgba(45, 40, 72, 0.58) !important;
+    }
+
+    .nav {
+      background: transparent;
+    }
+
+    .nav-button {
+      color: rgba(45, 40, 72, 0.62) !important;
+      background: transparent !important;
+      border: 1px solid transparent !important;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .nav-button:hover,
+    .nav-button.active {
+      color: #3a2f9f !important;
+      background: rgba(255, 255, 255, 0.56) !important;
+      border-color: rgba(255, 255, 255, 0.66) !important;
+      box-shadow: 0 8px 22px rgba(48, 36, 120, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+    }
+
+    /* ---------- 标题文字（渐变背景上） ---------- */
+    .page-title {
+      color: #ffffff !important;
+      text-shadow: 0 2px 20px rgba(40, 28, 110, 0.3);
+    }
+
+    .page-description {
+      color: rgba(255, 255, 255, 0.86) !important;
+    }
+
+    .footer-note {
+      color: rgba(255, 255, 255, 0.74) !important;
+    }
+
+    /* ---------- 卡片：iOS 毛玻璃 ---------- */
+    .card,
+    .stat,
+    .task-card,
+    .review-item,
+    .list-item,
+    .attendance-action-card,
+    .attendance-history-card,
+    .workflow-timeline-card {
+      background: var(--glass-bg) !important;
+      border: 1px solid var(--glass-border) !important;
+      box-shadow: var(--glass-shadow) !important;
+      backdrop-filter: blur(var(--glass-blur)) saturate(185%) !important;
+      -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(185%) !important;
+    }
+
+    .card {
+      border-radius: var(--radius) !important;
+    }
+
+    .stat {
+      border-radius: 20px !important;
+    }
+
+    .stat-label {
+      color: rgba(45, 40, 72, 0.6) !important;
+    }
+
+    .stat-value {
+      color: #4f46e5 !important;
+    }
+
+    .card-title {
+      color: #241f3d !important;
+    }
+
+    .card-description,
+    .muted {
+      color: rgba(45, 40, 72, 0.6) !important;
+    }
+
+    .divider {
+      background: rgba(255, 255, 255, 0.46) !important;
+    }
+
+    .task-card {
+      border-radius: 20px !important;
+      box-shadow: 0 12px 30px rgba(48, 36, 120, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
+    }
+
+    .task-card.active-task {
+      border: 2px solid rgba(109, 93, 252, 0.8) !important;
+      box-shadow: 0 16px 40px rgba(76, 58, 200, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+    }
+
+    .list-item,
+    .review-item,
+    .attendance-record,
+    .attendance-summary-item {
+      background: rgba(255, 255, 255, 0.4) !important;
+      border: 1px solid rgba(255, 255, 255, 0.56) !important;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+    }
+
+    .empty {
+      color: rgba(45, 40, 72, 0.58) !important;
+      background: rgba(255, 255, 255, 0.28) !important;
+      border: 1px dashed rgba(255, 255, 255, 0.6) !important;
+    }
+
+    /* ---------- 表单控件 ---------- */
+    input,
+    select,
+    textarea {
+      color: #241f3d !important;
+      background: rgba(255, 255, 255, 0.6) !important;
+      border: 1px solid rgba(255, 255, 255, 0.72) !important;
+      box-shadow: inset 0 1px 3px rgba(48, 36, 120, 0.06) !important;
+      backdrop-filter: blur(16px) saturate(160%);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(45, 40, 72, 0.4) !important;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      background: rgba(255, 255, 255, 0.7) !important;
+      border-color: rgba(109, 93, 252, 0.72) !important;
+      box-shadow: 0 0 0 4px rgba(109, 93, 252, 0.18) !important;
+    }
+
+    .field-name {
+      color: rgba(45, 40, 72, 0.6) !important;
+    }
+
+    /* ---------- 按钮 ---------- */
+    .button {
+      color: #2a2450 !important;
+      background: rgba(255, 255, 255, 0.48) !important;
+      border: 1px solid rgba(255, 255, 255, 0.66) !important;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75), 0 8px 20px rgba(48, 36, 120, 0.08) !important;
+      backdrop-filter: blur(18px) saturate(170%);
+      -webkit-backdrop-filter: blur(18px) saturate(170%);
+    }
+
+    .button:hover {
+      background: rgba(255, 255, 255, 0.64) !important;
+      border-color: rgba(255, 255, 255, 0.86) !important;
+    }
+
+    .button-primary {
+      color: #ffffff !important;
+      background: var(--ios-primary-gradient) !important;
+      border-color: transparent !important;
+      box-shadow: 0 12px 28px rgba(76, 58, 200, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+    }
+
+    .button-success {
+      color: #ffffff !important;
+      background: linear-gradient(135deg, #30d158 0%, #0a84ff 100%) !important;
+      border-color: transparent !important;
+      box-shadow: 0 12px 28px rgba(32, 148, 243, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.32) !important;
+    }
+
+    .button-soft {
+      color: #4f46e5 !important;
+      background: rgba(255, 255, 255, 0.42) !important;
+      border-color: rgba(255, 255, 255, 0.6) !important;
+    }
+
+    .button-danger {
+      color: #d92d20 !important;
+      background: rgba(255, 59, 48, 0.13) !important;
+      border-color: rgba(255, 59, 48, 0.24) !important;
+    }
+
+    .file-label {
+      color: #4f46e5 !important;
+      background: rgba(255, 255, 255, 0.42) !important;
+      border: 1px solid rgba(255, 255, 255, 0.6) !important;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .pill {
+      color: #4f46e5 !important;
+      background: rgba(255, 255, 255, 0.44) !important;
+      border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    }
+
+    .pill-success {
+      color: #1c7c3c !important;
+      background: rgba(52, 199, 89, 0.18) !important;
+    }
+
+    .pill-warning {
+      color: #9a5b00 !important;
+      background: rgba(255, 159, 10, 0.18) !important;
+    }
+
+    .pill-danger {
+      color: #b42318 !important;
+      background: rgba(255, 59, 48, 0.15) !important;
+    }
+
+    .progress {
+      background: rgba(255, 255, 255, 0.32) !important;
+    }
+
+    .progress-bar {
+      background: var(--ios-primary-gradient) !important;
+    }
+
+    /* ---------- 云端同步 / 状态 ---------- */
+    .cloud-chip {
+      color: #3a2f9f !important;
+      background: rgba(255, 255, 255, 0.46) !important;
+      border: 1px solid rgba(255, 255, 255, 0.62) !important;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+    }
+
+    .cloud-chip:hover {
+      background: rgba(255, 255, 255, 0.62) !important;
+    }
+
+    .cloud-badge {
+      color: #4f46e5 !important;
+      background: rgba(255, 255, 255, 0.42) !important;
+      border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    }
+
+    .cloud-badge[data-state="on"] {
+      color: #1c7c3c !important;
+      background: rgba(52, 199, 89, 0.18) !important;
+      border-color: rgba(52, 199, 89, 0.32) !important;
+    }
+
+    .cloud-badge[data-state="err"] {
+      color: #b42318 !important;
+      background: rgba(255, 59, 48, 0.14) !important;
+      border-color: rgba(255, 59, 48, 0.26) !important;
+    }
+
+    .cloud-tip {
+      color: rgba(45, 40, 72, 0.62) !important;
+      background: rgba(255, 255, 255, 0.3) !important;
+      border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    }
+
+    .cloud-tip code {
+      color: #4f46e5 !important;
+      background: rgba(255, 255, 255, 0.6) !important;
+    }
+
+    /* ---------- 打卡模块 ---------- */
+    .attendance-icon {
+      color: #ff9f0a !important;
+    }
+
+    .attendance-status {
+      color: #4f46e5 !important;
+    }
+
+    .attendance-button {
+      color: #ffffff !important;
+      box-shadow: 0 10px 26px rgba(76, 58, 200, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+    }
+
+    .attendance-button-start {
+      background: linear-gradient(135deg, #ff9f0a 0%, #ff6482 100%) !important;
+    }
+
+    .attendance-button-end {
+      background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%) !important;
+    }
+
+    .attendance-button-leave {
+      background: linear-gradient(135deg, #b18cff 0%, #8b5cf6 100%) !important;
+    }
+
+    .attendance-button:disabled {
+      background: rgba(255, 255, 255, 0.38) !important;
+      color: rgba(45, 40, 72, 0.45) !important;
+      box-shadow: none !important;
+    }
+
+    .attendance-leave-select {
+      color: #241f3d !important;
+      background: rgba(255, 255, 255, 0.54) !important;
+      border: 1px solid rgba(255, 255, 255, 0.7) !important;
+      box-shadow: inset 0 1px 3px rgba(48, 36, 120, 0.06) !important;
+    }
+
+    .attendance-summary-label {
+      color: rgba(45, 40, 72, 0.58) !important;
+    }
+
+    .attendance-summary-value {
+      color: #241f3d !important;
+    }
+
+    .attendance-summary-value.orange {
+      color: #f97316 !important;
+    }
+
+    .attendance-summary-value.purple {
+      color: #8b5cf6 !important;
+    }
+
+    .attendance-summary-value.blue {
+      color: #3b82f6 !important;
+    }
+
+    .attendance-subtitle,
+    .attendance-history-date,
+    .attendance-record-title {
+      color: #241f3d !important;
+    }
+
+    .attendance-record-meta {
+      color: rgba(45, 40, 72, 0.58) !important;
+    }
+
+    .attendance-text-button {
+      color: #4f46e5 !important;
+    }
+
+    .attendance-text-button.danger {
+      color: #d92d20 !important;
+    }
+
+    .attendance-correction-button {
+      color: #241f3d !important;
+      background: rgba(255, 255, 255, 0.42) !important;
+      border: 1px solid rgba(255, 255, 255, 0.6) !important;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .attendance-correction-button:hover {
+      background: rgba(255, 255, 255, 0.6) !important;
+      border-color: rgba(255, 255, 255, 0.8) !important;
+    }
+
+    .attendance-empty {
+      color: rgba(45, 40, 72, 0.56) !important;
+      border: 1px dashed rgba(255, 255, 255, 0.6) !important;
+    }
+
+    /* ---------- 项目时间轴 ---------- */
+    .workflow-timeline-axis {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.42) !important;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0)) !important;
+    }
+
+    .workflow-timeline-axis-label {
+      color: rgba(45, 40, 72, 0.62) !important;
+    }
+
+    .workflow-timeline-axis-tick {
+      background: rgba(255, 255, 255, 0.42) !important;
+    }
+
+    .workflow-timeline-grid-line {
+      background: rgba(255, 255, 255, 0.3) !important;
+    }
+
+    .workflow-timeline-project-row {
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.28) !important;
+    }
+
+    .workflow-timeline-project-label {
+      color: var(--tl-color, #4f46e5) !important;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+
+    .workflow-timeline-scroll::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.22) !important;
+    }
+
+    .workflow-timeline-scroll::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.5) !important;
+    }
+
+    /* ---------- 登录页 ---------- */
+    .login-screen {
+      background:
+        radial-gradient(900px 640px at 82% -6%, rgba(255, 255, 255, 0.44), transparent 58%),
+        radial-gradient(760px 620px at -6% 12%, rgba(196, 150, 255, 0.42), transparent 62%),
+        radial-gradient(860px 760px at 100% 92%, rgba(56, 189, 248, 0.38), transparent 64%),
+        linear-gradient(140deg, #9a6bff 0%, #7b5cff 32%, #4f7cf7 64%, #2563eb 100%) !important;
+    }
+
+    .login-screen::before {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.35) 1px, transparent 1px) !important;
+      opacity: 0.38 !important;
+    }
+
+    .login-card {
+      background: rgba(255, 255, 255, 0.62) !important;
+      border: 1px solid rgba(255, 255, 255, 0.76) !important;
+      box-shadow:
+        0 40px 100px rgba(40, 26, 120, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.92) !important;
+      backdrop-filter: blur(44px) saturate(200%) !important;
+      -webkit-backdrop-filter: blur(44px) saturate(200%) !important;
+    }
+
+    .login-logo {
+      background: linear-gradient(145deg, #b18cff 0%, #7c8cff 48%, #60a5fa 100%) !important;
+      box-shadow: 0 16px 34px rgba(76, 58, 200, 0.38) !important;
+    }
+
+    .login-name {
+      color: #241f3d !important;
+    }
+
+    .login-sub {
+      color: rgba(45, 40, 72, 0.56) !important;
+    }
+
+    .login-label {
+      color: rgba(45, 40, 72, 0.6) !important;
+    }
+
+    .login-field input {
+      color: #241f3d !important;
+      background: rgba(255, 255, 255, 0.52) !important;
+      border: 1px solid rgba(255, 255, 255, 0.72) !important;
+    }
+
+    .login-field input[readonly] {
+      color: rgba(45, 40, 72, 0.62) !important;
+      background: rgba(255, 255, 255, 0.36) !important;
+    }
+
+    .login-eye {
+      color: #4f46e5 !important;
+    }
+
+    .login-submit {
+      background: var(--ios-primary-gradient) !important;
+      box-shadow: 0 16px 36px rgba(76, 58, 200, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.36) !important;
+    }
+
+    .login-foot {
+      color: rgba(45, 40, 72, 0.5) !important;
+    }
+
+    /* ---------- 提示条 ---------- */
+    .storage-warning,
+    .runtime-error {
+      color: #4a2440 !important;
+      background: rgba(255, 255, 255, 0.62) !important;
+      border: 1px solid rgba(255, 255, 255, 0.78) !important;
+      box-shadow: 0 24px 60px rgba(40, 26, 120, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+      backdrop-filter: blur(34px) saturate(190%) !important;
+      -webkit-backdrop-filter: blur(34px) saturate(190%) !important;
+    }
+
+    /* ---------- 玻璃弹窗 / 轻提示 ---------- */
+    .glass-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 4000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .glass-modal.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .glass-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(24, 18, 60, 0.34);
+      backdrop-filter: blur(10px) saturate(130%);
+      -webkit-backdrop-filter: blur(10px) saturate(130%);
+    }
+
+    .glass-modal-panel {
+      position: relative;
+      width: min(420px, 100%);
+      padding: 30px 26px 22px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid rgba(255, 255, 255, 0.82);
+      box-shadow:
+        0 44px 110px rgba(30, 20, 80, 0.42),
+        inset 0 1px 0 rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(46px) saturate(200%);
+      -webkit-backdrop-filter: blur(46px) saturate(200%);
+      text-align: center;
+      transform: scale(0.94) translateY(10px);
+      transition: transform 0.3s cubic-bezier(0.22, 0.9, 0.3, 1.15);
+    }
+
+    .glass-modal.open .glass-modal-panel {
+      transform: scale(1) translateY(0);
+    }
+
+    .glass-modal-icon {
+      display: grid;
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 16px;
+      place-items: center;
+      color: #ffffff;
+      background: var(--ios-primary-gradient);
+      border-radius: 19px;
+      box-shadow: 0 14px 32px rgba(76, 58, 200, 0.36);
+      font-size: 25px;
+      line-height: 1;
+    }
+
+    .glass-modal-icon.danger {
+      background: linear-gradient(135deg, #ff8a7a 0%, #ff3b30 100%);
+      box-shadow: 0 14px 32px rgba(255, 80, 60, 0.32);
+    }
+
+    .glass-modal-title {
+      margin: 0 0 8px;
+      color: #241f3d;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .glass-modal-message {
+      margin: 0;
+      color: rgba(45, 40, 72, 0.66);
+      font-size: 13.5px;
+      line-height: 1.72;
+    }
+
+    .glass-modal-input {
+      width: 100%;
+      margin-top: 16px;
+      padding: 12px 14px;
+      color: #241f3d;
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      border-radius: 14px;
+      font-size: 14px;
+      text-align: center;
+      outline: none;
+    }
+
+    .glass-modal-input:focus {
+      border-color: rgba(109, 93, 252, 0.75);
+      box-shadow: 0 0 0 4px rgba(109, 93, 252, 0.16);
+    }
+
+    .glass-modal-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .gm-btn {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      border-radius: 16px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .gm-btn:active {
+      transform: scale(0.97);
+    }
+
+    .gm-btn-ghost {
+      color: #3a3350;
+      background: rgba(255, 255, 255, 0.46);
+    }
+
+    .gm-btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.62);
+    }
+
+    .gm-btn-primary {
+      color: #ffffff;
+      background: var(--ios-primary-gradient);
+      border-color: transparent;
+      box-shadow: 0 12px 26px rgba(76, 58, 200, 0.3);
+    }
+
+    .gm-btn-danger {
+      color: #ffffff;
+      background: linear-gradient(135deg, #ff8a7a 0%, #ff3b30 100%);
+      border-color: transparent;
+      box-shadow: 0 12px 26px rgba(255, 80, 60, 0.3);
+    }
+
+    .glass-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 30px;
+      z-index: 4500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: min(560px, calc(100% - 32px));
+      padding: 13px 18px;
+      color: #241f3d;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      border-radius: 999px;
+      box-shadow: 0 22px 54px rgba(30, 20, 80, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(32px) saturate(190%);
+      -webkit-backdrop-filter: blur(32px) saturate(190%);
+      font-size: 13.5px;
+      font-weight: 700;
+      line-height: 1.5;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: opacity 0.28s ease, transform 0.28s ease;
+    }
+
+    .glass-toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    .glass-toast-dot {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      background: var(--ios-primary-gradient);
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.9);
+    }
+
+    @media (max-width: 760px) {
+      .glass-toast {
+        bottom: 20px;
+        border-radius: 22px;
+      }
+
+      .glass-modal-panel {
+        padding: 26px 20px 18px;
+        border-radius: 26px;
+      }
+    }
+    /* ---------- 打卡按钮（覆盖旧的莫兰迪配色，ID 级优先） ---------- */
+    #section-dashboard .attendance-button.attendance-button-start {
+      background: linear-gradient(135deg, #ff9f0a 0%, #ff6482 100%) !important;
+      border-color: transparent !important;
+      color: #ffffff !important;
+      box-shadow: 0 14px 30px rgba(255, 110, 90, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+    }
+
+    #section-dashboard .attendance-button.attendance-button-start:hover:not(:disabled) {
+      background: linear-gradient(135deg, #ffb340 0%, #ff7d96 100%) !important;
+    }
+
+    #section-dashboard .attendance-button.attendance-button-end {
+      background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%) !important;
+      border-color: transparent !important;
+      color: #ffffff !important;
+      box-shadow: 0 14px 30px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+    }
+
+    #section-dashboard .attendance-button.attendance-button-end:hover:not(:disabled) {
+      background: linear-gradient(135deg, #7db8ff 0%, #4f8dfa 100%) !important;
+    }
+
+    #section-dashboard .attendance-button.attendance-button-leave {
+      background: linear-gradient(135deg, #b18cff 0%, #8b5cf6 100%) !important;
+      border-color: transparent !important;
+      color: #ffffff !important;
+      box-shadow: 0 14px 30px rgba(139, 92, 246, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+    }
+
+    #section-dashboard .attendance-button.attendance-button-leave:hover:not(:disabled) {
+      background: linear-gradient(135deg, #c4a4ff 0%, #9d6ff8 100%) !important;
+    }
+
+    #section-dashboard .attendance-button:disabled {
+      background: rgba(255, 255, 255, 0.34) !important;
+      border-color: rgba(255, 255, 255, 0.5) !important;
+      color: rgba(45, 40, 72, 0.42) !important;
+      box-shadow: none !important;
+      opacity: 1 !important;
+    }
+
+    #section-dashboard select.attendance-leave-select {
+      background: rgba(255, 255, 255, 0.56) !important;
+      color: #241f3d !important;
+      border: 1px solid rgba(255, 255, 255, 0.72) !important;
+      box-shadow: inset 0 1px 3px rgba(48, 36, 120, 0.06) !important;
+    }
+
+    #section-dashboard .attendance-status {
+      color: #4f46e5 !important;
+    }
+
+    /* ---------- 时间轴图例 ---------- */
+    .timeline-legend-active {
+      background: linear-gradient(90deg, #8b5cf6, #3b82f6) !important;
+      box-shadow: 0 4px 10px rgba(76, 58, 200, 0.25) !important;
+    }
+
+    .timeline-legend-done {
+      background: #6d5dfc !important;
+      opacity: 0.35 !important;
+    }
+
+    .timeline-legend-dot {
+      background: #3b82f6 !important;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.16) !important;
+    }
+
+    .workflow-timeline-today-label {
+      background: linear-gradient(135deg, #8b5cf6, #3b82f6) !important;
+    }
+
+    .workflow-timeline-today {
+      background: linear-gradient(180deg, rgba(139, 92, 246, 0.9), rgba(59, 130, 246, 0.05)) !important;
+    }
+    /* ---------- 按钮悬浮态修正 ---------- */
+    .button-primary:hover,
+    .button.button-primary:hover {
+      color: #ffffff !important;
+      background: linear-gradient(135deg, #9b74ff 0%, #7479f6 48%, #4f92f7 100%) !important;
+      border-color: transparent !important;
+    }
+
+    .button-success:hover,
+    .button.button-success:hover {
+      color: #ffffff !important;
+      background: linear-gradient(135deg, #43dd6e 0%, #2b96ff 100%) !important;
+      border-color: transparent !important;
+    }
+
+    .button-danger:hover,
+    .button.button-danger:hover {
+      color: #d92d20 !important;
+      background: rgba(255, 59, 48, 0.2) !important;
+    }
+
+    /* ---------- 时间轴细节 ---------- */
+    .workflow-timeline-project-bar {
+      background: color-mix(in srgb, var(--tl-color, #8b5cf6) 34%, rgba(255, 255, 255, 0.55)) !important;
+      border: 1px solid rgba(255, 255, 255, 0.55) !important;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 8px 20px rgba(76, 58, 200, 0.12) !important;
+    }
+
+    .workflow-timeline-stage-bar {
+      background: color-mix(in srgb, var(--tl-color, #8b5cf6) 74%, #ffffff) !important;
+      border: 1px solid rgba(255, 255, 255, 0.7) !important;
+      box-shadow: 0 6px 14px rgba(76, 58, 200, 0.18) !important;
+    }
+
+    .workflow-timeline-stage-label {
+      color: #241f3d !important;
+    }
+
+    .workflow-timeline-task-dot {
+      border-color: rgba(255, 255, 255, 0.95) !important;
+      background: var(--tl-color, #8b5cf6) !important;
+    }
+
+    .timeline-empty {
+      color: rgba(45, 40, 72, 0.58) !important;
+      background: rgba(255, 255, 255, 0.28) !important;
+      border: 1px dashed rgba(255, 255, 255, 0.6) !important;
+    }
+
+    .workflow-timeline-tooltip {
+      color: #241f3d !important;
+      background: rgba(255, 255, 255, 0.72) !important;
+      border: 1px solid rgba(255, 255, 255, 0.82) !important;
+      box-shadow: 0 22px 54px rgba(30, 20, 80, 0.3) !important;
+      backdrop-filter: blur(36px) saturate(190%) !important;
+      -webkit-backdrop-filter: blur(36px) saturate(190%) !important;
+    }
+
+    .workflow-timeline-tooltip-title {
+      color: #241f3d !important;
+    }
+
+    .workflow-timeline-tooltip-row {
+      color: rgba(45, 40, 72, 0.72) !important;
+    }
+
+    .workflow-timeline-tooltip-note {
+      color: rgba(45, 40, 72, 0.6) !important;
+      border-top: 1px solid rgba(45, 40, 72, 0.12) !important;
+    }
+
+    #workflowTimelineScroll::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.22) !important;
+    }
+
+    #workflowTimelineScroll::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.5) !important;
+      border: 2px solid rgba(255, 255, 255, 0.22) !important;
+    }
+
+    #workflowTimelineScroll::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.7) !important;
+    }</style>
 <script>
 /* ===== 知序 · 学习工作台：登录与云端同步 ===== */
 (function () {
@@ -6501,8 +7394,15 @@ window.addEventListener("resize", () => {
     }, 150);
   }
 
-  function logout() {
-    if (!window.confirm("退出登录后，下次进入需要重新输入密码。确定退出吗？")) return;
+  async function logout() {
+    var confirmed = await window.zhixuDialog({
+      title: "退出登录",
+      message: "退出后，下次进入需要重新输入密码。",
+      confirmText: "退出",
+      cancelText: "取消",
+      icon: "👋"
+    });
+    if (!confirmed) return;
     localStorage.removeItem(AUTH_KEY);
     window.location.reload();
   }
@@ -6886,8 +7786,16 @@ window.addEventListener("resize", () => {
 
     var disconnect = byId("cloudDisconnect");
     if (disconnect) {
-      disconnect.addEventListener("click", function () {
-        if (!window.confirm("关闭云端同步后，这台设备将不再自动上传和下载记录。确定关闭吗？")) return;
+      disconnect.addEventListener("click", async function () {
+        var confirmed = await window.zhixuDialog({
+          title: "关闭云端同步",
+          message: "关闭后，这台设备将不再自动上传和下载记录。",
+          confirmText: "关闭同步",
+          cancelText: "取消",
+          icon: "☁",
+          danger: true
+        });
+        if (!confirmed) return;
         localStorage.removeItem(TOKEN_KEY);
         localStorage.removeItem(ACCOUNT_KEY);
         localStorage.removeItem(GIST_KEY);
@@ -7052,9 +7960,156 @@ window.addEventListener("resize", () => {
       if (toast.parentNode) toast.remove();
     }, 12000);
   }
+  /* ---------- 毛玻璃弹窗与轻提示 ---------- */
+
+  var nativeAlert = window.alert;
+  var nativeConfirm = window.confirm;
+  var toastTimer = null;
+
+  function showToast(message) {
+    var text = String(message == null ? "" : message).trim();
+    if (!text) return;
+    var toast = byId("glassToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "glassToast";
+      toast.className = "glass-toast";
+      toast.innerHTML = '<span class="glass-toast-dot"></span><span class="glass-toast-text"></span>';
+      document.body.appendChild(toast);
+    }
+    var textEl = toast.querySelector(".glass-toast-text");
+    if (textEl) textEl.textContent = text;
+    toast.classList.add("show");
+    if (toastTimer) window.clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(function () {
+      toast.classList.remove("show");
+    }, 2800);
+  }
+
+  window.alert = function (message) {
+    showToast(message);
+  };
+
+  window.zhixuDialog = function (options) {
+    return new Promise(function (resolve) {
+      var opts = options || {};
+      var overlay = document.createElement("div");
+      overlay.className = "glass-modal";
+      overlay.innerHTML =
+        '<div class="glass-modal-backdrop"></div>' +
+        '<div class="glass-modal-panel" role="dialog" aria-modal="true">' +
+        '  <div class="glass-modal-icon">' + (opts.icon || "?") + '</div>' +
+        '  <h3 class="glass-modal-title"></h3>' +
+        '  <p class="glass-modal-message"></p>' +
+        '  <input class="glass-modal-input" type="text" autocomplete="off" hidden>' +
+        '  <div class="glass-modal-actions">' +
+        '    <button class="gm-btn gm-btn-ghost gm-cancel" type="button"></button>' +
+        '    <button class="gm-btn gm-btn-primary gm-ok" type="button"></button>' +
+        '  </div>' +
+        '</div>';
+
+      var iconEl = overlay.querySelector(".glass-modal-icon");
+      var titleEl = overlay.querySelector(".glass-modal-title");
+      var messageEl = overlay.querySelector(".glass-modal-message");
+      var inputEl = overlay.querySelector(".glass-modal-input");
+      var cancelEl = overlay.querySelector(".gm-cancel");
+      var okEl = overlay.querySelector(".gm-ok");
+
+      if (opts.danger) iconEl.classList.add("danger");
+      titleEl.textContent = opts.title || "请确认";
+      messageEl.textContent = opts.message || "";
+      cancelEl.textContent = opts.cancelText || "取消";
+      okEl.textContent = opts.confirmText || "确定";
+      if (opts.danger) okEl.className = "gm-btn gm-btn-danger gm-ok";
+      if (opts.input) {
+        inputEl.hidden = false;
+        inputEl.placeholder = opts.placeholder || "";
+      }
+
+      var closed = false;
+
+      function close(confirmed) {
+        if (closed) return;
+        closed = true;
+        overlay.classList.remove("open");
+        window.setTimeout(function () {
+          if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        }, 280);
+        if (confirmed) {
+          resolve(opts.input ? inputEl.value.trim() : true);
+        } else {
+          resolve(opts.input ? null : false);
+        }
+      }
+
+      cancelEl.addEventListener("click", function () { close(false); });
+      okEl.addEventListener("click", function () { close(true); });
+      inputEl.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") { event.preventDefault(); close(true); }
+      });
+      overlay.querySelector(".glass-modal-backdrop").addEventListener("click", function () { close(false); });
+      window.addEventListener("keydown", function onKey(event) {
+        if (!closed && event.key === "Escape") { close(false); }
+        else if (!closed && event.key === "Enter" && !opts.input) { close(true); }
+        if (closed) window.removeEventListener("keydown", onKey, true);
+      }, true);
+
+      document.body.appendChild(overlay);
+      window.requestAnimationFrame(function () { overlay.classList.add("open"); });
+      window.setTimeout(function () {
+        if (closed) return;
+        if (opts.input) inputEl.focus();
+        else okEl.focus();
+      }, 120);
+    });
+  };
+
+  window.__zhixuConfirmBypass = false;
+
+  window.confirm = function (message) {
+    if (window.__zhixuConfirmBypass) {
+      window.__zhixuConfirmBypass = false;
+      return true;
+    }
+    return nativeConfirm.call(window, message);
+  };
+
+  function installDeleteGuard() {
+    document.addEventListener("click", function (event) {
+      if (window.__zhixuConfirmBypass) return;
+      var target = event.target;
+      if (!target || !target.closest) return;
+      var button = target.closest("button, .button, [role='button']");
+      if (!button) return;
+      if (button.closest(".topbar-actions, #loginScreen, .cloud-card, .glass-modal")) return;
+      if (button.id === "clearData" || button.id === "cloudDisconnect" || button.id === "cloudLogout") return;
+      var text = (button.textContent || "").trim();
+      if (!/^(删除|移除)/.test(text)) return;
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      window.zhixuDialog({
+        title: "确认删除",
+        message: "删除后无法恢复，确定要继续吗？",
+        confirmText: "删除",
+        cancelText: "取消",
+        icon: "🗑",
+        danger: true
+      }).then(function (confirmed) {
+        if (!confirmed) return;
+        window.__zhixuConfirmBypass = true;
+        try {
+          button.click();
+        } finally {
+          window.__zhixuConfirmBypass = false;
+        }
+      });
+    }, true);
+  }
   function boot() {
     initCloudUI();
     initWatchers();
+    installDeleteGuard();
     showStorageWarning();
     startLiveTicker();
     window.addEventListener("zhixu-storage-broken", showStorageWarning);
